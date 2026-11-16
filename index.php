@@ -55,8 +55,10 @@ foreach ($areas as $area=>$title) {
 			<div class="card-body">
 <?php
 if ($_SESSION["userlevel"] > 2) {
-	$count_query = "SELECT COUNT( * ) AS numpages, content.statusid, status FROM content LEFT JOIN status USING ( statusid ), cms.services";
-	if ($_SESSION["userlevel"] < 4) $count_query .= " WHERE content.serviceid=services.serviceid AND (content.serviceid='$_SESSION[userserviceid]' OR parentserviceid='$_SESSION[userserviceid]')";
+	// Join each page to its own service only (previously admins had no join condition,
+	// so every page was counted once per service). Matches the count used by content.php.
+	$count_query = "SELECT COUNT( * ) AS numpages, content.statusid, status FROM content LEFT JOIN status USING ( statusid ), cms.services WHERE content.serviceid=services.serviceid";
+	if ($_SESSION["userlevel"] < 4) $count_query .= " AND (content.serviceid='$_SESSION[userserviceid]' OR parentserviceid='$_SESSION[userserviceid]')";
 
 	$count_query .= "  GROUP BY statusid";
 	$contentrecs = $db->get_results($count_query);
