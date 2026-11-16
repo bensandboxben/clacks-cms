@@ -1,0 +1,18 @@
+CAP/Library
+Library Service|/culture/libraryservicehome/
+Library and CAP Branches|/culture/brancheslibrary/
+Library Catalogue|/culture/librarycatalogue/
+Join the Library|/culture/librarymembership/
+Search Ebooks|/culture/ebooks/
+Heritage Services|/culture/localhistorystudies/
+Book Online|/culture/bookit/
+Booking Information|/culture/bookinginformation/
+Function Halls and Meeting Facilities|/culture/hallsandfacilities/
+Price List|/culture/pricelist/
+Sports Venues|/culture/sportsvenues/
+Council Tax|/council/counciltax/
+Councillors and Wards|/council/wards/
+Comments and Complaints|/council/commentsandcomplaints/
+Customer Contact Centre|/council/customercontactcentre/
+Registration Services|/regulation/registration/
+Genealogy|/culture/genealogy/

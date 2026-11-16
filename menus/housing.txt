@@ -1,0 +1,21 @@
+Housing
+Adaptations|/housing/adaptations/
+Applying for a Council House|/housing/applyforacouncilhouse/
+Contact Housing|/housing/contact/
+Council Housing|/housing/councilhousing/
+Fair Processing Notice|/housing/fairprocessing/
+Home Energy Advice|/housing/energyadvice/
+Home Ownership|/housing/homeownership/
+Homelessness|/housing/homelessness/
+Houses in Multiple Occupation|/environment/housingstandards/
+Housing Benefit & Council Tax Reduction|/council/housingbenefitandcounciltaxred/
+Housing Strategy & Research|/housing/housingstrategyteam/
+Local Housing Strategy|/housing/localhousingstrategy/
+Online Rent Payments|https://secure.clacksweb.org.uk/payit/
+Property Factors Act (Scotland) 2011|/housing/propertyfactorsact/
+Rents and Service Charges|/housing/rentlevels/
+Repair Centre|/housing/repaircentre/
+Repairs and Improvements|/housing/hip/
+Reporting our Charter Performance|/housing/reportingourcharterperformance/
+Right to Repair|/housing/righttorepair/
+Tenant Participation|/housing/tenantparticipation/

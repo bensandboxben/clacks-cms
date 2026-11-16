@@ -1,0 +1,8 @@
+Firpark Ski Centre
+Activity Prices|/culture/firparkprices/
+Activities/Classes|/culture/firparkactivities/
+Conditions of Use|/culture/firparkconditions/
+Enrolment Guidelines|/culture/firparkenrolment/
+Group Lets|/culture/firparkgrouplets/
+Make a Booking|http://www.clacks.gov.uk/leisure/booking
+Tubing|/culture/tubing/

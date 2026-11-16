@@ -1,0 +1,7 @@
+Summary of Accounts
+Summary of Accounts|/council/summaryofaccounts/
+Balance Sheet|/council/balancesheet/
+Capital Expenditure|/council/capitalexp/
+Cost of Council Services|/council/servicecost/
+Housing Revenue Account|/council/housingaccount/
+Finance Services performance|/council/financeperf/

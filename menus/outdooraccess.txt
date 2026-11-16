@@ -1,0 +1,9 @@
+Outdoor Access
+Core Paths Mapping|/maps/corepaths/
+Core Paths Plan|/environment/corepathsplan/
+Online Interactive Core Path Plan | http://www.clacksweb.org.uk/mapping/corepaths.php
+Outdoor Access Homepage|/environment/outdooraccess/
+Clackmannanshire Access Forum|/environment/accessforum/
+Public Rights of Way|/environment/rightsofway/
+Scottish Outdoor Access Code|/environment/scottishoutdooraccesscode/
+Walks in Clackmannanshire|/culture/walks/

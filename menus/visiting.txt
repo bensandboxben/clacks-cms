@@ -1,0 +1,10 @@
+Tourism & Visitor Attractions
+About Clackmannanshire|/visiting/aboutclackmannanshire/
+Christmas Cards|/visiting/christmascards/
+Clackmannanshire Tower Trail|/visiting/towertrail/
+Doors Open Days|/visiting/doorsopendaysgen/
+Events diary|/community/events/
+Maps & Directions|/visiting/maps/
+Places to stay|/visiting/accommodation/
+Places to visit|/visiting/placestovisit/
+Virtual Postcards|/visiting/postcards/

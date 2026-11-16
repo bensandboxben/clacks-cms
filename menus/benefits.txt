@@ -1,0 +1,16 @@
+Housing Benefit and Council Tax Reduction
+Backdates|/council/backdates/
+Capital/Savings|/council/housingcounciltaxbenefitcapital/
+Changes in circumstances|/council/changeincircumstances/
+Council Tax|/council/counciltax/
+Discretionary housing payments|/council/discretionaryhousingpayments/
+Housing Benefit and Council Tax Reduction|/council/housingbenefitandcounciltaxred/
+Housing Benefit and Council Tax Reduction Enquiries|/council/housingbenefitcounciltaxredenq/
+Housing Benefit and Council Tax Reduction explained|/council/whatisbenefit/
+How do I apply for a Council Tax Reduction|/council/makingabenefitclaim/
+How to report suspected benefit fraud|/council/benefitfraud/
+Local Housing Allowance|/council/localhousingallowance/
+Non-dependants|/council/benefitsnondependants/
+Overpayments|/council/calchouscounctaxbenoverpayment/
+Welfare Reforms|/council/welfarereforms/
+Who can claim?|/council/claimingbenefit/

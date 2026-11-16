@@ -1,0 +1,7 @@
+Council Structure
+Development and Environmental|/council/devenv/
+Education|/learning/educationandschools/
+Housing and Community Safety|/council/housingcommsafety/
+Resources and Governance|/council/resgov/
+Social Services|/social/adultcareandsocialwork/
+Strategy and Customer Services|/council/scs/

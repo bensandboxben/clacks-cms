@@ -1,0 +1,13 @@
+Registration Services
+Annual Statistical Review|/regulation/registrationannualreview/
+British Citizenship|/regulation/britishcitizen/
+Civil Marriage/ Partnership|/regulation/civilmarriagepship/
+FAQs re Civil Marriage / Civil Partnership|/regulation/civilpartnershipsfaqs/
+Genealogy|/culture/genealogy/
+Marriages in Clackmannanshire|/regulation/marriages/
+Other Ceremonies|/regulation/otherceremonies/
+Registering a Birth|/regulation/birthregistration/
+Registering a Death|/regulation/deathregistration/
+Replacement Certificates | /regulation/replacementcertificates/
+Registration Services|/regulation/registration/
+Still-birth Registration|/regulation/still-birth/

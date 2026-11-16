@@ -1,0 +1,20 @@
+Council & Government
+Annual Acounts|/council/annualaccounts/
+Comments & Complaints|/council/commentsandcomplaints/
+Committee Reports Database|/council/reports/
+Consultations|/council/clackmannanshireconsults/
+Council Committees|/council/committees/
+Council Tax|/council/counciltax/
+Councillors & Wards|/council/wards/
+Documents & publications|/site/documents/
+Elections|/council/elections/
+Emergency Planning|/council/emergencyplanning/
+Equality and Diversity|/council/eqopps/
+Financial Regulations|/council/financialregs/
+Meetings, minutes & agendas|/council/meetings/
+Members of Parliaments|/council/membersofparliaments/
+Performance|/council/performance/
+Public Petitions|/council/publicpetitions/
+Register of Charges|/site/documents/guides/registerofchargesbooklet/
+Scheme of Delegation|/council/schemeofdelegation/
+Workforce Relations|/council/tradeunion/

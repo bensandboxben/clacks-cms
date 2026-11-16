@@ -1,0 +1,24 @@
+Polling District/Place Review
+Alloa North Church Hall|/council/alloanorthchurchhallpp/
+Alloa Old People's Welfare Club|/council/alloawelfarehallpp/
+Banchory Primary School|/council/banchoryprimaryschoolpp/
+Bowmar Community Centre|/council/bowmarcommunitycentrepp/
+Clackmannan Town Hall|/council/clackmannantownhallpp/
+Coalsnaughton Village Hall|/council/coalsnaughtonvillagehallpp/
+Cochrane Hall|/council/cochranehallpp/
+Coronation Hall|/council/coronationhallpp/
+Council Office, Mill St|/council/councilofficepp/
+Devonvale Hall|/council/devonvalehallpp/
+Dollar Civic Centre|/council/dollarciviccentrepp/
+Dumyat Centre|/council/dumyatpp/
+Hawkhill Community Centre|/council/hawkhillcentrepp/
+Loganlea|/council/loganleatearoompp/
+Ochilview|/council/theochilviewpp/
+St Bernadette's Church Hall|/council/stbernadetteschurchhallpp/
+St John Vianney's Church Hall|/council/stjohnvianneyschurchhallpp/
+St Serf's ChurchHall|/council/stserfschurchhallpp/
+Sauchie & Coalsnaughton Parish Church Hall|/council/sauchieparishchurchhallpp/
+Sauchie Hall|/council/sauchiehallpp/
+Tillicoultry Community Centre|/council/tillicoultrycommunitycentrepp/
+Tullibody Civic Centre|/council/tullibodyciviccentrepp/
+Whins Resource Centre|/council/whinsresourcecentrepp/

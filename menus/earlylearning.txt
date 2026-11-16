@@ -1,0 +1,7 @@
+Early Learning & Childcare
+Applying for a place|/learning/nurseryenrolment/
+Deferred and Early Entry to School|/learning/deferredearlyentry/
+Early Learning and Childcare Centres|/learning/elclanurseries/
+Partner Childminders|/learning/partnerchildminders/
+Partner Nurseries|/learning/fundedproviders/
+What will my child learn|/learning/ellearning/

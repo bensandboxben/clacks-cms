@@ -1,0 +1,13 @@
+Leisure Activities
+Fishing|/culture/fishing/
+Fitness Suites|/culture/fitnesssuites/
+Fitness/Activity Classes|/learning/weeklyclasses/
+Football Pitches|/culture/footballpitches/
+Golf|/culture/golf/
+Indoor Sports|/culture/indoorsports/
+Local Facilities|/culture/hallsandfacilities/
+Parks & Outdoor Life|/culture/parks/
+Sports Classes|/culture/sportsclasses/
+Swimming|/culture/swimming/
+Walking|/culture/walks/
+Wellbeing Hub|/culture/leisurewbcons/

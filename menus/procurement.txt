@@ -1,0 +1,14 @@
+Procurement
+Contract Register|/business/contractsregister/
+Contract Standing Orders|/business/contractstandingorders/
+Corporate Procurement Process|/business/corporateprocurementprocess/
+Council Tenders|/business/tenders/
+Doing business with Clackmannanshire Council|/business/procurement/
+Focus On Spend |/business/focusonspend/
+Scottish Government Procurement Policies|/business/scottishgovernmentprocurementpol/
+Terms and Conditions for Orders and Contracts|/business/procurementtermsandconditions/
+Procurement Annual Report|/business/procurementannualreport/
+Procurement FAQs|/business/procurementfaqs/
+Procurement Links|/business/procurementlinks/
+Procurement News|/business/procurementnews/
+Procurement Strategy|/business/procurementstrategy/

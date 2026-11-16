@@ -1,0 +1,4 @@
+Business Rates
+Business Rates|/business/businessrates/
+Business Rates Statistics|/business/businessratesstats/
+Business Rates Relief Application Forms|/business/businessratesappforms/

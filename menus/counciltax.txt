@@ -1,0 +1,15 @@
+Council Tax
+Council Tax Home|/council/counciltax/
+Council Tax Arrears|/council/counciltaxarrears/
+Council Tax Bands|/council/howmuchcounciltaxwillyoupay/
+Council Tax Enquiries|/council/counciltaxenquiries/
+Council Tax Exemptions|/council/counciltaxexemptions/
+Council Tax Payments|/council/counciltaxpayment/
+Council Tax Reduction & Housing Benefit|/council/housingbenefitandcounciltaxred/
+Council Tax Second Homes|/council/counciltaxsecondhomes/
+Changes in circumstances|/council/counciltaxchange/
+Difficulty paying your Council Tax|/council/counciltaxadvice/
+Discounts and reductions|/council/counciltaxdiscounts/
+Pay Your Council Tax|https://www.clacks.gov.uk/council/payit/
+Setup Direct Debit Online|https://www.clacks.gov.uk/directdebit/
+Who pays Council Tax?|/council/counciltaxpayees/

@@ -1,0 +1,17 @@
+Adult Care
+Adult Day Services|/social/adultdayservices/
+Adult Support and Protection|/social/adultprotection/
+Carers|/social/carers/
+Adult Carer Support Plan|/social/carerssupportplan/
+Assessment & Care Management Service|/social/communitycareteams/
+Community Care Charging Policy|/social/communitycarechargingpolicy/
+Equipment & Adaptations|/social/equipmentandadaptations/
+Home Care & Home Helps|/social/homecare/
+Integrated Mental Health Service|/social/imhs/
+Ludgate House Resource Centre|/social/ludgatehouse/
+Mobile Emergency Care Services (MECS)|/social/mecs/
+Older People Services|/social/elderlycare/
+Residential Care Home  |/social/menstriehouse/
+Respite Care|/social/respitecare/
+Self Directed Support|/social/sdsupport/
+Social Services|/social/adultcareandsocialwork/

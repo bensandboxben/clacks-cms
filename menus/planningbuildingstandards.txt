@@ -1,0 +1,9 @@
+Planning & Building Standards
+Development Management (Planning)|/property/developmentquality/
+Development Planning|/property/developmentplanupdate/
+Building Standards|/property/buildingstandards/
+Development & Environment Bulletin|/site/documents/property/developmentenvironmentbulletin/
+Planning Committee Meetings|/council/meetings/planningcommitteeformerlyregulatorycommittee/
+Submit a Planning Application|https://eplanning.scotland.gov.uk/WAM/
+View, comment or object to a Planning Application|https://eplanning.clacks.gov.uk/eplanning/
+Short Term Lets (Planning)|/property/shorttermletsplanning/

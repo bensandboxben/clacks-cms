@@ -1,0 +1,17 @@
+Household Waste & Recycling
+Blue Recycling Bin|/environment/bluebins/
+Brown Bin Permit for Garden Waste|/environment/brownbinpermit/
+Business Waste & Recycling|/environment/wasteadvicebuinesses/
+Glass Recycling|/environment/glassrecycling/
+Green Residual Waste Bin|/environment/greenbin/
+Grey Recycling Bin|/environment/greybin/
+Asbestos Waste |/environment/asbestoswaste/ 						
+Bulky Uplift|/environment/bulkyuplifts/ 
+Community Recycling Points|https://www.clacks.gov.uk/mapping/recycling.php
+Food Waste Collection|/environment/foodwastecollection/
+Forthbank Recycling Centre|/environment/forthbank/ 
+Frequently Asked Questions|/environment/wastefaqs/ 
+Household Waste and Recycling|/environment/wasteserviceshome/
+Missed Bin Collection|/environment/missedbincollection/
+Recycling A-Z|/environment/recyclingatozguide/
+Waste Collection Calendar|/environment/wastecollection/ 

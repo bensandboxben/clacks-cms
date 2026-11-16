@@ -1,0 +1,3 @@
+News
+Latest Information|/news/generalinformation/
+Staff Information|/news/latestnews/

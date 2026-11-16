@@ -1,0 +1,7 @@
+Electric Vehicle Charging
+Accessible EV Charging Points|/transport/evaccessible/
+EV Charging Points|/transport/chargingpoints/
+EV General Information|/transport/evinfo/
+EV Tariffs|/transport/evtariffs/
+EV Tariff Residents Discount|/transport/evdiscount/
+FAQs|/transport/evfaq/

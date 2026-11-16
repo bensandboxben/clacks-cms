@@ -1,0 +1,9 @@
+Resilience Planning
+Business Continuity In the Community|/council/businesscontinuityinthecommunity/ 
+Community Resilience|/council/commresilience/
+Community Risk Register|https://www.firescotland.gov.uk/your-area/community-risk-register
+Coping with a major emergency|/community/copingwithamajoremergency/
+Resilience Planning Unit|/council/emergencyplanning/
+Planning a public event|/council/planningpublicevent/
+Major Emergencies - Operational Procedures|/council/meop/
+Useful telephone numbers in an emergency|/council/emergencynumbers/

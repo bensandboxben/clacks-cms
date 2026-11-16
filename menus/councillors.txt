@@ -1,0 +1,8 @@
+Council Officers, Councillors & Wards
+Civic Receptions and Hospitality|/council/civicreceptionsandhospitality/
+Councillors & Wards|/council/wards/
+Councillors and Council Officers Responsibilities and Remuneration|/council/ccorr/
+Register of Members' Interests|/council/memberinterests/
+Chief Executive|/council/cerr/
+Strategic Directors|/council/strategicdirectors/
+The Provost|/council/provost/

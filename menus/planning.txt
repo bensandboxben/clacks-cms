@@ -1,0 +1,15 @@
+Development Management
+Development Management|/property/developmentquality/
+How Should a Planning Objection Be Made|/property/planningobjections/
+Mobile Phone Mast Roll-out Plan|/property/mobilephone/
+Short Term Lets (Planning)|/property/shorttermletsplanning/
+Modernised Planning Service|/property/modernisedplanningservice/
+Planning Process Agreements |/property/planningprocessagreement/
+Performance Information|/property/developmentqualityperformance/
+Planning Performance Framework|/site/documents/planning/planningperformanceframework/
+Planning Appeals|/property/planningreviewsandappeals/
+Planning Applications, Decisions and Permission|/property/planningpermission/
+Planning Enforcement | /property/planningenforcementregister/
+Planning Committee Meetings| /council/meetings/planningcommitteeformerlyregulatorycommittee/
+Development & Environment Bulletin|/site/documents/property/developmentenvironmentbulletin/
+Submit a Planning Application |https://eplanning.scotland.gov.uk/WAM/edevelopment.htm

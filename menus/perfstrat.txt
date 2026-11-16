@@ -1,0 +1,14 @@
+Performance
+Performance|/council/performance/
+Council|/council/councilperf/ 
+People|/council/perfinpeople/ 
+Place|/council/perfinplace/
+Partnership & Performance|/council/perfinpandp/ 
+Transformation|/council/perfintrans/
+Alliance & Partners|/council/allianceperf/ 
+Health & Social Care|/council/perfinhandc/ 
+Priorities, Values & Outcomes|/council/priorities/ 
+Self-assessment & Continuous Improvement|/council/self-assessment/ 
+Local Code of Governance|/council/codeofgovernance/ 
+Consultation Database|https://clackmannanshire.citizenspace.com/
+Facts & Figures|/council/factsandfigures/ 

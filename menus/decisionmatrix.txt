@@ -1,0 +1,11 @@
+Decision Matrix - Route One
+Start|/business/start/
+Prepare a brief|/business//
+Identify Suppliers|/business//
+Prepare quotation documents|/business//
+Receive & evaluate responses|/business//
+Notify suppliers of outcome|/business//
+Retention of documentation|/business//
+Contract management|/business//
+Finish|/business//
+
