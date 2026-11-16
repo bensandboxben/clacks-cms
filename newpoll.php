@@ -9,13 +9,14 @@ if ($_GET["action"] == "edit") {
 	extract($poll_array);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <?php if ($edit == 1) { ?>
 <h3>Edit poll</h3>
 <?php } else { ?>
@@ -48,7 +49,7 @@ self.close();
 </script>
 <?php
 	} else {
-		echo '<p>The poll was not saved. Please correct these errors and resubmit the form:</p><ul>';
+		echo '<p class="form-error-intro" role="alert">The poll was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 		foreach ($errors as $error) {
 			echo '<li>' . $error . '</li>';
 		}
@@ -93,7 +94,7 @@ s.selectedIndex = l;
 $cats = $db->get_results("SELECT catid, category FROM clacksweb2.categories ORDER BY category", ARRAY_N);
 build_select_box($cats, "catid", $catid);
 ?>
-<a href="#" onClick="window.open('newcat.php', 'cat_new', 'width=500,height=300,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new category" border="0" /></a>
+<a href="#" onClick="window.open('newcat.php', 'cat_new', 'width=500,height=300,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new category</span></a>
 </td></tr>
 <tr><td class="label">Service:</td>
 <td>
@@ -135,7 +136,7 @@ build_select_box($services, "serviceid", $serviceid);
 </script>
 </td></tr>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Cancel" onclick="javascript: window.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-secondary" value="Cancel" onclick="javascript: window.close();" />
 <?php if ($pollid) echo '<input type="hidden" name="pollid" value="' . $pollid . '" />'; ?>
 </td></tr>
 </table>

@@ -25,13 +25,14 @@ if (isset($_SESSION["filters"]["extlinks"])) $query .= ' AND title LIKE "%' . $_
 $query .= ' ORDER BY title';
 $extpages = $db->get_results($query, ARRAY_N);
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Add external link</h3>
 <p>Adding external links to page: <?php echo get_np_var('title'); ?></p>
 <script language="JavaScript">
@@ -47,24 +48,24 @@ s.selectedIndex = l;
 </script>
 <div id="formarea">
 <form name="extlinks" method="post" action="addextlink.php">
-<p>Filter: <input type="text" name="filter" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="filterbtn" value="Filter" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="clearfilter" value="Clear" /></p>
+<p>Filter: <input type="text" name="filter" /> <input type="submit" class="btn btn-md btn-primary" name="filterbtn" value="Filter" /> <input type="submit" class="btn btn-md btn-secondary" name="clearfilter" value="Clear" /></p>
 <table class="table table-striped table-bordered">
-<tr><td>Site to link to <a href="#" onClick="window.open('newextlink.php?noreturn=1', 'extlink_new', 'width=450,height=550,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new external link" border="0" /></a> </td><td>Action</td></tr>
+<tr><td>Site to link to <a href="#" onClick="window.open('newextlink.php?noreturn=1', 'extlink_new', 'width=450,height=550,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new external link</span></a> </td><td>Action</td></tr>
 <tr><td style="colour:#fff;">
 <?php build_select_box($extpages, "extlink", "", " "); ?>
 </td>
-<td><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
+<td><input type="submit" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
 </tr>
 <?php
 if (is_array($curr_links) && count($curr_links) > 0) {
 	foreach ($curr_links as $key=>$curr_link) {
 		$title = $db->get_var("SELECT title FROM extlinks WHERE extlinkid='{$curr_link["extlinkid"]}'");
-		echo '<tr><td>' . $title . '</td><td><a href="addextlink.php?del=' . $key . '"><img src="images/delete.gif" height="18" width="18" alt="delete" border="0"></a></td></tr>';
+		echo '<tr><td>' . $title . '</td><td><a href="addextlink.php?del=' . $key . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete</span></a></td></tr>';
 	}
 }
 ?>
 </table>
-<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="savelinks" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>
+<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" name="savelinks" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>
 </form>
 </div>
 </body>

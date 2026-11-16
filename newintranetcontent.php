@@ -109,7 +109,7 @@ foreach ($required_sections as $sectioncode) {
 }
 if ($cansave) echo ' <input type="submit" class="btn btn-md btn-success" name="savenp" value="Commit page" />';
 ?>
-<input type="submit" class="btn btn-md btn-primary" name="resetnp" value="Cancel &amp; reset" />
+<input type="submit" class="btn btn-md btn-secondary" name="resetnp" value="Cancel &amp; reset" />
 </form>
 <p><a href="content.php">Back to content list</a></p>
 </div>

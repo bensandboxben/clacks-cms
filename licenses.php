@@ -49,7 +49,7 @@ if ($user_message) echo $user_message;
 print_column_heading("Name", "name", "55%");
 print_column_heading("Category", "category", "30%");
 ?>
-<th width="15%">Actions <a href="#" onClick="window.open('newlicense.php', 'lic_new', 'width=650,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add record" border="0"></a></th>
+<th width="15%">Actions <a href="#" onClick="window.open('newlicense.php', 'lic_new', 'width=650,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add record</span></a></th>
 </tr>
 <?php
 if (count($records) > 0) {
@@ -58,10 +58,10 @@ if (count($records) > 0) {
 		echo '<td width="55%"><a href="/regulation/licensing/' . $record->caturl . '/' . $record->licurl . '/">' . $record->name . '</a></td>';
 		echo '<td width="30%">' . $record->category . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newlicense.php?action=edit&licid=' . $record->$dbkey . '\', \'lic_edit\', \'width=650,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit" border="0"></a>  ';
-		echo '<a href="#" onClick="window.open(\'licenseforms.php?licid=' . $record->$dbkey . '\', \'lic_forms\', \'width=700,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/documents.gif" alt="related forms" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newlicense.php?action=edit&licid=' . $record->$dbkey . '\', \'lic_edit\', \'width=650,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit</span></a>  ';
+		echo '<a href="#" onClick="window.open(\'licenseforms.php?licid=' . $record->$dbkey . '\', \'lic_forms\', \'width=700,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-documents" aria-hidden="true" focusable="false"><use href="images/icons.svg#folder-open"></use></svg><span class="sr-only">related forms</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=licenses&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete</span></a> ';
 		echo '</td></tr>';
 	}
 }

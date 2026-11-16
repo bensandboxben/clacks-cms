@@ -11,19 +11,20 @@ if ($_POST["submit"]) {
 }
 $session = $db->get_var("SELECT schoolsession FROM clacksweb2.config");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 
 <div id="formarea">
 <h3>Edit session</h3>
 <form name="editsession" action="schoolsession.php" method="post">
 <input type="text" name="session" id="session" value="<?php echo $session; ?>" />
-<p style="text-align: center;"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="javascript:opener.location.reload(true);window.close()" /></p>
+<p style="text-align: center;"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save" /> <input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="javascript:opener.location.reload(true);window.close()" /></p>
 </form>
 </div>
 </body>

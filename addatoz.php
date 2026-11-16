@@ -12,13 +12,14 @@ if ($_POST["addbtn"]) {
 	set_np_var('atoz_entries', $curr_atoz);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Add A to Z entries</h3>
 <?php
 if (isset($error)) {
@@ -40,7 +41,7 @@ for ($x=0; $x < 26; $x++) {
 </select>
 </td>
 <td><input type="text" name="entry" value="<?php echo get_np_var('title'); ?>" /></td>
-<td><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
+<td><input type="submit" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
 </tr>
 <?php
 if (is_array($curr_atoz) && count($curr_atoz) > 0) {
@@ -50,7 +51,7 @@ if (is_array($curr_atoz) && count($curr_atoz) > 0) {
 }
 ?>
 </table>
-<p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="saveatoz" value="Close" onclick="javascript:opener.location.reload(true);window.close();" />  <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onclick="self.close();" /></p>
+<p><input type="submit" class="btn btn-md btn-secondary" name="saveatoz" value="Close" onclick="javascript:opener.location.reload(true);window.close();" />  <input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onclick="self.close();" /></p>
 </form>
 </body>
 </html>

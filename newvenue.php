@@ -72,21 +72,22 @@ if (isset($_POST['save'])) {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
 
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 
 <h3>Add new venue</h3>
 
 <?php
 if (count($errors) > 0) {
 
-    echo '<p>The venue was not saved. Please correct these errors and resubmit the form:</p><ul>';
+    echo '<p class="form-error-intro" role="alert">The venue was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 
     foreach ($errors as $error) {
         echo '<li>' . htmlspecialchars($error, ENT_QUOTES, 'ISO-8859-1') . '</li>';
@@ -141,7 +142,7 @@ function doAddLocation(address, uprn, postcode) {
     <td class="label">
         Address:
         <a href="#" onClick="window.open('newlocation.php', 'loc_new', 'width=500,height=300,resizable=yes,scrollbars=yes,top=50,left=50')">
-            <img src="images/add.gif" alt="Add new location" border="0" />
+            <svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new location</span>
         </a>
     </td>
     <td>
@@ -178,7 +179,7 @@ function doAddLocation(address, uprn, postcode) {
 <tr>
     <td colspan="2" class="formbtns">
         <input type="submit" class="btn btn-md btn-primary" name="save" value="Save" />
-        <input type="submit" class="btn btn-md btn-primary" name="cancel" value="Cancel" onclick="self.close();" />
+        <input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onclick="self.close();" />
     </td>
 </tr>
 

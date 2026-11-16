@@ -5,13 +5,14 @@ if (check_auth("slgcl", $_SESSION["userid"]) == 0) {
 }
 header("Cache-Control: private");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <script language="JavaScript">
 <!--
 function editTerm(termid) {
@@ -35,7 +36,7 @@ if ($_GET["del"]) {
 	}
 }
 ?>
-<ul><li><a href="lgcl.php">Top level</a> <img src="images/add.gif" border="0" style="vertical-align: middle;" onclick="addTerm('top')" />
+<ul><li><a href="lgcl.php">Top level</a> <button type="button" class="icon-action" title="Add" onclick="addTerm('top')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add</span></button>
 <?php
 if ($_GET["parentid"]) {
 	if (in_array($_GET["parentid"], $_SESSION["slgcl"])) {
@@ -46,16 +47,16 @@ if ($_GET["parentid"]) {
 	}
 	foreach ($_SESSION["slgcl"] as $parent) {
 		$parentterm = $db->get_row("SELECT * FROM lgcl.terms WHERE termid='$parent'");
-		echo '<ul><li><a href="lgcl.php?parentid=' . $parentterm->termid . '">' . $parentterm->term . '</a> <img src="images/add.gif" border="0" style="vertical-align: middle;" onclick="addTerm(\'' .  $parentterm->termid . '\')" /> <img src="images/editpage.gif" border="0" style="vertical-align: middle;" onclick="editTerm(\'' .  $parentterm->termid . '\')" />';
+		echo '<ul><li><a href="lgcl.php?parentid=' . $parentterm->termid . '">' . $parentterm->term . '</a> <button type="button" class="icon-action" title="Add" onclick="addTerm(\'' .  $parentterm->termid . '\')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add</span></button> <button type="button" class="icon-action" title="Edit" onclick="editTerm(\'' .  $parentterm->termid . '\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#file-pen"></use></svg><span class="sr-only">Edit</span></button>';
 	}
 	echo '<ul>';
 	$children = $db->get_results("SELECT terms.* FROM lgcl.terms LEFT JOIN lgcl.broaderterms USING(termid) WHERE broaderterms.broadertermid='$_GET[parentid]' ORDER BY term");
 	foreach ($children as $child) {
 		$bottom = $db->get_var("SELECT COUNT(termid) FROM lgcl.broaderterms WHERE broadertermid='$child->termid'");
 		if ($bottom) {
-			echo '<li><a href="lgcl.php?parentid=' . $child->termid . '">' . $child->term . '</a> <img src="images/add.gif" border="0" style="vertical-align: middle;" onclick="addTerm(\'' .  $child->termid . '\')" /> <img src="images/editpage.gif" border="0" style="vertical-align: middle;" onclick="editTerm(\'' .  $child->termid . '\')" /></li>';
+			echo '<li><a href="lgcl.php?parentid=' . $child->termid . '">' . $child->term . '</a> <button type="button" class="icon-action" title="Add" onclick="addTerm(\'' .  $child->termid . '\')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add</span></button> <button type="button" class="icon-action" title="Edit" onclick="editTerm(\'' .  $child->termid . '\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#file-pen"></use></svg><span class="sr-only">Edit</span></button></li>';
 		} else {
-			echo '<li>' . $child->term . ' <img src="images/add.gif" border="0" style="vertical-align: middle;" onclick="addTerm(\'' .  $child->termid . '\')" /> <img src="images/editpage.gif" border="0" style="vertical-align: middle;" onclick="editTerm(\'' .  $child->termid . '\')" />  <a href="lgcl.php?del=' . $child->termid . '&parentid=' . $_GET["parentid"] . '"><img src="images/trash.gif" border="0" style="vertical-align: middle;" /></a></li>';
+			echo '<li>' . $child->term . ' <button type="button" class="icon-action" title="Add" onclick="addTerm(\'' .  $child->termid . '\')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add</span></button> <button type="button" class="icon-action" title="Edit" onclick="editTerm(\'' .  $child->termid . '\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#file-pen"></use></svg><span class="sr-only">Edit</span></button>  <a href="lgcl.php?del=' . $child->termid . '&parentid=' . $_GET["parentid"] . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete</span></a></li>';
 		}
 	}
 	echo '</ul>';
@@ -76,9 +77,9 @@ if ($_GET["parentid"]) {
 	foreach ($topterms as $term) {
 		$children = $db->get_var("SELECT COUNT(termid) FROM lgcl.broaderterms WHERE broadertermid='$term->termid'");
 		if ($children == 0) {
-			echo '<li>' . $term->term . ' <img src="images/add.gif" border="0" style="vertical-align: middle;" onclick="addTerm(\'' .  $term->termid . '\')" /> <img src="images/editpage.gif" border="0" style="vertical-align: middle;" onclick="editTerm(\'' .  $term->termid . '\')" /> <a href="lgcl.php?del=' . $term->termid . '"><img src="images/trash.gif" border="0" style="vertical-align: middle;" /></a>';
+			echo '<li>' . $term->term . ' <button type="button" class="icon-action" title="Add" onclick="addTerm(\'' .  $term->termid . '\')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add</span></button> <button type="button" class="icon-action" title="Edit" onclick="editTerm(\'' .  $term->termid . '\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#file-pen"></use></svg><span class="sr-only">Edit</span></button> <a href="lgcl.php?del=' . $term->termid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete</span></a>';
 		} else {
-			echo '<li><a href="lgcl.php?parentid=' . $term->termid . '">' . $term->term . '</a> <img src="images/add.gif" border="0" style="vertical-align: middle;" onclick="addTerm(\'' .  $term->termid . '\')" /> <img src="images/editpage.gif" border="0" style="vertical-align: middle;" onclick="editTerm(\'' .  $term->termid . '\')" />';
+			echo '<li><a href="lgcl.php?parentid=' . $term->termid . '">' . $term->term . '</a> <button type="button" class="icon-action" title="Add" onclick="addTerm(\'' .  $term->termid . '\')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add</span></button> <button type="button" class="icon-action" title="Edit" onclick="editTerm(\'' .  $term->termid . '\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#file-pen"></use></svg><span class="sr-only">Edit</span></button>';
 		}
 		echo '</li>';
 	}

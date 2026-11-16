@@ -19,7 +19,7 @@ include "includes/header.inc.php";
 <table class="table table-striped table-bordered" width="100%" cellspacing="0">
     <tr>
         <th width="80%">Menu file</th>
-        <th width="15%">Actions <a href="#" onClick="window.open('editmenu.php?menufile=new', 'menu_new', 'width=700,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add external link" border="0"></a></th>
+        <th width="15%">Actions <a href="#" onClick="window.open('editmenu.php?menufile=new', 'menu_new', 'width=700,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add external link</span></a></th>
     </tr>
     <?php
 
@@ -46,7 +46,7 @@ include "includes/header.inc.php";
                     echo '<tr>';
                     echo '<td width="80%">' . $menu . '</td>';
                     echo '<td width="20%">';
-                    echo '<a href="#" onClick="window.open(\'editmenu.php?menufile=' . $menu . '\', \'menu_edit\', \'width=700,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit" border="0"></a></td></tr>';
+                    echo '<a href="#" onClick="window.open(\'editmenu.php?menufile=' . $menu . '\', \'menu_edit\', \'width=700,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit</span></a></td></tr>';
                 }
             } else {
                 echo "<tr><td colspan='2'>No files found in the directory.</td></tr>";

@@ -6,13 +6,14 @@
 include_once "includes/prepend.inc.php";
 header("Cache-Control: private");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <script language="JavaScript">
 <!--
 function passLGCL (term, termid) {
@@ -34,16 +35,16 @@ if ($_GET["parentid"]) {
 	}
 	foreach ($_SESSION["lgcl"] as $parent) {
 		$parentterm = $db->get_row("SELECT * FROM lgcl.terms WHERE termid='$parent'");
-		echo '<ul><li><a href="lgcl.php?parentid=' . $parentterm->termid . '">' . $parentterm->term . '</a> <img src="images/select.gif" border="0" style="vertical-align: middle;" onclick="passLGCL(\'' .  $parentterm->term . '\',\'' .  $parentterm->termid . '\')" />';
+		echo '<ul><li><a href="lgcl.php?parentid=' . $parentterm->termid . '">' . $parentterm->term . '</a> <button type="button" class="icon-action" title="Select" onclick="passLGCL(\'' .  $parentterm->term . '\',\'' .  $parentterm->termid . '\')"><svg class="icon icon-select" aria-hidden="true" focusable="false"><use href="images/icons.svg#mouse-pointer-click"></use></svg><span class="sr-only">Select</span></button>';
 	}
 	echo '<ul>';
 	$children = $db->get_results("SELECT terms.* FROM lgcl.terms LEFT JOIN lgcl.broaderterms USING(termid) WHERE broaderterms.broadertermid='$_GET[parentid]' ORDER BY term");
 	foreach ($children as $child) {
 		$bottom = $db->get_var("SELECT COUNT(termid) FROM lgcl.broaderterms WHERE broadertermid='$child->termid'");
 		if ($bottom) {
-			echo '<li><a href="lgcl.php?parentid=' . $child->termid . '">' . $child->term . '</a> <img src="images/select.gif" border="0" style="vertical-align: middle;" onclick="passLGCL(\'' .  $child->term . '\',\'' .  $child->termid . '\')" /></li>';
+			echo '<li><a href="lgcl.php?parentid=' . $child->termid . '">' . $child->term . '</a> <button type="button" class="icon-action" title="Select" onclick="passLGCL(\'' .  $child->term . '\',\'' .  $child->termid . '\')"><svg class="icon icon-select" aria-hidden="true" focusable="false"><use href="images/icons.svg#mouse-pointer-click"></use></svg><span class="sr-only">Select</span></button></li>';
 		} else {
-			echo '<li>' . $child->term . ' <img src="images/select.gif" border="0" style="vertical-align: middle;" onclick="passLGCL(\'' .  $child->term . '\',\'' .  $child->termid . '\')" /></li>';
+			echo '<li>' . $child->term . ' <button type="button" class="icon-action" title="Select" onclick="passLGCL(\'' .  $child->term . '\',\'' .  $child->termid . '\')"><svg class="icon icon-select" aria-hidden="true" focusable="false"><use href="images/icons.svg#mouse-pointer-click"></use></svg><span class="sr-only">Select</span></button></li>';
 		}
 	}
 	echo '</ul>';
@@ -62,7 +63,7 @@ HAVING parents = 0
 ORDER BY term;
 ");
 	foreach ($topterms as $term) {
-		echo '<li><a href="lgcl.php?parentid=' . $term->termid . '">' . $term->term . '</a> <img src="images/select.gif" border="0" style="vertical-align: middle;" onclick="passLGCL(\'' .  $term->term . '\',\'' .  $term->termid . '\')" /></li>';
+		echo '<li><a href="lgcl.php?parentid=' . $term->termid . '">' . $term->term . '</a> <button type="button" class="icon-action" title="Select" onclick="passLGCL(\'' .  $term->term . '\',\'' .  $term->termid . '\')"><svg class="icon icon-select" aria-hidden="true" focusable="false"><use href="images/icons.svg#mouse-pointer-click"></use></svg><span class="sr-only">Select</span></button></li>';
 	}
 	echo '</ul>';
 }

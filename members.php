@@ -64,9 +64,9 @@ if (count($records) > 0) {
 		echo '</a></td>';
 		echo '<td width="45%">' . $record->wardname . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newmember.php?action=edit&id=' . $record->$dbkey . '\', \'member_edit\', \'width=600,height=600,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit member" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'memberbodies.php?emid=' . $record->$dbkey . '\', \'memberbodies_edit\', \'width=700,height=440,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/bodies.gif" alt="edit body membership" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'memberinterests.php?emid=' . $record->$dbkey . '\', \'memberinterests_edit\', \'width=700,height=440,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/interests.gif" alt="edit register of interests" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newmember.php?action=edit&id=' . $record->$dbkey . '\', \'member_edit\', \'width=600,height=600,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit member</span></a> ';
+		echo '<a href="#" onClick="window.open(\'memberbodies.php?emid=' . $record->$dbkey . '\', \'memberbodies_edit\', \'width=700,height=440,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-bodies" aria-hidden="true" focusable="false"><use href="images/icons.svg#users"></use></svg><span class="sr-only">edit body membership</span></a> ';
+		echo '<a href="#" onClick="window.open(\'memberinterests.php?emid=' . $record->$dbkey . '\', \'memberinterests_edit\', \'width=700,height=440,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-interests" aria-hidden="true" focusable="false"><use href="images/icons.svg#briefcase"></use></svg><span class="sr-only">edit register of interests</span></a> ';
 		echo '</td></tr>';
 	}
 }

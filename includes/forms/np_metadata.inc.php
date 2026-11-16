@@ -13,7 +13,7 @@ document.forms['metadata'].np_lgcltermid.value = termid;
 <table class="table table-striped table-bordered">
 <tr><td class="label"><span class="required">*</span> Local Government Category List term:</td>
 <td>
-<input type="text" name="lgclterm" readonly="readonly" style="width: 200px;" value="<?php if ($thistermid=get_np_var("lgcltermid")) echo $db->get_var("SELECT term FROM lgcl.terms WHERE termid='$thistermid'"); ?>" /> <a href="#" onClick="window.open('lgcl.php', 'lgcl', 'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/edit.gif" alt="Select term" border="0" /></a>
+<input type="text" name="lgclterm" readonly="readonly" style="width: 200px;" value="<?php if ($thistermid=get_np_var("lgcltermid")) echo $db->get_var("SELECT term FROM lgcl.terms WHERE termid='$thistermid'"); ?>" /> <a href="#" onClick="window.open('lgcl.php', 'lgcl', 'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Select term</span></a>
 <input type="hidden" name="np_lgcltermid" value="<?php echo get_np_var("lgcltermid"); ?>" />
 </td></tr>
 <!--

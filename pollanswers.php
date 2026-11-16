@@ -13,19 +13,20 @@ function show_answer_form($values=array()) {
 	echo '<tr><td class="label">Answer: </td><td><input type="text" maxlength="100" size="50" name="answer" value="' . $values["answer"] . '" />';
 	echo '</td></tr>';
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '<input type="hidden" name="pollid" value="' . $values["pollid"] . '" />';
 	if ($_REQUEST["action"] == 'edit') echo '<input type="hidden" name="answerid" value="' . $values["answerid"] . '" />';
 	echo '</form>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <div id="formarea">
 <h3>Poll answers</h3>
 <?php
@@ -37,7 +38,7 @@ switch ($_REQUEST["action"]) {
 		echo "<p>Edit answer for poll: <strong>$poll->title</strong></p>";
 		break;
 	default:
-		echo '<p>Manage answers: <strong>' . $poll->title . '</strong> <a href="pollanswers.php?action=add&pollid=' . $pollid . '"><img src="images/add.gif" alt="Add new answer" border="0" /></a></p>';
+		echo '<p>Manage answers: <strong>' . $poll->title . '</strong> <a href="pollanswers.php?action=add&pollid=' . $pollid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new answer</span></a></p>';
 		break;
 }
 if ($_POST["submit"]) {
@@ -82,14 +83,14 @@ if (($answers = $db->get_results("SELECT * FROM polls.answers WHERE pollid='$pol
 	foreach ($answers as $answer) {
 		echo '<tr><td class="detail">' . $answer->answer . '</td>';
 		echo '<td width="100" align="right">';
-		echo '<a href="pollanswers.php?action=edit&pollid=' . $answer->pollid . '&answerid=' . $answer->answerid . '"><img src="images/edit.gif" alt="Edit answer" border="0"></a> ';
-		echo '<a href="pollanswers.php?action=delete&pollid=' . $answer->pollid . '&answerid=' . $answer->answerid . '"><img src="images/delete.gif" alt="Delete answer" border="0"></a>';
+		echo '<a href="pollanswers.php?action=edit&pollid=' . $answer->pollid . '&answerid=' . $answer->answerid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit answer</span></a> ';
+		echo '<a href="pollanswers.php?action=delete&pollid=' . $answer->pollid . '&answerid=' . $answer->answerid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete answer</span></a>';
 		echo '</td>';
 		echo '</tr>';
 	}
 	echo '</tbody></table>';
 }
-if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="self.close();"></p>';
+if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="self.close();"></p>';
 ?>
 </div>
 </body>

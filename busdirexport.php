@@ -80,15 +80,15 @@ if ($_POST["export"]) {
 ?>
 
 
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="/css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
-<link rel="stylesheet" href="css/intranetscreen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Export businesses to Excel</h3>
 <div id="formarea">
 <form name="bdexport" method="post" action="busdirexport.php">
@@ -105,7 +105,7 @@ foreach ($sections as $section) {
 </select>
 </td></tr>
 <tr><td colspan="2" class="formbtns">
-<input class="btn btn-md btn-primary" type="submit" name="exportbtn" value="Export" /> <input class="btn btn-md btn-primary" type="submit" value="Cancel" onclick="javascript: window.close();" />
+<input class="btn btn-md btn-primary" type="submit" name="exportbtn" value="Export" /> <input class="btn btn-md btn-secondary" type="submit" value="Cancel" onclick="javascript: window.close();" />
 </td></tr>
 </table>
 </form>

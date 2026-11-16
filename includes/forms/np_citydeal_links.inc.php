@@ -5,7 +5,7 @@ if (!get_np_var('basic')) {
 } else {
 	set_np_var("links", 1);
 ?>
-<fieldset><legend>Internal Links <a href="#" onClick="window.open('addsecureintlink.php', 'link_add', 'width=800,height=500,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add internal link" border="0" /></a> </legend>
+<fieldset><legend>Internal Links <a href="#" onClick="window.open('addsecureintlink.php', 'link_add', 'width=800,height=500,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add internal link</span></a> </legend>
 <?php
 if ((!is_array(get_np_var('intlinks')))||(count(get_np_var('intlinks')) == 0)) {
 	echo '<p>No internal links currently defined.</p>';
@@ -19,7 +19,7 @@ if ((!is_array(get_np_var('intlinks')))||(count(get_np_var('intlinks')) == 0)) {
 }
 ?>
 </fieldset>
-<fieldset><legend>External Links <a href="#" onClick="window.open('addextlink.php', 'link_add', 'width=800,height=500,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add external link" border="0" /></a> </legend>
+<fieldset><legend>External Links <a href="#" onClick="window.open('addextlink.php', 'link_add', 'width=800,height=500,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add external link</span></a> </legend>
 <?php
 if ((!is_array(get_np_var('extlinks')))||(count(get_np_var('extlinks')) == 0)) {
 	echo '<p>No external links currently defined.</p>';

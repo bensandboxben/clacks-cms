@@ -82,7 +82,7 @@ print_column_heading("Document", "name", "37%");
 print_column_heading("Category", "category", "30%");
 print_column_heading("Review date", "reviewdate", "15%");
 ?>
-<th width="18%">Actions <a href="#" onClick="window.open('newdoc.php&quest;noreturn=1', 'doc_new', 'width=600,height=550,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add document" border="0"></a></th>
+<th width="18%">Actions <a href="#" onClick="window.open('newdoc.php&quest;noreturn=1', 'doc_new', 'width=600,height=550,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add document</span></a></th>
 </tr>
 
 
@@ -104,11 +104,11 @@ if (!is_null($records) && (is_array($records) || $records instanceof Countable))
             echo '>' . $record->reviewdate;
             echo '</td>';
             echo '<td width="18%">';
-            echo '<a href="#" onClick="window.open(\'newdoc.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'doc_edit\', \'width=600,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit" border="0"></a> ';
+            echo '<a href="#" onClick="window.open(\'newdoc.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'doc_edit\', \'width=600,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit</span></a> ';
             echo "<a href=\"#\" onClick=\"window.open('delete.php?table=docs&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-            echo '<img src="images/delete.gif" alt="delete" border="0"></a> ';
-            echo '<a href="#" onClick="window.open(\'docfiles.php?docid=' . $record->$dbkey . '\', \'doc_files\', \'width=850,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/files.gif" alt="files" border="0"></a> ';
-            echo '<a href="#" onClick="window.open(\'docinfo.php?docid=' . $record->$dbkey . '\', \'doc_info\', \'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/info.gif" alt="information" border="0"></a> ';
+            echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete</span></a> ';
+            echo '<a href="#" onClick="window.open(\'docfiles.php?docid=' . $record->$dbkey . '\', \'doc_files\', \'width=850,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-files" aria-hidden="true" focusable="false"><use href="images/icons.svg#paperclip"></use></svg><span class="sr-only">files</span></a> ';
+            echo '<a href="#" onClick="window.open(\'docinfo.php?docid=' . $record->$dbkey . '\', \'doc_info\', \'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-info" aria-hidden="true" focusable="false"><use href="images/icons.svg#info"></use></svg><span class="sr-only">information</span></a> ';
             echo '</td></tr>';
         }
     } else {

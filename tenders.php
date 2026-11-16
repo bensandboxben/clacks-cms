@@ -49,7 +49,7 @@ print_column_heading("Tender", "tender", "45%");
 print_column_heading("Start date", "startdate", "20%");
 print_column_heading("End date", "enddate", "20%");
 ?>
-<td width="15%">Actions <a href="#" onClick="window.open('newtender.php', 'tender_new', 'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add new tender" border="0"></a></td>
+<td width="15%">Actions <a href="#" onClick="window.open('newtender.php', 'tender_new', 'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new tender</span></a></td>
 </tr>
 <?php
 if (count($records) > 0) {
@@ -72,10 +72,10 @@ if (count($records) > 0) {
 		echo '<td width="20%"';
 		echo '>' . $record->enddate . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newtender.php?action=edit&id=' . $record->$dbkey . '\', \'tender_edit\', \'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newtender.php?action=edit&id=' . $record->$dbkey . '\', \'tender_edit\', \'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=tenders&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'tenderfiles.php?tenderid=' . $record->$dbkey . '\', \'tender_files\', \'width=700,height=400,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/files.gif" alt="files" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete</span></a> ';
+		echo '<a href="#" onClick="window.open(\'tenderfiles.php?tenderid=' . $record->$dbkey . '\', \'tender_files\', \'width=700,height=400,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-files" aria-hidden="true" focusable="false"><use href="images/icons.svg#paperclip"></use></svg><span class="sr-only">files</span></a> ';
 		echo '</td></tr>';
 	}
 }

@@ -25,23 +25,24 @@ if (isset($_SESSION["filters"]["schooldocs"])) $query .= ' AND name LIKE "%' . $
 $query .= ' ORDER BY name';
 $documents = $db->get_results($query, ARRAY_N);
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Add related document</h3>
 <p>Adding related documents to school: <?php echo $school->name; ?></p>
 <form method="post" action="schooldocs.php">
-<p>Filter: <input type="text" name="filter" /> <input type="submit" class="btn btn-md btn-primary" name="filterbtn" value="Filter" /> <input type="submit" class="btn btn-md btn-primary" name="clearfilter" value="Clear" /></p>
+<p>Filter: <input type="text" name="filter" /> <input type="submit" class="btn btn-md btn-primary" name="filterbtn" value="Filter" /> <input type="submit" class="btn btn-md btn-secondary" name="clearfilter" value="Clear" /></p>
 <table class="table table-striped table-bordered">
 <tr><td>Document to link to</td><td>Action</td></tr>
 <tr><td>
 <?php build_select_box($documents, "reldoc", "", " "); ?>
 </td>
-<td><input width="300px" type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
+<td><input width="300px" type="submit" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
 </tr>
 <?php
 if (count($curr_docs) > 0) {
@@ -52,7 +53,7 @@ if (count($curr_docs) > 0) {
 }
 ?>
 </table>
-<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="close" value="Close" onclick="window.close();" /></p>
+<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" name="close" value="Close" onclick="window.close();" /></p>
 <input type="hidden" name="schoolid" value="<?php echo $_REQUEST["schoolid"]; ?>" />
 </form>
 </body>

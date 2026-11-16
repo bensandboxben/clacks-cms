@@ -11,13 +11,14 @@ if ($_GET["action"] == "edit") {
 	$enddate = substr($enddate, 0, 10);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <!-- calendar stylesheet -->
 <link rel="stylesheet" type="text/css" media="all" href="calendar-win2k-cold-1.css" title="win2k-cold-1" />
 <!-- main calendar program -->
@@ -59,7 +60,7 @@ self.close();
 </script>
 <?php
 	} else {
-		echo '<p>The tender was not saved. Please correct these errors and resubmit the form:</p><ul>';
+		echo '<p class="form-error-intro" role="alert">The tender was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 		foreach ($errors as $error) {
 			echo '<li>' . $error . '</li>';
 		}
@@ -124,7 +125,7 @@ function valid(form) {
 <tr><td class="label">Successful Supplier:</td>
 <td><input type="text" name="supplier" value="<?php echo $supplier; ?>" maxlength="250" style="width: 250px;" /></td></tr>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="button" value="Cancel" onclick="javascript: window.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="button" value="Cancel" onclick="javascript: window.close();" />
 <?php if ($tenderid) echo '<input type="hidden" name="tenderid" value="' . $tenderid . '" />'; ?>
 </td></tr>
 </table>

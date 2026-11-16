@@ -21,9 +21,9 @@ if (($_REQUEST["projectid"])&&(is_numeric($_REQUEST["projectid"]))&&($_REQUEST["
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB" lang="en-GB" dir="ltr">
 <head>
 <title>Comms Unit Questionnaire: <?php echo $q->projecttitle;?></title>
-<link rel="stylesheet" type="text/css" media="screen" href="css/comms.css" />
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body>
+<body class="comms-page">
 <h1>Communications Unit Project Questionnaire</h1>
 <div class="waffle"><p>We recently completed the following project for you: <strong><?php echo $q->projecttitle;?></strong></p>
 <p>Please complete this form to let us know how satisfied you were with the work we carried out. We will use the information you give us to continue to improve the services we provide.</p>
@@ -66,7 +66,7 @@ if (($_REQUEST["projectid"])&&(is_numeric($_REQUEST["projectid"]))&&($_REQUEST["
 <p>Thank you for your help with the questionnaire.</p>
 <input type="hidden" name="projectid" value="<?php echo $_REQUEST["projectid"];?>" />
 <input type="hidden" name="confstring" value="<?php echo $_REQUEST["confstring"];?>" />
-<div id="btn"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Submit questionnaire" /></div>
+<div id="btn"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Submit questionnaire" /></div>
 </form>
 </body>
 </html>

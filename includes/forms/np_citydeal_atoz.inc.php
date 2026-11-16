@@ -5,7 +5,7 @@ if (!get_np_var('basic')) {
 } else {
 	set_np_var("atoz", 1);
 ?>
-<fieldset><legend>A to Z entries <a href="#" onClick="window.open('addatoz.php', 'atoz_add', 'width=400,height=500,top=50,left=50,resizable=yes')"><img src="images/add.gif" alt="Add internal link" border="0" /></a></legend>
+<fieldset><legend>A to Z entries <a href="#" onClick="window.open('addatoz.php', 'atoz_add', 'width=400,height=500,top=50,left=50,resizable=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add internal link</span></a></legend>
 <?php
 	if (!is_array(get_np_var('atoz_entries'))||(count(get_np_var('atoz_entries')) == 0)) {
 		echo '<p>No A to Z entries currently defined.</p>';

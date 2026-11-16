@@ -68,7 +68,7 @@ HTML;
 
     build_select_box($constituencies, "conid", $values["conid"]);
 
-    echo '<a href="#" onClick="window.open(\'newconstituency.php\', \'con_new\', \'width=500,height=250,resizable=yes,scrollbars=yes,top=50,left=50\')"><img src="images/add.gif" alt="Add new constituency" border="0" /></a>';
+    echo '<a href="#" onClick="window.open(\'newconstituency.php\', \'con_new\', \'width=500,height=250,resizable=yes,scrollbars=yes,top=50,left=50\')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new constituency</span></a>';
 
     echo '</td>';
     echo '</tr>';
@@ -84,7 +84,7 @@ HTML;
 
     build_select_box($parties, "partyid", $values["partyid"]);
 
-    echo '<a href="#" onClick="window.open(\'newparty.php\', \'party_new\', \'width=500,height=250,resizable=yes,scrollbars=yes,top=50,left=50\')"><img src="images/add.gif" alt="Add new party" border="0" /></a>';
+    echo '<a href="#" onClick="window.open(\'newparty.php\', \'party_new\', \'width=500,height=250,resizable=yes,scrollbars=yes,top=50,left=50\')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new party</span></a>';
 
     echo '</td>';
     echo '</tr>';
@@ -117,7 +117,7 @@ HTML;
 
     echo '<p class="formbtns">';
     echo '<input type="submit" class="btn btn-md btn-primary" name="submit" value="Save"> ';
-    echo '<input type="button" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);">';
+    echo '<input type="button" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);">';
     echo '</p>';
 
     echo '<input type="hidden" name="electionid" value="' . $values["electionid"] . '" />';
@@ -143,12 +143,11 @@ HTML;
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 
 </head>
 
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 
 <div id="formarea">
 
@@ -172,7 +171,7 @@ switch ($_REQUEST["action"]) {
 
     default:
 
-        echo '<p>Manage Candidates for Election: <strong>' . $election->body . '</strong> <a href="electioncandidates.php?action=add&electionid=' . $electionid . '"><img src="images/add.gif" alt="Add new candidate" border="0" /></a></p>';
+        echo '<p>Manage Candidates for Election: <strong>' . $election->body . '</strong> <a href="electioncandidates.php?action=add&electionid=' . $electionid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new candidate</span></a></p>';
 
         break;
 }
@@ -348,9 +347,9 @@ if (
 
         echo '<td width="100" align="right">';
 
-        echo '<a href="electioncandidates.php?action=edit&electionid=' . $candidate->electionid . '&conid=' . $candidate->conid . '&resultid=' . $candidate->resultid . '&partyid=' . $candidate->partyid . '"><img src="images/edit.gif" alt="Edit Candidate" border="0"></a> ';
+        echo '<a href="electioncandidates.php?action=edit&electionid=' . $candidate->electionid . '&conid=' . $candidate->conid . '&resultid=' . $candidate->resultid . '&partyid=' . $candidate->partyid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit Candidate</span></a> ';
 
-        echo '<a href="electioncandidates.php?action=delete&electionid=' . $candidate->electionid . '&conid=' . $candidate->conid . '&resultid=' . $candidate->resultid . '&partyid=' . $candidate->partyid . '"><img src="images/delete.gif" alt="Delete Candidate" border="0"></a>';
+        echo '<a href="electioncandidates.php?action=delete&electionid=' . $candidate->electionid . '&conid=' . $candidate->conid . '&resultid=' . $candidate->resultid . '&partyid=' . $candidate->partyid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete Candidate</span></a>';
 
         echo '</td>';
 
@@ -365,7 +364,7 @@ if (
 if ($print_table == 1) {
 
     echo '<p class="formbtns">';
-    echo '<input type="button" class="btn btn-md btn-primary" value="Close" onclick="self.close();">';
+    echo '<input type="button" class="btn btn-md btn-secondary" value="Close" onclick="self.close();">';
     echo '</p>';
 }
 

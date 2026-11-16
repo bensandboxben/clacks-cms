@@ -85,13 +85,13 @@ if ($handle = opendir('/home/site/wwwroot/cms/menus')) {
 ?>
 
 <a href="#" onclick="editMenu(); return false;">
-    <img src="images/edit.gif" alt="Edit menu" border="0" style="padding-right:6px;"/>Menu Editor
+    <svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit menu</span>Menu Editor
 </a>
 </td></tr>
 <tr><td class="label">Section Menu:</td>
 <td>
 <a href="#" onclick="editSectionMenu(); return false;" style="padding-left:8px;">
-    <img src="images/edit.gif" alt="Edit section menu" border="0" style="padding-right:6px;"/>Section Menu Editor
+    <svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit section menu</span>Section Menu Editor
 </a>
 
 </td>

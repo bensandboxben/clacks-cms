@@ -11,11 +11,13 @@ if ($_POST["save"]) {
 }
 $fpalert = $db->get_row("SELECT * FROM clacksweb2data.fpalert");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <script type="text/javascript">
 //<![CDATA[
 	function myOnSubmitEventHandler() {
@@ -84,7 +86,7 @@ foreach ($status_array as $status) {
 <input type="hidden" name="alert" id="alert" value="" />
 </td></tr>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="javascript: window.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="javascript: window.close();" />
 </td></tr>
 </table>
 </form>

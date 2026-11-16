@@ -15,13 +15,14 @@ if ($_POST["external"] == 1) {
 }
 $vacancy=$db->get_row("SELECT vacid, jobno, jobtitle, national, teaching, social, promoted, external FROM hr.vacancies LEFT JOIN hr.jobtitles USING(titleid) WHERE vacid='$vacid'");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <div id="formarea">
 <h3>Vacancy Files</h3>
 <?php
@@ -390,7 +391,7 @@ if ($vacid) {
 ?>
 </td></tr>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-primary" value="Cancel" onclick="javascript: window.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-secondary" value="Cancel" onclick="javascript: window.close();" />
 <input type="hidden" name="vacid" value="<?php echo $vacid;?>" />
 </td></tr>
 </table>

@@ -9,13 +9,14 @@ if ($_GET["action"] == "edit") {
 	extract($en_array);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <script language="JavaScript">
 <!--
 function doAddContact (label, value) {
@@ -66,7 +67,7 @@ self.close();
 </script>
 <?php
 	} else {
-		echo '<p>The notice was not saved. Please correct these errors and resubmit the form:</p><ul>';
+		echo '<p class="form-error-intro" role="alert">The notice was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 		foreach ($errors as $error) {
 			echo '<li>' . $error . '</li>';
 		}
@@ -86,8 +87,8 @@ extract ($_POST);
 $contacts = $db->get_results("SELECT contactid, name FROM emergency.contacts ORDER BY name", ARRAY_N);
 build_select_box($contacts, "contactid", $contactid);
 ?>
-<a href="#" onClick="window.open('newencontact.php', 'encontact_new', 'width=500,height=350,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new contact" border="0" /></a>
-<a href="#" onClick="editContact()"><img src="images/edit.gif" alt="Edit contact" border="0" /></a>
+<a href="#" onClick="window.open('newencontact.php', 'encontact_new', 'width=500,height=350,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new contact</span></a>
+<a href="#" onClick="editContact()"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit contact</span></a>
 </td></tr>
 <tr><td class="label">Live?:</td>
 <td>
@@ -107,7 +108,7 @@ build_yes_no_checkbox("live", $live);
 <td><textarea name="confidential" style="width: 300px; height: 80px;"><?php echo $confidential; ?></textarea></td></tr>
 <?php}?>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Cancel" onclick="javascript: window.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-secondary" value="Cancel" onclick="javascript: window.close();" />
 <?php if ($_REQUEST["noreturn"] == 1) echo '<input type="hidden" name="noreturn" value="1" />'; ?>
 <?php if ($enid) echo '<input type="hidden" name="enid" value="' . $enid . '" />'; ?>
 </td></tr>

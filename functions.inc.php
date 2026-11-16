@@ -677,49 +677,18 @@ function print_calendar_nav($table, $query, $countquery, $categories=array()) {
 		$page=1;
 	}
 
-	echo '<form method="get" action="' . $PHP_SELF  . '" name="filter">';
-	echo '<table id="dbnav"><tr><td>';
-	// If page 1, then don't show PREV
+	// Render toolbar: same GET parameters as before (category/doctype, filtertxt, gopage, submitpage, srchtxt, offset)
 	if ($offset >= 1) {
 		$prevoffset = $offset - $limit;
 		$nextoffset = $offset + $limit;
 		$currentpage = (floor($offset / $limit)) + 1;
-		echo '<a href="' . $_SERVER["PHP_SELF"] . '?offset=' . $prevoffset;
-		echo '"><img src="images/arrow_left.gif" alt="Previous page" border="0"></a>&nbsp;&nbsp;';
 	} else {
+		$prevoffset = null;
 		$currentpage = 1;
 		$nextoffset = $limit;
-		echo '<img src="images/arrow_leftoff.gif" alt="-" border="0">&nbsp;&nbsp;';
 	}
-	echo "Page $currentpage of $pages";
-	if ($currentpage < $pages) {
-		echo '&nbsp;&nbsp;<a href="' . $_SERVER["PHP_SELF"] . '?offset=' . $nextoffset . '"><img src="images/arrow_right.gif" alt="Next page" border="0"></a>';
-	} else {
-		echo '&nbsp;&nbsp;<img src="images/arrow_rightoff.gif" alt="-" border="0">';
-	}
-
-	echo " ($resultsnumber records)</td><td align=\"center\">";
-	if (count($categories) > 0) {
-
-		echo '<select name="category">';
-		echo '<option value="" >All</option>';
-		foreach ($categories as $category) {
-			echo '<option value="' . $category[0] . '"';
-			if (get_category($table) == $category[0]) echo ' selected="selected"';
-			echo '>' . $category[1] . '</option>';
-		}
-		echo '</select> ';
-	}
-	echo '<input type="text" width="15" name="filtertxt"';
-	if ($filtertxt) echo ' value="' . $filtertxt . '"';
-	echo '> <input class="btn btn-md btn-primary" type="submit" value="Filter/Reset">';
-	echo "</td><td align=\"right\">";
-	echo 'Go to page:&nbsp;';
-	echo '<input type="text" size="2" maxlength="4" name="gopage"> <input class="btn btn-md btn-primary" type="submit" value="Go" name="submitpage" />';
-	if ($filtertxt) echo '<input type="hidden" name="srchtxt" value="' . $filtertxt . '">';
-	echo "</td></tr></table>";
-	echo "</form>";
-//	echo "<p>$query<p>$count_query<p>";
+	$selectname = 'category';
+	cms_list_toolbar($table, $currentpage, isset($pages) ? $pages : null, $resultsnumber, $prevoffset, ($currentpage < (isset($pages) ? $pages : 0)) ? $nextoffset : null, $categories, $filtertxt, $selectname, 'Filter/Reset');
 	return ($records);
 }
 
@@ -765,74 +734,37 @@ function print_nav($table, $query, $countquery, $categories=array()) {
 		$page=1;
 	}
 
-	echo '<form method="get" action="' . $PHP_SELF  . '" name="filter">';
-	echo '<table id="dbnav"><tr><td>';
-	// If page 1, then don't show PREV
+	// Render toolbar: same GET parameters as before (category/doctype, filtertxt, gopage, submitpage, srchtxt, offset)
 	if ($offset >= 1) {
 		$prevoffset = $offset - $limit;
 		$nextoffset = $offset + $limit;
 		$currentpage = (floor($offset / $limit)) + 1;
-		echo '<a href="' . $_SERVER["PHP_SELF"] . '?offset=' . $prevoffset;
-		echo '"><img src="images/arrow_left.gif" alt="Previous page" border="0"></a>&nbsp;&nbsp;';
 	} else {
+		$prevoffset = null;
 		$currentpage = 1;
 		$nextoffset = $limit;
-		echo '<img src="images/arrow_leftoff.gif" alt="-" border="0">&nbsp;&nbsp;';
 	}
-	echo "Page $currentpage of $pages";
-	if ($currentpage < $pages) {
-		echo '&nbsp;&nbsp;<a href="' . $_SERVER["PHP_SELF"] . '?offset=' . $nextoffset . '"><img src="images/arrow_right.gif" alt="Next page" border="0"></a>';
-	} else {
-		echo '&nbsp;&nbsp;<img src="images/arrow_rightoff.gif" alt="-" border="0">';
-	}
-
-	echo " ($resultsnumber records)</td><td align=\"center\">";
-	if (count($categories) > 0) {
-
-				if ( $_SERVER["PHP_SELF"] == ("/cms/councillordocs.php") )
-					{
-						echo '<select name="doctype">';
-					}
-				else
-					{
-						echo '<select name="category">';
-					}
-
-
-		echo '<option value="" >All</option>';
-		foreach ($categories as $category) {
-			echo '<option value="' . $category[0] . '"';
-			if (get_category($table) == $category[0]) echo ' selected="selected"';
-			echo '>' . $category[1] . '</option>';
-		}
-		echo '</select> ';
-	}
-	echo '<input type="text" width="15" name="filtertxt"';
-	if ($filtertxt) echo ' value="' . $filtertxt . '"';
-	echo '> <input class="btn btn-md btn-primary" type="submit" value="Filter">';
-	echo "</td><td align=\"right\">";
-	echo 'Go to page:&nbsp;';
-	echo '<input type="text" size="2" maxlength="4" name="gopage"> <input class="btn btn-md btn-primary" type="submit" value="Go" name="submitpage" />';
-	if ($filtertxt) echo '<input type="hidden" name="srchtxt" value="' . $filtertxt . '">';
-	echo "</td></tr></table>";
-	echo "</form>";
-//	echo "<p>$query<p>$count_query<p>";
+	$selectname = (($_SERVER["PHP_SELF"] == "/cms/councillordocs.php") ? 'doctype' : 'category');
+	cms_list_toolbar($table, $currentpage, isset($pages) ? $pages : null, $resultsnumber, $prevoffset, ($currentpage < (isset($pages) ? $pages : 0)) ? $nextoffset : null, $categories, $filtertxt, $selectname, 'Filter');
 	return ($records);
 }
 function print_column_heading($title, $field, $width) {
 	global $table;
-	echo '<td width="' . $width . '">' . $title;
-	if (($_SESSION[$table . "_so"] == $field)&&($_SESSION[$table . "_st"] == "asc")) {
-		echo '&nbsp;<img src="images/sa_on.gif" width="12" height="10" border="0" alt="Ascending order">';
+	$asc_on = (($_SESSION[$table . "_so"] == $field)&&($_SESSION[$table . "_st"] == "asc"));
+	$desc_on = (($_SESSION[$table . "_so"] == $field)&&($_SESSION[$table . "_st"] == "desc"));
+	$sort = $asc_on ? ' aria-sort="ascending"' : ($desc_on ? ' aria-sort="descending"' : '');
+	echo '<th scope="col" width="' . $width . '"' . $sort . '><span class="sort-heading">' . $title . '<span class="sort-controls">';
+	if ($asc_on) {
+		echo '<span class="sort-link is-active" title="Sorted ascending">' . cms_icon('arrow-up-narrow-wide', 'icon-sm', 'Sorted ascending') . '</span>';
 	} else {
-		echo '&nbsp;<a href="' . $PHP_SELF . '?so=' . $field . '&st=asc"><img src="images/sa_off.gif" width="12" height="10" border="0" alt="Ascending order"></a>';
+		echo '<a class="sort-link" href="?so=' . $field . '&st=asc" title="Sort ascending">' . cms_icon('arrow-up-narrow-wide', 'icon-sm', 'Sort ' . strip_tags($title) . ' ascending') . '</a>';
 	}
-	if (($_SESSION[$table . "_so"] == $field)&&($_SESSION[$table . "_st"] == "desc")) {
-		echo '&nbsp;<img src="images/sd_on.gif" width="12" height="10" border="0" alt="Descending order"></a>';
+	if ($desc_on) {
+		echo '<span class="sort-link is-active" title="Sorted descending">' . cms_icon('arrow-down-wide-narrow', 'icon-sm', 'Sorted descending') . '</span>';
 	} else {
-		echo '&nbsp;<a href="' . $PHP_SELF . '?so=' . $field . '&st=desc"><img src="images/sd_off.gif" width="12" height="10" border="0" alt="Descending order"></a>';
+		echo '<a class="sort-link" href="?so=' . $field . '&st=desc" title="Sort descending">' . cms_icon('arrow-down-wide-narrow', 'icon-sm', 'Sort ' . strip_tags($title) . ' descending') . '</a>';
 	}
-	echo '</td>';
+	echo '</span></span></th>';
 }
 /**
 * Output doctype and html header
@@ -1119,7 +1051,7 @@ function build_yes_no_checkbox ($name, $checked_val="xzxz") {
 */
 function np_display_errors() {
 	if ($errors = get_np_errors()) {
-		echo '<ul class="nperrors">';
+		echo '<ul class="nperrors" role="alert">';
 		foreach ($errors as $field=>$error) {
 			echo '<li>' . $error . '</li>';
 		}

@@ -46,7 +46,7 @@ if ($user_message) echo $user_message;
 print_column_heading("Place or worship", "pow", "45%");
 print_column_heading("Denomination", "denomination", "40%");
 ?>
-<td width="15%">Actions <a href="#" onClick="window.open('newpow.php?noreturn=1', 'pow_new', 'width=500,height=540,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add new place of worship" border="0"></a></td>
+<td width="15%">Actions <a href="#" onClick="window.open('newpow.php?noreturn=1', 'pow_new', 'width=500,height=540,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new place of worship</span></a></td>
 </tr>
 <?php
 if (count($records) > 0) {
@@ -55,9 +55,9 @@ if (count($records) > 0) {
 		echo '<td width="45%"><a href="/community/placesofworship/?pow=' . $record->powid . '" target="_blank">' . $record->pow . '</a></td>';
 		echo '<td width="40%">' . $record->denomination . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newpow.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'pow_edit\', \'width=500,height=540,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newpow.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'pow_edit\', \'width=500,height=540,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=pow&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete</span></a> ';
 		echo '</td></tr>';
 	}
 }

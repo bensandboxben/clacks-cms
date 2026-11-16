@@ -24,33 +24,34 @@ if (isset($_SESSION["filters"]["reldocs"])) $query .= ' AND name LIKE "%' . $_SE
 $query .= ' ORDER BY name';
 $reldocs = $db->get_results($query, ARRAY_N);
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Add related document</h3>
 <p>Adding related documents to page: <?php echo get_np_var('title'); ?></p>
 <form method="post" action="addreldoc.php">
-<p>Filter: <input type="text" name="filter" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="filterbtn" value="Filter" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="clearfilter" value="Clear" /></p>
+<p>Filter: <input type="text" name="filter" /> <input type="submit" class="btn btn-md btn-primary" name="filterbtn" value="Filter" /> <input type="submit" class="btn btn-md btn-secondary" name="clearfilter" value="Clear" /></p>
 <table class="table table-striped table-bordered">
 <tr><td>Document to link to</td><td>Action</td></tr>
 <tr><td style="width:30%">
 <?php build_select_box($reldocs, "reldoc", ""); ?>
 </td>
-<td><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
+<td><input type="submit" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
 </tr>
 <?php
 if (is_array($curr_docs) && count($curr_docs) > 0) {
 	foreach ($curr_docs as $key=>$curr_doc) {
 		$name = $db->get_var("SELECT name FROM docs WHERE docid='{$curr_doc["docid"]}'");
-		echo '<tr><td>' . $name . '</td><td><a href="addreldoc.php?del=' . $key . '"><img border="0" src="images/delete.gif" alt="Delete" /></a></td></tr>';
+		echo '<tr><td>' . $name . '</td><td><a href="addreldoc.php?del=' . $key . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete</span></a></td></tr>';
 	}
 }
 ?>
 </table>
-<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="savedocs" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p></form>
+<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" name="savedocs" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p></form>
 </body>
 </html>

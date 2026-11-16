@@ -56,8 +56,8 @@ if (count($records) > 0) {
 		echo '<td width="70%"><a href="/learning/schools/' . $record->schoolurl . '/">' . $record->name . '</a></td>';
 		echo '<td width="15%">' . $record->sector . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newschool.php?action=edit&schoolid=' . $record->$dbkey . '\', \'school_edit\', \'width=800,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'schooldocs.php?schoolid=' . $record->$dbkey . '\', \'school_docs\', \'width=600,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/documents.gif" alt="related documents" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newschool.php?action=edit&schoolid=' . $record->$dbkey . '\', \'school_edit\', \'width=800,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit</span></a> ';
+		echo '<a href="#" onClick="window.open(\'schooldocs.php?schoolid=' . $record->$dbkey . '\', \'school_docs\', \'width=600,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-documents" aria-hidden="true" focusable="false"><use href="images/icons.svg#folder-open"></use></svg><span class="sr-only">related documents</span></a> ';
 		echo '</td></tr>';
 	}
 }

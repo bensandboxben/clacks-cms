@@ -24,33 +24,34 @@ if (isset($_SESSION["filters"]["relfaqs"])) $query .= ' AND subject LIKE "%' . $
 $query .= ' ORDER BY subject';
 $relfaqs = $db->get_results($query, ARRAY_N);
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Add related FAQ subject</h3>
 <p>Adding related FAQ subjects to page: <?php echo get_np_var('title'); ?></p>
 <form method="post" action="addrelfaq.php">
-<p>Filter: <input type="text" name="filter" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="filterbtn" value="Filter" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="clearfilter" value="Clear" /></p>
+<p>Filter: <input type="text" name="filter" /> <input type="submit" class="btn btn-md btn-primary" name="filterbtn" value="Filter" /> <input type="submit" class="btn btn-md btn-secondary" name="clearfilter" value="Clear" /></p>
 <table class="table table-striped table-bordered">
 <tr><td>Subject to link to</td><td>Action</td></tr>
 <tr><td>
 <?php build_select_box($relfaqs, "relfaq", "", " "); ?>
 </td>
-<td><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
+<td><input type="submit" class="btn btn-md btn-primary" name="addbtn" value="+" /></td>
 </tr>
 <?php
 if (is_array($curr_faqs) && count($curr_faqs) > 0) {
 	foreach ($curr_faqs as $key=>$curr_faq) {
 		$subject = $db->get_var("SELECT subject FROM cms.subjects WHERE subjectid='{$curr_faq["subjectid"]}'");
-		echo '<tr><td>' . $subject . '</td><td><a href="addrelfaq.php?del=' . $key . '"><img border="0" src="images/delete.gif" alt="Delete" /></a></td></tr>';
+		echo '<tr><td>' . $subject . '</td><td><a href="addrelfaq.php?del=' . $key . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete</span></a></td></tr>';
 	}
 }
 ?>
 </table>
-<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="savefaqs" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p></form>
+<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" name="savefaqs" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p></form>
 </body>
 </html>

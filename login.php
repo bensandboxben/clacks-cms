@@ -49,24 +49,29 @@ if ($_GET["logout"]) {
 include "includes/header.inc.php";
 
 ?>
-<div style="width:500px;margin:auto;margin-bottom:70px;margin-top:20px;">
-	<div style="width:270px;margin:auto;background-color:#eee;border:1px solid #dbdbdb;padding:0px;">
-
+<div class="w-full max-w-sm">
+	<div class="mb-6 text-center">
+		<h1 class="text-2xl font-semibold tracking-tight">Sign in</h1>
+		<p class="mt-1.5 text-sm text-fg-muted">Use your ClacksWeb CMS account to continue.</p>
+	</div>
+	<div class="card p-6 sm:p-7">
 	<!--p style="padding:10px;">Please note that if you are experiencing problems with the CMS text editor in FireFox then you can use Internet Explorer in the interim.</p-->
+<?php if (!empty($loginerror)) echo cms_alert('danger', '<p><strong>' . $loginerror . '.</strong> Check your username and password and try again.</p>'); ?>
 		<form name="loginfrm" id="loginfrm" action="login.php" method="post">
-		<fieldset style="border:0px;">
-		<h4 style="font-size:20px;"><strong>Login Details</strong></h4><br />
-		<label for="loginuser"><input type="text" name="loginuser" /></label>
-		<label for="password"><input style="margin-bottom:20px;" type="password" name="password" /></label>
-		<br />
-
-		<div style="text-align:center;">
-			<input  class="btn btn-lg btn-primary" style="margin:0px; padding:0px; width:13em;" type="submit" name="login" value="Login" />
+		<fieldset aria-label="Login Details">
+		<div class="field">
+			<label class="field-label" for="loginuser">Username</label>
+			<input type="text" name="loginuser" id="loginuser" class="w-full" autocomplete="username" autocapitalize="none" spellcheck="false" />
 		</div>
-
+		<div class="field">
+			<label class="field-label" for="password">Password</label>
+			<input type="password" name="password" id="password" class="w-full" autocomplete="current-password" />
+		</div>
+		<input class="btn btn-lg btn-primary mt-2 w-full" type="submit" name="login" value="Login" />
 		</fieldset>
 		</form>
 	</div>
+	<p class="mt-6 text-center text-xs text-fg-subtle">Clackmannanshire Council &middot; Authorised users only</p>
 </div>
 <script>
 document.loginfrm.loginuser.focus();

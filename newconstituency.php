@@ -19,12 +19,11 @@ header("Cache-Control: private");
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 
 </head>
 
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 
 <h3>Add new constituency</h3>
 
@@ -153,7 +152,7 @@ self.close();
 
 <input
     type="button"
-    class="btn btn-md btn-primary"
+    class="btn btn-md btn-secondary"
     name="cancel"
     value="Cancel"
     onclick="self.close();"

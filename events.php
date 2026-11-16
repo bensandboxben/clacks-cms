@@ -49,7 +49,7 @@ print_column_heading("Event", "event", "40%");
 print_column_heading("Date", "startdate", "15%");
 print_column_heading("Venue", "venue", "30%");
 ?>
-<th width="15%">Actions <a href="#" onClick="window.open('newevent.php?noreturn=1', 'event_new', 'width=750,height=640,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add event" border="0"></a></th>
+<th width="15%">Actions <a href="#" onClick="window.open('newevent.php?noreturn=1', 'event_new', 'width=750,height=640,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add event</span></a></th>
 </tr>
 <?php
 if (count($records) > 0) {
@@ -59,10 +59,10 @@ if (count($records) > 0) {
 		echo '<td width="15%">' . $record->startdate . '</td>';
 		echo '<td width="30%">' . $record->venue . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newevent.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'event_edit\', \'width=700,height=540,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit event" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'newevent.php?noreturn=1&action=copy&id=' . $record->$dbkey . '\', \'event_copy\', \'width=700,height=540,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/copy.gif" alt="copy event" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newevent.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'event_edit\', \'width=700,height=540,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit event</span></a> ';
+		echo '<a href="#" onClick="window.open(\'newevent.php?noreturn=1&action=copy&id=' . $record->$dbkey . '\', \'event_copy\', \'width=700,height=540,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-copy" aria-hidden="true" focusable="false"><use href="images/icons.svg#copy"></use></svg><span class="sr-only">copy event</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=events.events&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete event" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete event</span></a> ';
 		echo '</td></tr>';
 	}
 }

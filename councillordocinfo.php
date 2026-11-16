@@ -4,13 +4,14 @@ header("Cache-Control: private");
 $docid = $_REQUEST["docid"];
 $doc=$db->get_var("SELECT name FROM councillordocs WHERE docid='$docid'");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3><?php echo $doc; ?></h3>
 <div id="formarea">
 <h4>Document files</h4>
@@ -30,7 +31,7 @@ if ($docfiles = $db->get_results("SELECT * FROM councillordocfiles WHERE docid='
 ?>
 </ul>
 
-<p class="formbtns"><input class="btn btn-lg btn-primary" type="submit" value="Close" onclick="self.close();"></p>
+<p class="formbtns"><input class="btn btn-md btn-secondary" type="submit" value="Close" onclick="self.close();"></p>
 </div>
 </body>
 </html>

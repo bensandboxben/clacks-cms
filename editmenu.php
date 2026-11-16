@@ -26,11 +26,12 @@ $menutxt = file_get_contents("/home/site/wwwroot/cms/menus/" . $_REQUEST["menufi
 
 
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="/css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
 <body class="popup">
 
@@ -56,8 +57,8 @@ if ($_GET["menufile"] == "new") {
 </textarea>
 <input type="hidden" name="menufile" value="<?php echo $_REQUEST["menufile"];?>" />
 <p style="text-align: center;">
-	<input class="btn btn-lg btn-primary" type="submit" name="submit" value="Save menu" />
-	<input class="btn btn-lg btn-primary" type="submit" value="Close" onclick="javascript:opener.location.reload(true);window.close()" />
+	<input class="btn btn-md btn-primary" type="submit" name="submit" value="Save menu" />
+	<input class="btn btn-md btn-secondary" type="submit" value="Close" onclick="javascript:opener.location.reload(true);window.close()" />
 </p>
 </form>
 </div>

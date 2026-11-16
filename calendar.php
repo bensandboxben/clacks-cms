@@ -237,7 +237,7 @@ print_column_heading("Date", "meetingdate", "15%");
 print_column_heading("Agenda live?", "published", "15%");
 print_column_heading("Venue", "venue", "20%");
 ?>
-<td width="15%">Actions <a href="#" onClick="window.open('newmeeting.php?noreturn=1&year=<?php echo $year ; ?>&calDate=<?php echo $calDate; ?>', 'meeting_new', 'width=500,height=540,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add meeting" border="0"></a></td>
+<td width="15%">Actions <a href="#" onClick="window.open('newmeeting.php?noreturn=1&year=<?php echo $year ; ?>&calDate=<?php echo $calDate; ?>', 'meeting_new', 'width=500,height=540,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add meeting</span></a></td>
 </tr>
 <?php
 if (count($records) > 0) {
@@ -254,12 +254,12 @@ if (count($records) > 0) {
 		echo '</td>';
 		echo '<td width="20%">' . $record->venue . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newmeeting.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'event_edit\', \' width=500,height=540,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit meeting" border="0"></a> ';
-//		echo '<a href="#" onClick="window.open(\'meetingfiles.php?meetingid=' . $record->$dbkey . '\', \'meeting_files\', \'width=700,height=400,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/files.gif" alt="files" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'agenda.php?meetingid=' . $record->$dbkey . '\', \'agenda\', \'width=700,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/items.gif" alt="agenda" border="0"></a> ';
-		echo '<a target="_blank" href="http://clacksweb/council/meetings/agenda/' . $record->$dbkey . '/?preview=1"><img src="images/preview.gif" alt="preview" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newmeeting.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'event_edit\', \' width=500,height=540,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit meeting</span></a> ';
+//		echo '<a href="#" onClick="window.open(\'meetingfiles.php?meetingid=' . $record->$dbkey . '\', \'meeting_files\', \'width=700,height=400,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-files" aria-hidden="true" focusable="false"><use href="images/icons.svg#paperclip"></use></svg><span class="sr-only">files</span></a> ';
+		echo '<a href="#" onClick="window.open(\'agenda.php?meetingid=' . $record->$dbkey . '\', \'agenda\', \'width=700,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-items" aria-hidden="true" focusable="false"><use href="images/icons.svg#list"></use></svg><span class="sr-only">agenda</span></a> ';
+		echo '<a target="_blank" href="http://clacksweb/council/meetings/agenda/' . $record->$dbkey . '/?preview=1"><svg class="icon icon-preview" aria-hidden="true" focusable="false"><use href="images/icons.svg#eye"></use></svg><span class="sr-only">preview</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=events.meetings&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete meeting" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete meeting</span></a> ';
 		echo '</td></tr>';
 	}
 }

@@ -50,7 +50,7 @@ print_column_heading("Job title", "jobtitle", "30%");
 print_column_heading("Name", "name", "35%");
 print_column_heading("Service", "service", "20%");
 ?>
-<th width="15%">Actions <a href="#" onClick="window.open('newcontact.php?noreturn=1', 'contact_new', 'width=600,height=620,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add record" border="0"></a></th>
+<th width="15%">Actions <a href="#" onClick="window.open('newcontact.php?noreturn=1', 'contact_new', 'width=600,height=620,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add record</span></a></th>
 </tr>
 <?php
 if (count($records) > 0) {
@@ -60,10 +60,10 @@ if (count($records) > 0) {
 		echo '<td width="35%">' . $record->name . '</td>';
 		echo '<td width="20%">' . $record->service . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newcontact.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'contact_edit\', \'width=600,height=620,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newcontact.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'contact_edit\', \'width=600,height=620,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=contacts&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'contactinfo.php?contactid=' . $record->$dbkey . '\', \'contact_info\', \'width=600,height=620,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/info.gif" alt="contact information" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete</span></a> ';
+		echo '<a href="#" onClick="window.open(\'contactinfo.php?contactid=' . $record->$dbkey . '\', \'contact_info\', \'width=600,height=620,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-info" aria-hidden="true" focusable="false"><use href="images/icons.svg#info"></use></svg><span class="sr-only">contact information</span></a> ';
 		echo '</td></tr>';
 	}
 }

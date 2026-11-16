@@ -21,19 +21,20 @@ function show_bulletin_form($values=array()) {
 		echo '</td></tr>';
 	}
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	if ($values["bid"]) echo '<input type="hidden" name="bid" value="' . $values["bid"] . '" />';
 	if ($values["enid"]) echo '<input type="hidden" name="enid" value="' . $values["enid"] . '" />';
 	echo '</form>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <div id="formarea">
 <h3>Bulletins</h3>
 <?php
@@ -45,7 +46,7 @@ switch ($_REQUEST["action"]) {
 		echo "<p>Edit Bulletin for Notice: <strong>$notice</strong></p>";
 		break;
 	default:
-		echo '<p>Manage bulletins for Notice: <strong>' . $notice . '</strong> <a href="ebulletins.php?action=add&enid=' . $enid . '"><img src="images/add.gif" alt="Add new bulletin" border="0" /></a></p>';
+		echo '<p>Manage bulletins for Notice: <strong>' . $notice . '</strong> <a href="ebulletins.php?action=add&enid=' . $enid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new bulletin</span></a></p>';
 		break;
 }
 if ($_POST["submit"]) {
@@ -97,14 +98,14 @@ if (($bulletins = $db->get_results("SELECT * FROM emergency.bulletins WHERE enid
 		echo '<tr><td class="detail">' . $bulletin->description . '</td>';
 		echo '<td class="detail">' . $bulletin->updated . '</td>';
 		echo '<td width="100" align="right">';
-		echo '<a href="ebulletins.php?action=edit&bid=' . $bulletin->bid . '&enid=' . $enid . '"><img src="images/edit.gif" alt="Edit Bulletin" border="0"></a> ';
-		echo '<a href="ebulletins.php?action=delete&bid=' . $bulletin->bid . '&enid=' . $enid . '"><img src="images/delete.gif" alt="Delete Bulletin" border="0"></a>';
+		echo '<a href="ebulletins.php?action=edit&bid=' . $bulletin->bid . '&enid=' . $enid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit Bulletin</span></a> ';
+		echo '<a href="ebulletins.php?action=delete&bid=' . $bulletin->bid . '&enid=' . $enid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete Bulletin</span></a>';
 		echo '</td>';
 		echo '</tr>';
 	}
 	echo '</table>';
 }
-if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="self.close();"></p>';
+if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="self.close();"></p>';
 ?>
 </div>
 </body>

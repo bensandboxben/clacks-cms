@@ -59,7 +59,7 @@ print_column_heading("Title", "title", "45%");
 print_column_heading("Created", "created", "20%");
 print_column_heading("Modified", "modified", "20%");
 ?>
-<th width="15%">Actions <a href="#" onClick="window.open('newextlink.php?noreturn=1', 'extlink_new', 'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add external link" border="0"></a></th>
+<th width="15%">Actions <a href="#" onClick="window.open('newextlink.php?noreturn=1', 'extlink_new', 'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add external link</span></a></th>
 </tr>
 <?php
 if (count($records) > 0) {
@@ -69,10 +69,10 @@ if (count($records) > 0) {
 		echo '<td width="20%">' . timestamp_to_short_date($record->created) . '</td>';
 		echo '<td width="20%">' . timestamp_to_short_date($record->modified) . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newextlink.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'doc_edit\', \'width=500,height=400,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newextlink.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'doc_edit\', \'width=500,height=400,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=extlinks&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'extlinkinfo.php?extlinkid=' . $record->$dbkey . '\', \'extlink_info\', \'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/info.gif" alt="information" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete</span></a> ';
+		echo '<a href="#" onClick="window.open(\'extlinkinfo.php?extlinkid=' . $record->$dbkey . '\', \'extlink_info\', \'width=500,height=500,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-info" aria-hidden="true" focusable="false"><use href="images/icons.svg#info"></use></svg><span class="sr-only">information</span></a> ';
 		echo '</td></tr>';
 	}
 }

@@ -9,20 +9,21 @@ function show_search_form() {
 	<tr><td class="label">Street:</td>
 	<td><input type="text" name="street" value="' . $_POST["street"] . '" maxlength="50" style="width: 250px;" /></td></tr>
 	<tr><td colspan="2" class="formbtns">
-	<input class="btn btn-lg btn-primary" type="submit" name="search" value="Search" />
-	<input class="btn btn-lg btn-primary" type="submit" name="cancel" value="Cancel" onclick="self.close();" />
+	<input class="btn btn-md btn-primary" type="submit" name="search" value="Search" />
+	<input class="btn btn-md btn-secondary" type="submit" name="cancel" value="Cancel" onclick="self.close();" />
 	</td></tr>
 	</table>
 	</form>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Add new location</h3>
 <div id="formarea">
 <?php
@@ -61,7 +62,7 @@ self.close();
 			echo '<option value="' . $address->uprn . '|' . $addstr . '|' . $address->postcode . '">' . $addstr;
 			echo '</option>';
 		}
-		echo '</select><input class="btn btn-lg btn-primary"  type="submit" name="uprnbtn" value="Go" /></form>';
+		echo '</select><input class="btn btn-md btn-primary"  type="submit" name="uprnbtn" value="Go" /></form>';
 	} else {
 		echo '<p>No addresses found. Please search again using different values:</p>';
 		show_search_form();

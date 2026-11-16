@@ -49,7 +49,7 @@ if ($user_message) echo $user_message;
 print_column_heading("Type", "body", "60%");
 print_column_heading("Date", "electiondate", "25%");
 ?>
-<th width="15%">Actions <a href="#" onClick="window.open('newelection.php?noreturn=1', 'form_new', 'width=500,height=600,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add election" border="0"></a></th>
+<th width="15%">Actions <a href="#" onClick="window.open('newelection.php?noreturn=1', 'form_new', 'width=500,height=600,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add election</span></a></th>
 </tr>
 <?php
 if (count($records) > 0) {
@@ -60,10 +60,10 @@ if (count($records) > 0) {
 		echo '</a></td>';
 		echo '<td width="25%">' . $record->electiondate . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newelection.php?action=edit&id=' . $record->$dbkey . '\', \'election_edit\', \'width=500,height=600,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit member" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'electioncandidates.php?electionid=' . $record->$dbkey . '\', \'candidates_edit\', \'width=700,height=440,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/bodies.gif" alt="edit candidates" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newelection.php?action=edit&id=' . $record->$dbkey . '\', \'election_edit\', \'width=500,height=600,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit member</span></a> ';
+		echo '<a href="#" onClick="window.open(\'electioncandidates.php?electionid=' . $record->$dbkey . '\', \'candidates_edit\', \'width=700,height=440,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-bodies" aria-hidden="true" focusable="false"><use href="images/icons.svg#users"></use></svg><span class="sr-only">edit candidates</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=elections.elections&id=" . $record->$dbkey . "', 'delete', 'width=400,height=600,top=50,left=50,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete</span></a> ';
 		echo '</td></tr>';
 	}
 }

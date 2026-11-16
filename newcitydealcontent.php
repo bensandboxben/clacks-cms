@@ -107,9 +107,9 @@ foreach ($required_sections as $sectioncode) {
 	$stillcansave = get_np_var($sectioncode);
 	if ($stillcansave == 0) $cansave = 0;
 }
-if ($cansave) echo ' <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="savenp" value="Commit page" />';
+if ($cansave) echo ' <input type="submit" class="btn btn-md btn-primary" name="savenp" value="Commit page" />';
 ?>
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="resetnp" value="Cancel &amp; reset" />
+<input type="submit" class="btn btn-md btn-secondary" name="resetnp" value="Cancel &amp; reset" />
 </form>
 <p><a href="intranetcontent.php">Back to content list</a></p>
 </div>

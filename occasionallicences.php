@@ -71,7 +71,7 @@ print_column_heading("Event Date", "eventdate", "10%");
 print_column_heading("Proposed Date", "propdate", "12%");
 print_column_heading("Granted Date", "granteddate", "13%");
 ?>
-<th width="15%">Actions <a href="#" onClick="window.open('newocclic.php', 'occlic_new', 'width=800,height=550,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add record" border="0"></a></th>
+<th width="15%">Actions <a href="#" onClick="window.open('newocclic.php', 'occlic_new', 'width=800,height=550,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add record</span></a></th>
 </tr>
 <?php
 if (is_array($records) && count($records) > 0) {
@@ -98,9 +98,9 @@ if (is_array($records) && count($records) > 0) {
 		echo '<td width="10%">' . $record->propdate . '</td>';
 		echo '<td width="10%">' . $record->granteddate . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newocclic.php?action=edit&id=' . $record->$dbkey . '\', \'tro_edit\', \'width=800,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newocclic.php?action=edit&id=' . $record->$dbkey . '\', \'tro_edit\', \'width=800,height=550,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=occasionallicences&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete</span></a> ';
 		echo '</td></tr>';
 	}
 }

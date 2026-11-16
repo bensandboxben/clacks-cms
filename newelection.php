@@ -32,8 +32,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "edit") {
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -49,7 +48,7 @@ $(function() {
 
 </head>
 
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 
 <?php if ($edit == 1) { ?>
 <h3>Edit election</h3>
@@ -155,7 +154,7 @@ self.close();
 
     } else {
 
-        echo '<p>The election was not saved. Please correct these errors and resubmit the form:</p><ul>';
+        echo '<p class="form-error-intro" role="alert">The election was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 
         foreach ($errors as $error) {
             echo '<li>' . $error . '</li>';
@@ -212,7 +211,7 @@ build_select_box($bodies, "bodyid", $bodyid);
 
 <a href="#"
 onClick="window.open('newelectionbody.php', 'electionbody_new', 'width=500,height=300,resizable=yes,scrollbars=yes,top=50,left=50')">
-<img src="images/add.gif" alt="Add new type" border="0" />
+<svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new type</span>
 </a>
 
 </td>
@@ -307,7 +306,7 @@ onClick="window.open('newelectionbody.php', 'electionbody_new', 'width=500,heigh
 
 <input
     type="button"
-    class="btn btn-md btn-primary"
+    class="btn btn-md btn-secondary"
     value="Cancel"
     onclick="window.close();"
 />

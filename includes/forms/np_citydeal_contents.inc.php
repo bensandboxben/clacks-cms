@@ -62,8 +62,8 @@ if ($handle = opendir(UPLOAD_DIR . '/includes/menus/')) {
 	echo '</select>';
 }
 ?>
-<a href="#" onClick="editMenu()"><img src="images/edit.gif" alt="Edit menu" border="0" /></a>
-<a href="#" onClick="addMenu()"><img src="images/add.gif" alt="Add menu" border="0" /></a>
+<a href="#" onClick="editMenu()"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit menu</span></a>
+<a href="#" onClick="addMenu()"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add menu</span></a>
 </td></tr>
 <tr><td class="label">Additional CSS:</td>
 <td>
@@ -86,8 +86,8 @@ if ($handle = opendir(UPLOAD_DIR . '/css/user/')) {
 	closedir($handle);
 }
 ?>
-<a href="#" onClick="editUserCSS()"><img src="images/edit.gif" alt="Edit style sheet" border="0" /></a>
-<a href="#" onClick="addUserCSS()"><img src="images/add.gif" alt="Add style sheet" border="0" /></a>
+<a href="#" onClick="editUserCSS()"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit style sheet</span></a>
+<a href="#" onClick="addUserCSS()"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add style sheet</span></a>
 </td></tr>
 <tr><td class="label">Include domCollapse:</td>
 <td>

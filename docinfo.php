@@ -9,10 +9,9 @@ $doc = $db->get_var("SELECT name FROM docs WHERE docid='$docid'");
 <head>
     <meta charset="UTF-8">
     <title>ClacksWeb CMS</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
     <h3><?php echo $doc; ?></h3>
     <div id="formarea">
         <h4>Document files</h4>
@@ -71,7 +70,7 @@ $doc = $db->get_var("SELECT name FROM docs WHERE docid='$docid'");
             }
             ?>
         </ul>
-        <p class="formbtns"><input type="submit" class="btn btn-md btn-primary" value="Close" onclick="self.close();"></p>
+        <p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="self.close();"></p>
     </div>
 </body>
 </html>

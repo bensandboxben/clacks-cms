@@ -118,7 +118,7 @@ if ((($_GET["table"])&&($_GET["id"]))||(($_POST["table"])&&($_POST["id"]))) {
 			$db = new db("admin", "HbCLlVH", "polls", "164.177.128.68");
 			break;
 		default:
-			$text = '<p>There was a problem processing the deletion: table not found.</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+			$text = '<p>There was a problem processing the deletion: table not found.</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 	}
 }
 if (($_GET["table"])&&($_GET["id"])) {
@@ -136,12 +136,12 @@ if (($_GET["table"])&&($_GET["id"])) {
 						$text .=  '</ul>';
 					}
 				}
-				$text .= '<form method="post" action="securedelete.php"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="confirm" value="Yes" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="No" onclick="javascript:window.close();" /><input type="hidden" name="table" value="' . $table . '" /><input type="hidden" name="id" value="' . $id . '" /></form>';
+				$text .= '<form method="post" action="securedelete.php"><input type="submit" class="btn btn-md btn-danger" name="confirm" value="Yes" /> <input type="submit" class="btn btn-md btn-secondary" name="cancel" value="No" onclick="javascript:window.close();" /><input type="hidden" name="table" value="' . $table . '" /><input type="hidden" name="id" value="' . $id . '" /></form>';
 			} else {
-				$text = '<p>You are not authorised to delete that record.</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+				$text = '<p>You are not authorised to delete that record.</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 			}
 		} else {
-			$text = '<p>There was a problem processing the deletion: record not found.</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+			$text = '<p>There was a problem processing the deletion: record not found.</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 		}
 	}
 } else if ($_POST["confirm"]) {
@@ -152,7 +152,7 @@ if (($_GET["table"])&&($_GET["id"])) {
 				switch ($table) {
 				case "securecontent":
 					delete_secure_page($id);
-					$text = '<p>Record deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Record deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "contacts":
 					if ($contactpages = $db->get_results("SELECT pagename, title FROM securecontent WHERE contactid='$id' ORDER BY title")) {
@@ -160,10 +160,10 @@ if (($_GET["table"])&&($_GET["id"])) {
 						foreach ($contactpages as $contactpage) {
 							$text .= '<li>' . $contactpage->title . '</li>';
 						}
-						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 					} else {
 						delete_contact($id);
-						$text = '<p>Contact deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+						$text = '<p>Contact deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					}
 					break;
 				case "forms":
@@ -172,10 +172,10 @@ if (($_GET["table"])&&($_GET["id"])) {
 						foreach ($formpages as $formpage) {
 							$text .= '<li>' . $formpage->title . '</li>';
 						}
-						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 					} else {
 						delete_form($id);
-						$text = '<p>Form deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+						$text = '<p>Form deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					}
 					break;
 				case "docs":
@@ -184,55 +184,55 @@ if (($_GET["table"])&&($_GET["id"])) {
 						foreach ($docsubjects as $docsubject) {
 							$text .= '<li>' . $docsubject->subject . '</li>';
 						}
-						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 					} else if ($docfaqs = $db->get_results("SELECT faq FROM cms.faq_doc_map LEFT JOIN cms.faqs USING(faqid) WHERE docid=$id")) {
 						$text = '<p>This document cannot be deleted since it has the following FAQs associated with it on the FAQ system:</p><p><ul>';
 						foreach ($docfaqs as $docfaq) {
 							$text .= '<li>' . $docfaq->faq . '</li>';
 						}
-						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 					} else if ($docpages = $db->get_results("SELECT title FROM pageXdoc LEFT JOIN securecontent USING(pageid) WHERE docid=$id")) {
 						$text = '<p>This document cannot be deleted since it is linked to the following ClacksWeb pages:</p><p><ul>';
 						foreach ($docpages as $docpage) {
 							$text .= '<li>' . $docpage->title . '</li>';
 						}
-						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 					} else {
 						delete_doc($id);
-						$text = '<p>Document deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+						$text = '<p>Document deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					}
 					break;
 				case "events.events":
 					delete_event($id);
-					$text = '<p>Event deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Event deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "collections":
 					delete_collection($id);
-					$text = '<p>Collection deleted for "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Collection deleted for "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "events.meetings":
 					delete_meeting($id);
-					$text = '<p>Meeting deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Meeting deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "tenders":
 					delete_tender($id);
-					$text = '<p>Tender deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Tender deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "hr.vacancies":
 					delete_vacancy($id);
-					$text = '<p>Vacancy deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Vacancy deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "hygieneinspections":
 					delete_hygieneinspection($id);
-					$text = '<p>Inspection deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Inspection deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "emergency.notices":
 					delete_emergencynotice($id);
-					$text = '<p>Notice deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Notice deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "polls.polls":
 					delete_poll($id);
-					$text = '<p>Poll deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Poll deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "hicategories":
 					if ($catests = $db->get_results("SELECT hygieneinspections.inspectiondate, establishment FROM hygieneinspections LEFT JOIN hicategories USING(catid), hiestablishments WHERE hygieneinspections.catid=$id AND hygieneinspections.establishmentid=hiestablishments.establishmentid")) {
@@ -240,64 +240,64 @@ if (($_GET["table"])&&($_GET["id"])) {
 						foreach ($catests as $catest) {
 							$text .= '<li>' . $catest->establishment . ' (' . $catest->inspectiondate . ')</li>';
 						}
-						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 					} else {
 						delete_hicategory($id);
-						$text = '<p>Category deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+						$text = '<p>Category deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					}
 					break;
 				case "licenses":
 					delete_license($id);
-					$text = '<p>License deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>License deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "press":
 					delete_press($id);
-					$text = '<p>Press release deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Press release deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "tros":
 					delete_tro($id);
-					$text = '<p>TRO deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>TRO deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "busdir.details":
 					delete_business($id);
-					$text = '<p>Business deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Business deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "elections.elections":
 					delete_election($id);
-					$text = '<p>Election deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Election deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "galleries.galleries":
 					if ($images = $db->get_results("SELECT imageid FROM galleries.images WHERE images.galleryid=$id")) {
 						$text = '<p>This gallery cannot be deleted since it contains images. Please delete these images first.</p>';
-						$text .= '<p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+						$text .= '<p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 					} else {
 						delete_gallery($id);
-						$text = '<p>Gallery deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+						$text = '<p>Gallery deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					}
 					break;
 				case "hr.files":
 					delete_jobpackfile($id);
-					$text = '<p>Job pack file deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Job pack file deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "roadreport.info":
 					delete_roadreport($id);
-					$text = '<p>Road Report deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Road Report deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "communications.commsqs":
 					delete_commsq($id);
-					$text = '<p>Questionnaire deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Questionnaire deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "bodies":
 					delete_body($id);
-					$text = '<p>Body deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Body deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "extlinks":
 					delete_extlink($id);
-					$text = '<p>External link deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>External link deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "rclinks":
 					delete_rclink($id);
-					$text = '<p>Reference Central link deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+					$text = '<p>Reference Central link deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					break;
 				case "rclinkcats":
 					if ($links = $db->get_results("SELECT title FROM rclinks LEFT JOIN rclinkXrclinkcat USING(rclinkid) WHERE rclinkcatid=$id")) {
@@ -305,34 +305,35 @@ if (($_GET["table"])&&($_GET["id"])) {
 						foreach ($links as $link) {
 							$text .= '<li>' . $link->title . '</li>';
 						}
-						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+						$text .= '</ul></p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 					} else {
 						delete_rclinkcat($id);
-						$text = '<p>Category deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
+						$text = '<p>Category deleted: "<strong>' . $delrec->title . '</strong>".</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:opener.location.reload(true);window.close();" /></p>';
 					}
 					break;
 				}
 			} else {
-				$text = '<p>You are not authorised to delete that record.</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+				$text = '<p>You are not authorised to delete that record.</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 			}
 		} else {
-			$text = '<p>There was a problem processing the deletion.</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+			$text = '<p>There was a problem processing the deletion.</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 		}
 	} else {
-		$text = '<p>There was a problem processing the deletion.</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+		$text = '<p>There was a problem processing the deletion.</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 	}
 } else {
 // Something wrong - no parameters passed or no confirmation
-	$text = '<p>There was a problem processing the deletion.</p><p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
+	$text = '<p>There was a problem processing the deletion.</p><p><input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Close" onclick="javascript:window.close();" /></p>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Delete record</h3>
 <?php echo $text; ?>
 </body>

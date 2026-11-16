@@ -14,13 +14,14 @@ if ($_GET["action"] == "edit") {
 	$curr_extlinkcats = $db->get_col("SELECT extlinkcatid FROM extlinkXextlinkcat WHERE extlinkid = '$_GET[id]'");
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <?php if ($edit == 1) { ?>
 <h3>Edit external link</h3>
 <?php } else { ?>
@@ -85,7 +86,7 @@ self.close();
 </script>
 <?php
 	} else {
-		echo '<p>The link was not saved. Please correct these errors and resubmit the form:</p><ul>';
+		echo '<p class="form-error-intro" role="alert">The link was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 		foreach ($errors as $error) {
 			echo '<li>' . $error . '</li>';
 		}
@@ -119,7 +120,7 @@ s.selectedIndex = l;
 <td>
 <?php build_yes_no_checkbox("dblink", $dblink); ?>
 </td></tr>
-<tr><td class="label"><a href="#" onClick="window.open('newextlinkcat.php', 'extlinkcat_new', 'width=400,height=200,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new category" border="0" /></a> Categories:</td>
+<tr><td class="label"><a href="#" onClick="window.open('newextlinkcat.php', 'extlinkcat_new', 'width=400,height=200,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new category</span></a> Categories:</td>
 <td>
 
 <?php
@@ -130,7 +131,7 @@ build_multiple_select_box($extlinkcats, "extlinkcats[]", $curr_extlinkcats, 16);
 
 </td></tr>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Save" />  <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onclick="self.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" />  <input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onclick="self.close();" />
 <?php if ($_REQUEST["noreturn"] == 1) echo '<input type="hidden" name="noreturn" value="1" />'; ?>
 <?php if ($extlinkid) echo '<input type="hidden" name="extlinkid" value="' . $extlinkid . '" />'; ?>
 </td></tr>

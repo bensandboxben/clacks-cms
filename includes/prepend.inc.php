@@ -19,6 +19,7 @@ include_once "../ezdb.inc.php";
 include_once "includes/class.phpmailer.php";
 include_once "includes/validateEmailFormat.php";
 include_once "includes/sanitize.inc.php";
+include_once __DIR__ . "/ui.inc.php";
 /**
 * Provide default content-type, charset and language information
 * Manual pages will override this, and maybe others too

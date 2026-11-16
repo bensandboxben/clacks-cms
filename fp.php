@@ -17,13 +17,14 @@ if ($_POST["save"]) {
 }
 $fphtml = file_get_contents(UPLOAD_DIR . "/fp.html");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <script type="text/javascript">
 //<![CDATA[
 	function myOnSubmitEventHandler() {
@@ -67,7 +68,7 @@ $fphtml = file_get_contents(UPLOAD_DIR . "/fp.html");
 <input type="hidden" name="fp" id="fp" value="" />
 </td></tr>
 <tr><td class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="javascript: window.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="javascript: window.close();" />
 </td></tr>
 </table>
 </form>

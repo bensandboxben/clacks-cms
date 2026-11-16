@@ -51,7 +51,7 @@ function show_formfile_form($values=array(), $errors=array()) {
 	if ($values["formfileid"]) echo '<input type="hidden" name="formfileid" value="' . $values["formfileid"] . '">';
 	echo '</td></tr>';
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save File">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save File">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '</form>';
 }
 function confirm_formfile_deletion($formfileid, $formid) {
@@ -66,13 +66,14 @@ function confirm_formfile_deletion($formfileid, $formid) {
 	echo '</form>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <!-- calendar stylesheet -->
 <link rel="stylesheet" type="text/css" media="all" href="calendar-win2k-cold-1.css" title="win2k-cold-1" />
 <!-- main calendar program -->
@@ -95,7 +96,7 @@ switch ($_REQUEST["action"]) {
 		echo "<p>Delete File from Form: <strong>$form</strong></p>";
 		break;
 	default:
-		echo '<p>Manage for files for Form: <strong>' . $form . '</strong> <a href="formfiles.php?action=add&formid=' . $formid . '"><img src="images/add.gif" alt="Add new file" border="0" /></a></p>';
+		echo '<p>Manage for files for Form: <strong>' . $form . '</strong> <a href="formfiles.php?action=add&formid=' . $formid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new file</span></a></p>';
 		break;
 }
 
@@ -313,24 +314,24 @@ if (($formfiles = $db->get_results("SELECT * FROM formfiles WHERE formid='$formi
 		echo '</td>';
 		echo '<td class="detail"><a target="_blank" href="download.php?ft=form&file=' . $formfiles[$x]->formfileid . $formfiles[$x]->ext . '">' . $formfiles[$x]->description . '</a></td>';
 		echo '<td width="140" align="right">';
-		echo '<a href="formfiles.php?action=edit&formfileid=' . $formfiles[$x]->formfileid . '&formid=' . $formid . '"><img src="images/edit.gif" alt="Edit File" border="0"></a> ';
-		echo '<a href="formfiles.php?action=delete&formfileid=' . $formfiles[$x]->formfileid . '&formid=' . $formid . '"><img src="images/delete.gif" alt="Delete File" border="0"></a>';
+		echo '<a href="formfiles.php?action=edit&formfileid=' . $formfiles[$x]->formfileid . '&formid=' . $formid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit File</span></a> ';
+		echo '<a href="formfiles.php?action=delete&formfileid=' . $formfiles[$x]->formfileid . '&formid=' . $formid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete File</span></a>';
 		if ($x > 0) {
-			echo ' <a href="formfiles.php?formid=' . $formid . '&fromid=' . $formfiles[$x]->formfileid . '&fromso=' . $formfiles[$x]->sortorder . '&toid=' . $formfiles[$x-1]->formfileid . '&toso=' . $formfiles[$x-1]->sortorder . '"><img src="images/up.gif" alt="Move file up" border="0"></a>';
+			echo ' <a href="formfiles.php?formid=' . $formid . '&fromid=' . $formfiles[$x]->formfileid . '&fromso=' . $formfiles[$x]->sortorder . '&toid=' . $formfiles[$x-1]->formfileid . '&toso=' . $formfiles[$x-1]->sortorder . '"><svg class="icon icon-up" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-up"></use></svg><span class="sr-only">Move file up</span></a>';
 		} else {
-			echo ' <img src="images/upoff.gif" alt="Top file" border="0"> ';
+			echo ' <svg class="icon icon-up is-off" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-up"></use></svg><span class="sr-only">Top file</span> ';
 		}
 		if ($x < (count($formfiles)-1)) {
-			echo ' <a href="formfiles.php?formid=' . $formid . '&fromid=' . $formfiles[$x]->formfileid . '&fromso=' . $formfiles[$x]->sortorder . '&toid=' . $formfiles[$x+1]->formfileid . '&toso=' . $formfiles[$x+1]->sortorder . '"><img src="images/down.gif" alt="Move file down" border="0"></a>';
+			echo ' <a href="formfiles.php?formid=' . $formid . '&fromid=' . $formfiles[$x]->formfileid . '&fromso=' . $formfiles[$x]->sortorder . '&toid=' . $formfiles[$x+1]->formfileid . '&toso=' . $formfiles[$x+1]->sortorder . '"><svg class="icon icon-down" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-down"></use></svg><span class="sr-only">Move file down</span></a>';
 		} else {
-			echo ' <img src="images/downoff.gif" alt="Bottom file" border="0"> ';
+			echo ' <svg class="icon icon-down is-off" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-down"></use></svg><span class="sr-only">Bottom file</span> ';
 		}
 		echo '</td>';
 		echo '</tr>';
 	}
 	echo '</table>';
 }
-if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="self.close();"></p>';
+if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="self.close();"></p>';
 ?>
 </div>
 </body>

@@ -67,19 +67,20 @@ function show_item_form($values=array()) {
 	echo '</td></tr>';
 
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '<input type="hidden" name="meetingid" value="' . $values["meetingid"] . '" />';
 	if ($_REQUEST["action"] == 'edit') echo '<input type="hidden" name="itemid" value="' . $values["itemid"] . '" />';
 	echo '</form>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <div id="formarea">
 <h3>Agenda items</h3>
 <?php
@@ -91,7 +92,7 @@ switch ($_REQUEST["action"]) {
 		echo "<p>Edit item for agenda: <strong>$meeting->body, $meeting->meetingdate</strong></p>";
 		break;
 	default:
-		echo '<p>Manage agenda items: <strong>' . $meeting->body . ', ' . $meeting->meetingdate . '</strong> <a href="agenda.php?action=add&meetingid=' . $meetingid . '"><img src="images/add.gif" alt="Add new item" border="0" /></a></p>';
+		echo '<p>Manage agenda items: <strong>' . $meeting->body . ', ' . $meeting->meetingdate . '</strong> <a href="agenda.php?action=add&meetingid=' . $meetingid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new item</span></a></p>';
 		break;
 }
 if ($_POST["submit"]) {
@@ -193,15 +194,15 @@ if (($items = $db->get_results("SELECT * FROM events.agendas WHERE meetingid='$m
 		echo '<tr><td class="detail" align="center">' . $item->itemno . '</td>';
 		echo '<td class="detail">' . $item->title . '</td>';
 		echo '<td width="100" align="right">';
-		echo '<a href="agenda.php?action=edit&meetingid=' . $item->meetingid . '&itemid=' . $item->itemid . '"><img src="images/edit.gif" alt="Edit item" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'agendafiles.php?itemid=' . $item->itemid . '\', \'agendafiles\', \'width=700,height=500,top=70,left=70,resizable=yes,scrollbars=yes\')"><img src="images/files.gif" alt="Item files" border="0"></a> ';
-		echo '<a href="agenda.php?action=delete&meetingid=' . $item->meetingid . '&itemid=' . $item->itemid . '"><img src="images/delete.gif" alt="Delete item" border="0"></a>';
+		echo '<a href="agenda.php?action=edit&meetingid=' . $item->meetingid . '&itemid=' . $item->itemid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit item</span></a> ';
+		echo '<a href="#" onClick="window.open(\'agendafiles.php?itemid=' . $item->itemid . '\', \'agendafiles\', \'width=700,height=500,top=70,left=70,resizable=yes,scrollbars=yes\')"><svg class="icon icon-files" aria-hidden="true" focusable="false"><use href="images/icons.svg#paperclip"></use></svg><span class="sr-only">Item files</span></a> ';
+		echo '<a href="agenda.php?action=delete&meetingid=' . $item->meetingid . '&itemid=' . $item->itemid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete item</span></a>';
 		echo '</td>';
 		echo '</tr>';
 	}
 	echo '</tbody></table>';
 }
-if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="self.close();"></p>';
+if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="self.close();"></p>';
 ?>
 </div>
 </body>

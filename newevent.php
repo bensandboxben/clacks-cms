@@ -28,6 +28,8 @@ if ($_GET["action"] == "edit") {
 	}
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -39,10 +41,9 @@ if ($_GET["action"] == "edit") {
     $( "#datepicker1" ).datepicker();
   });
   </script>
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <script language="JavaScript">
 <!--
 function doAddVenue (label, value) {
@@ -132,7 +133,7 @@ self.close();
 </script>
 <?php
 	} else {
-		echo '<p>The event was not saved. Please correct these errors and resubmit the form:</p><ul>';
+		echo '<p class="form-error-intro" role="alert">The event was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 		foreach ($errors as $error) {
 			echo '<li>' . $error . '</li>';
 		}
@@ -212,7 +213,7 @@ s.length = l + 1;
 	</tr>
 <tr><td class="label">Keywords:</td>
 <td><input type="text" name="keywords" value="<?php echo $keywords; ?>" maxlength="250" style="width: 300px;" /></td></tr>
-<tr><td class="label"><a href="#" onClick="window.open('neweventcat.php', 'eventcat_new', 'width=400,height=200,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new category" border="0" /></a> Categories:</td>
+<tr><td class="label"><a href="#" onClick="window.open('neweventcat.php', 'eventcat_new', 'width=400,height=200,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new category</span></a> Categories:</td>
 <td>
 <?php
 $categories = $db->get_results("SELECT eventcatid, eventcategory FROM events.eventcats ORDER BY eventcategory", ARRAY_N);
@@ -238,7 +239,7 @@ build_select_box($services, "serviceid", $serviceid);
 $venues = $db->get_results("SELECT venueid, venue FROM events.venues ORDER BY venue", ARRAY_N);
 build_select_box($venues, "venueid", $venueid);
 ?>
-<a href="#" onClick="window.open('newvenue.php', 'venue_new', 'width=500,height=480,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new venue" border="0" /></a>
+<a href="#" onClick="window.open('newvenue.php', 'venue_new', 'width=500,height=480,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new venue</span></a>
 </td></tr>
 <tr>
 	<td class="label">Dates:</td>
@@ -254,7 +255,7 @@ build_select_box($venues, "venueid", $venueid);
 <tr><td class="label">Info URL:</td>
 <td><input type="text" name="url" value="<?php echo $url; ?>" maxlength="250" style="width: 300px;" /></td></tr>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-primary" value="Cancel" onclick="javascript: window.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-secondary" value="Cancel" onclick="javascript: window.close();" />
 <?php if ($_REQUEST["noreturn"] == 1) echo '<input type="hidden" name="noreturn" value="1" />'; ?>
 <?php if ($eventid) echo '<input type="hidden" name="eventid" value="' . $eventid . '" />'; ?>
 </td></tr>

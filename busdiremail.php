@@ -6,13 +6,14 @@ if (check_auth("busdir", $_SESSION["userid"]) == 0) {
 $db = new db("admin", "HbCLlVH", "busdir", "164.177.128.68");
 header("Cache-Control: private");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Mass-email businesses</h3>
 <?php
 if ($_POST["emailbtn"]) {
@@ -48,13 +49,13 @@ if ($_POST["emailbtn"]) {
 				$mail->ClearAddresses();
 				$mail->ClearAttachments();
 			}
-			echo '<p><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="javascript: window.close();" /></p>';
+			echo '<p><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="javascript: window.close();" /></p>';
 		} else {
 			echo '<p class="error">The email was not sent - no businesses with email addresses matched your selection.</p>';
 			$errors[] = 'No matches';
 		}
 	} else {
-		echo '<p>The email was not sent. Please correct these errors and resubmit the form:</p><ul>';
+		echo '<p class="form-error-intro" role="alert">The email was not sent. Please correct these errors and resubmit the form:</p><ul class="error">';
 		foreach ($errors as $error) {
 			echo '<li>' . $error . '</li>';
 		}
@@ -100,7 +101,7 @@ if ((!$_POST)||(count($errors) > 0)) {
 	<tr><td class="label">Attachment:</td>
 	<td><input type="file" name="attachfile"></td></tr>
 	<tr><td colspan="2" class="formbtns">
-	<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="emailbtn" value="Send email" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Cancel" onclick="javascript: window.close();" />
+	<input type="submit" class="btn btn-md btn-primary" name="emailbtn" value="Send email" /> <input type="submit" class="btn btn-md btn-secondary" value="Cancel" onclick="javascript: window.close();" />
 	</td></tr>
 	</table>
 	</form>

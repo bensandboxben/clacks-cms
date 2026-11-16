@@ -14,13 +14,14 @@ if ($_POST["submit"]) {
 }
 $csstxt = file_get_contents(UPLOAD_DIR . "css/user/" . $_REQUEST["cssfile"]);
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 
 <div id="formarea">
 <h3>Edit CSS file</h3>
@@ -43,7 +44,7 @@ if ($_GET["cssfile"] == "new") {
 <?php echo $csstxt; ?>
 </textarea>
 <input type="hidden" name="cssfile" value="<?php echo $_REQUEST["cssfile"];?>" />
-<p style="text-align: center;"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save CSS" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="javascript:opener.location.reload(true);window.close()" /></p>
+<p style="text-align: center;"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save CSS" /> <input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="javascript:opener.location.reload(true);window.close()" /></p>
 </form>
 </div>
 </body>

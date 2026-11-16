@@ -9,19 +9,20 @@ function show_search_form() {
 	<tr><td class="label">Postcode:</td>
 	<td><input type="text" name="postcode" value="' .  $_POST["postcode"] . '" maxlength="8" style="width: 100px;" /></td></tr>
 	<tr><td colspan="2" class="formbtns">
-	<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="search" value="Search" />  <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onclick="self.close();" />
+	<input type="submit" class="btn btn-md btn-primary" name="search" value="Search" />  <input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onclick="self.close();" />
 	</td></tr>
 	</table>
 	</form>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>Business Directory</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Find address</h3>
 <div id="formarea">
 
@@ -53,7 +54,7 @@ self.close();
 			echo '<option value="' . $add[0] . '|' . $add[3] . '|' . $postcode . '">' . $add[3];
 			echo '</option>';
 		}
-		echo '</select><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="uprnbtn" value="Go" /></form>';
+		echo '</select><input type="submit" class="btn btn-md btn-primary" name="uprnbtn" value="Go" /></form>';
 	} else {
 		echo '<p>No addresses found. Please search again using different values or close this window and enter the address manually:</p>';
 		show_search_form();

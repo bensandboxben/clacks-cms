@@ -37,7 +37,7 @@ if ($_SESSION["userlevel"] < 4) {
 }
 build_select_box($contacts, "np_contactid", get_np_var("contactid"), "-");
 ?>
- <a href="#" onClick="window.open('newcontact.php', 'contact_new', 'width=600,height=400,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add new contact" border="0" /></a>
+ <a href="#" onClick="window.open('newcontact.php', 'contact_new', 'width=600,height=400,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new contact</span></a>
 </td></tr>
 <tr><td class="label">Send review emails to:</td>
 <td><input type="text" name="np_reviewemail" value="<?php echo get_np_var("reviewemail"); ?>" style="width: 300px;" /></td></tr>

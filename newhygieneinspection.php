@@ -13,13 +13,14 @@ if ($_GET["action"] == "edit") {
 	unset($inspectionid);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <script language="JavaScript">
 <!--
 function doAddEstablishment (label, value) {
@@ -74,7 +75,7 @@ self.close();
 </script>
 <?php
 	} else {
-		echo '<p>The inspection was not saved. Please correct these errors and resubmit the form:</p><ul>';
+		echo '<p class="form-error-intro" role="alert">The inspection was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 		foreach ($errors as $error) {
 			echo '<li>' . $error . '</li>';
 		}
@@ -100,7 +101,7 @@ extract ($_POST);
 $establishments = $db->get_results("SELECT establishmentid, establishment FROM hiestablishments ORDER BY establishment", ARRAY_N);
 build_select_box($establishments, "establishmentid", $establishmentid);
 ?>
-<a href="#" onClick="window.open('newestablishment.php', 'establishment_new', 'width=500,height=350,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new establishment" border="0" /></a>
+<a href="#" onClick="window.open('newestablishment.php', 'establishment_new', 'width=500,height=350,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new establishment</span></a>
 </td></tr>
 <tr><td class="label">Category:</td>
 <td>
@@ -108,7 +109,7 @@ build_select_box($establishments, "establishmentid", $establishmentid);
 $hicats = $db->get_results("SELECT catid, category FROM hicategories ORDER BY category", ARRAY_N);
 build_select_box($hicats, "catid", $catid);
 ?>
-<a href="#" onClick="window.open('newhicat.php', 'hicat_new', 'width=500,height=300,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new category" border="0" /></a>
+<a href="#" onClick="window.open('newhicat.php', 'hicat_new', 'width=500,height=300,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new category</span></a>
 </td></tr>
 <tr><td class="label">Grade:</td>
 <td><select name="grade">
@@ -151,7 +152,7 @@ build_yes_no_checkbox("actionpending", $actionpending);
 ?>
 </td></tr>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Cancel" onclick="javascript: window.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-secondary" value="Cancel" onclick="javascript: window.close();" />
 <?php if ($_REQUEST["noreturn"] == 1) echo '<input type="hidden" name="noreturn" value="1" />'; ?>
 <?php if ($inspectionid) echo '<input type="hidden" name="inspectionid" value="' . $inspectionid . '" />'; ?>
 </td></tr>

@@ -172,8 +172,7 @@ if ($_POST["save_menu"]) {
 <meta charset="UTF-8">
 <title>Menu Editor</title>
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css">
+<?php include "includes/head.inc.php"; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 

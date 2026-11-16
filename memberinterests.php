@@ -15,7 +15,7 @@ function show_contract_form($values=array()) {
 	echo '<tr><td class="label">Duration: </td><td><input style="width: 250px;" type="text" name="duration" value="' . $values["duration"] . '" />';
 	echo '</td></tr>';
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save Contract">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save Contract">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '<input type="hidden" name="emid" value="' . $values["emid"] . '" />';
 	if ($_GET["action"] == "editcontract") echo '<input type="hidden" name="id" value="' . $values["id"] . '" />';
 	echo '</form>';
@@ -28,7 +28,7 @@ function show_directorship_form($values=array()) {
 	echo '<tr><td class="label">Nature of business: </td><td><input style="width: 250px;" type="text" name="business" value="' . $values["business"] . '" /></td></tr>';
 	echo '<tr><td class="label">Relationship to employment: </td><td><input style="width: 250px;" type="text" name="relationship" value="' . $values["relationship"] . '" /></td></tr>';
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save Directorship">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save Directorship">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '<input type="hidden" name="emid" value="' . $values["emid"] . '" />';
 	if ($_GET["action"] == "editdirectorship") echo '<input type="hidden" name="id" value="' . $values["id"] . '" />';
 	echo '</form>';
@@ -41,7 +41,7 @@ function show_employment_form($values=array()) {
 	echo '<tr><td class="label">Nature of business: </td><td><input style="width: 250px;" type="text" name="business" value="' . $values["business"] . '" /></td></tr>';
 	echo '<tr><td class="label">Post/activity: </td><td><input style="width: 250px;" type="text" name="activity" value="' . $values["activity"] . '" /></td></tr>';
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save Employment">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save Employment">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '<input type="hidden" name="emid" value="' . $values["emid"] . '" />';
 	if ($_GET["action"] == "editemployment") echo '<input type="hidden" name="id" value="' . $values["id"] . '" />';
 	echo '</form>';
@@ -53,7 +53,7 @@ function show_land_form($values=array()) {
 	echo '<tr><td class="label">Address: </td><td><input style="width: 250px;" type="text" name="address" value="' . $values["address"] . '" /></td></tr>';
 	echo '<tr><td class="label">Description: </td><td><input style="width: 250px;" type="text" name="description" value="' . $values["description"] . '" /></td></tr>';
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save Land">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save Land">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '<input type="hidden" name="emid" value="' . $values["emid"] . '" />';
 	if ($_GET["action"] == "editland") echo '<input type="hidden" name="id" value="' . $values["id"] . '" />';
 	echo '</form>';
@@ -67,18 +67,19 @@ function show_interests_form($values=array()) {
 	echo '<tr><td class="label">Shares: </td><td><input style="width: 250px;" type="text" name="shares" value="' . $values["shares"] . '" /></td></tr>';
 	echo '<tr><td class="label">Non-financial interests: </td><td><textarea style="width: 350px; height: 200px;" name="nonfinancial">' . $values["nonfinancial"] . '</textarea></td></tr>';
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save Other Interests">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save Other Interests">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '<input type="hidden" name="emid" value="' . $values["emid"] . '" />';
 	echo '</form>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <div id="formarea">
 <h3>Register of interests</h3>
 <?php
@@ -260,15 +261,15 @@ if ($_POST["submit"]) {
 	$print_table = 1;
 }
 if ($print_table == 1) {
-	echo '<h3>Contracts  <a href="memberinterests.php?action=addcontract&emid=' . $emid . '"><img src="images/add.gif" alt="Add new contract" border="0" /></a></h3>';
+	echo '<h3>Contracts  <a href="memberinterests.php?action=addcontract&emid=' . $emid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new contract</span></a></h3>';
 	if ($contracts = $db->get_results("SELECT * FROM micontracts WHERE emid='$emid' ORDER BY description")) {
 		echo '<table width="100%">';
 		foreach ($contracts as $contract) {
 			echo '<tr><td class="detail">' . $contract->description . '</td>';
 			echo '<td class="detail">' . $contract->duration . '</td>';
 			echo '<td width="100" align="right">';
-			echo '<a href="memberinterests.php?action=editcontract&id=' . $contract->id . '&emid=' . $emid . '"><img src="images/edit.gif" alt="Edit Contract" border="0"></a> ';
-			echo '<a href="memberinterests.php?action=deletecontract&id=' . $contract->id . '&emid=' . $emid . '"><img src="images/delete.gif" alt="Delete Contract" border="0"></a>';
+			echo '<a href="memberinterests.php?action=editcontract&id=' . $contract->id . '&emid=' . $emid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit Contract</span></a> ';
+			echo '<a href="memberinterests.php?action=deletecontract&id=' . $contract->id . '&emid=' . $emid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete Contract</span></a>';
 			echo '</td>';
 			echo '</tr>';
 		}
@@ -276,15 +277,15 @@ if ($print_table == 1) {
 	} else {
 		echo '<p>No contracts for ' . $member . '</p>';
 	}
-	echo '<h3>Directorships  <a href="memberinterests.php?action=adddirectorship&emid=' . $emid . '"><img src="images/add.gif" alt="Add new directorship" border="0" /></a></h3>';
+	echo '<h3>Directorships  <a href="memberinterests.php?action=adddirectorship&emid=' . $emid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new directorship</span></a></h3>';
 	if ($directorships = $db->get_results("SELECT * FROM midirectorships WHERE emid='$emid' ORDER BY company")) {
 		echo '<table width="100%">';
 		foreach ($directorships as $directorship) {
 			echo '<tr><td class="detail">' . $directorship->company . '</td>';
 			echo '<td class="detail">' . $directorship->relationship . '</td>';
 			echo '<td width="100" align="right">';
-			echo '<a href="memberinterests.php?action=editdirectorship&id=' . $directorship->id . '&emid=' . $emid . '"><img src="images/edit.gif" alt="Edit directorship" border="0"></a> ';
-			echo '<a href="memberinterests.php?action=deletedirectorship&id=' . $directorship->id . '&emid=' . $emid . '"><img src="images/delete.gif" alt="Delete directorship" border="0"></a>';
+			echo '<a href="memberinterests.php?action=editdirectorship&id=' . $directorship->id . '&emid=' . $emid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit directorship</span></a> ';
+			echo '<a href="memberinterests.php?action=deletedirectorship&id=' . $directorship->id . '&emid=' . $emid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete directorship</span></a>';
 			echo '</td>';
 			echo '</tr>';
 		}
@@ -292,15 +293,15 @@ if ($print_table == 1) {
 	} else {
 		echo '<p>No directorships for ' . $member . '</p>';
 	}
-	echo '<h3>Employment  <a href="memberinterests.php?action=addemployment&emid=' . $emid . '"><img src="images/add.gif" alt="Add new employment" border="0" /></a></h3>';
+	echo '<h3>Employment  <a href="memberinterests.php?action=addemployment&emid=' . $emid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new employment</span></a></h3>';
 	if ($employments = $db->get_results("SELECT * FROM miemployment WHERE emid='$emid' ORDER BY name")) {
 		echo '<table width="100%">';
 		foreach ($employments as $employment) {
 			echo '<tr><td class="detail">' . $employment->name . '</td>';
 			echo '<td class="detail">' . $employment->activity . '</td>';
 			echo '<td width="100" align="right">';
-			echo '<a href="memberinterests.php?action=editemployment&id=' . $employment->id . '&emid=' . $emid . '"><img src="images/edit.gif" alt="Edit employment" border="0"></a> ';
-			echo '<a href="memberinterests.php?action=deleteemployment&id=' . $employment->id . '&emid=' . $emid . '"><img src="images/delete.gif" alt="Delete employment" border="0"></a>';
+			echo '<a href="memberinterests.php?action=editemployment&id=' . $employment->id . '&emid=' . $emid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit employment</span></a> ';
+			echo '<a href="memberinterests.php?action=deleteemployment&id=' . $employment->id . '&emid=' . $emid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete employment</span></a>';
 			echo '</td>';
 			echo '</tr>';
 		}
@@ -308,15 +309,15 @@ if ($print_table == 1) {
 	} else {
 		echo '<p>No employment for ' . $member . '</p>';
 	}
-	echo '<h3>Land  <a href="memberinterests.php?action=addland&emid=' . $emid . '"><img src="images/add.gif" alt="Add new land" border="0" /></a></h3>';
+	echo '<h3>Land  <a href="memberinterests.php?action=addland&emid=' . $emid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new land</span></a></h3>';
 	if ($lands = $db->get_results("SELECT * FROM miland WHERE emid='$emid' ORDER BY address")) {
 		echo '<table width="100%">';
 		foreach ($lands as $land) {
 			echo '<tr><td class="detail">' . $land->address . '</td>';
 			echo '<td class="detail">' . $land->description . '</td>';
 			echo '<td width="100" align="right">';
-			echo '<a href="memberinterests.php?action=editland&id=' . $land->id . '&emid=' . $emid . '"><img src="images/edit.gif" alt="Edit land" border="0"></a> ';
-			echo '<a href="memberinterests.php?action=deleteland&id=' . $land->id . '&emid=' . $emid . '"><img src="images/delete.gif" alt="Delete land" border="0"></a>';
+			echo '<a href="memberinterests.php?action=editland&id=' . $land->id . '&emid=' . $emid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit land</span></a> ';
+			echo '<a href="memberinterests.php?action=deleteland&id=' . $land->id . '&emid=' . $emid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete land</span></a>';
 			echo '</td>';
 			echo '</tr>';
 		}
@@ -324,7 +325,7 @@ if ($print_table == 1) {
 	} else {
 		echo '<p>No land records for ' . $member . '</p>';
 	}
-	echo '<h3>Other Interests  <a href="memberinterests.php?action=edit&emid=' . $emid . '"><img src="images/edit.gif" alt="Edit other interests" border="0" /></a></h3>';
+	echo '<h3>Other Interests  <a href="memberinterests.php?action=edit&emid=' . $emid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit other interests</span></a></h3>';
 	$interests = $db->get_row("SELECT * FROM miinterests WHERE emid='$emid'");
 	echo '<table width="100%">';
 	echo '<tr><td class="label">Election expenses:</td><td class="detail">' . $interests->electionexpenses . '</td>';
@@ -334,7 +335,7 @@ if ($print_table == 1) {
 	echo '</tr>';
 	echo '</table>';
 }
-if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="self.close();"></p>';
+if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="self.close();"></p>';
 ?>
 </div>
 </body>

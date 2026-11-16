@@ -1,0 +1,854 @@
+/*
+ * ClacksWeb CMS design system
+ * ---------------------------------------------------------------------------
+ * Source for css/app.css. Build with:  npm run build:css
+ *
+ * Structure
+ *   1. Theme tokens (light + dark) as CSS custom properties
+ *   2. Base element styles (typography, links, form controls, focus)
+ *   3. Components (buttons, cards, tables, forms, alerts, badges, shell)
+ *   4. Legacy markup layer - styles the class names and structures already
+ *      emitted by the PHP pages (Bootstrap 3 era) so every screen shares the
+ *      same visual language without changing their behaviour
+ *   5. Third-party widgets (jQuery UI datepicker, DHTML calendar, CKEditor)
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------------------------------------------------------------
+ * 1. Theme tokens
+ * ---------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('fonts/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --c-canvas: 245 246 248;
+    --c-sidebar: 251 251 252;
+    --c-surface: 255 255 255;
+    --c-surface-2: 247 248 250;
+    --c-surface-3: 238 241 244;
+    --c-raised: 255 255 255;
+    --c-line: 228 232 237;
+    --c-line-strong: 208 215 223;
+    --c-field: 255 255 255;
+    --c-field-line: 138 149 163;
+    --c-fg: 17 24 39;
+    --c-fg-muted: 75 85 99;
+    --c-fg-subtle: 95 107 122;
+    --c-primary: 51 102 153;
+    --c-primary-hover: 43 85 128;
+    --c-primary-fg: 255 255 255;
+    --c-primary-soft: 232 240 248;
+    --c-primary-text: 43 90 138;
+    --c-ring: 51 102 153;
+    --c-success: 21 105 58;
+    --c-success-soft: 237 248 241;
+    --c-success-line: 170 222 190;
+    --c-warning: 138 74 3;
+    --c-warning-soft: 253 246 231;
+    --c-warning-line: 240 208 140;
+    --c-danger: 180 35 24;
+    --c-danger-soft: 253 241 240;
+    --c-danger-line: 246 196 191;
+    --c-danger-solid: 180 35 24;
+    --c-danger-solid-hover: 145 32 24;
+    --c-info: 29 81 133;
+    --c-info-soft: 237 244 251;
+    --c-info-line: 186 212 238;
+    --shell-sidebar-w: 16rem;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --c-canvas: 17 20 24;
+    --c-sidebar: 12 14 18;
+    --c-surface: 24 28 34;
+    --c-surface-2: 30 35 42;
+    --c-surface-3: 38 44 53;
+    --c-raised: 32 37 45;
+    --c-line: 41 47 57;
+    --c-line-strong: 58 66 79;
+    --c-field: 19 23 28;
+    --c-field-line: 103 115 133;
+    --c-fg: 231 234 238;
+    --c-fg-muted: 167 176 188;
+    --c-fg-subtle: 145 155 168;
+    --c-primary: 59 115 173;
+    --c-primary-hover: 74 130 189;
+    --c-primary-fg: 255 255 255;
+    --c-primary-soft: 27 44 64;
+    --c-primary-text: 147 187 230;
+    --c-ring: 127 176 230;
+    --c-success: 111 214 154;
+    --c-success-soft: 17 38 26;
+    --c-success-line: 34 84 55;
+    --c-warning: 240 192 104;
+    --c-warning-soft: 42 33 16;
+    --c-warning-line: 96 72 26;
+    --c-danger: 245 161 155;
+    --c-danger-soft: 46 22 23;
+    --c-danger-line: 104 40 38;
+    --c-danger-solid: 196 54 43;
+    --c-danger-solid-hover: 214 70 58;
+    --c-info: 148 194 239;
+    --c-info-soft: 19 36 58;
+    --c-info-line: 38 71 109;
+  }
+
+  /* ---------------------------------------------------------------------
+   * 2. Base
+   * ------------------------------------------------------------------ */
+  html {
+    @apply bg-canvas text-fg antialiased;
+    font-family: theme('fontFamily.sans');
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply min-h-screen bg-canvas text-sm leading-6 text-fg;
+    margin: 0;
+  }
+
+  h1 { @apply text-xl font-semibold tracking-tight text-fg; }
+  h2 { @apply text-lg font-semibold tracking-tight text-fg; }
+  h3 { @apply text-base font-semibold text-fg; }
+  h4 { @apply text-sm font-semibold text-fg; }
+  h5, h6 { @apply text-sm font-medium text-fg; }
+  p { @apply my-3; }
+  ul, ol { @apply my-3 pl-5; }
+  ul { list-style: disc; }
+  ol { list-style: decimal; }
+  li { @apply my-0.5; }
+  hr { @apply my-6 border-line; }
+  strong, b { @apply font-semibold; }
+  small { @apply text-xs; }
+  code, kbd, pre { @apply font-mono text-[0.8125rem]; }
+  img { display: inline-block; vertical-align: middle; }
+  fieldset { @apply m-0 min-w-0 border-0 p-0; }
+  legend { @apply p-0; }
+
+  a {
+    @apply text-primary-text underline decoration-primary-text/40 underline-offset-[3px] transition-colors;
+  }
+  a:hover { @apply decoration-current; }
+
+  ::selection { @apply bg-brand-200 text-brand-950; }
+  .dark ::selection { @apply bg-brand-700 text-white; }
+
+  /* Visible, consistent focus indicator (WCAG 2.4.7 / 2.4.11) */
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-ring));
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Form controls - low specificity so third-party widget resets win */
+  :where(input:not([type]), input[type='text'], input[type='password'], input[type='email'], input[type='url'],
+         input[type='search'], input[type='tel'], input[type='number'], input[type='date'],
+         input[type='datetime-local'], input[type='time'], input[type='month'], select, textarea):not([class*='cke_']) {
+    @apply rounded-md border border-solid border-field-line/70 bg-field px-3 py-1.5 text-sm leading-6 text-fg shadow-xs transition-[border-color,box-shadow];
+    font-family: inherit;
+    min-height: 2.25rem;
+    max-width: 100%;
+  }
+  :where(input, select, textarea):not([class*='cke_']):hover { @apply border-field-line; }
+  :where(input, select, textarea):not([class*='cke_']):focus-visible {
+    @apply border-primary;
+    outline: 2px solid rgb(var(--c-ring) / 0.5);
+    outline-offset: 0;
+  }
+  :where(input, select, textarea):disabled { @apply cursor-not-allowed opacity-60; }
+  :where(input[readonly], textarea[readonly]) { @apply bg-surface-2; }
+  ::placeholder { @apply text-fg-subtle opacity-100; }
+
+  :where(select:not([multiple]):not([size])):not([class*='cke_']) {
+    @apply appearance-none pr-9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7685' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.6rem center;
+    background-size: 1rem;
+  }
+  :where(select[multiple], select[size]) { @apply py-1; }
+  :where(select[multiple] option, select[size] option) { @apply rounded px-2 py-1; }
+  .dark :where(select option) { background-color: rgb(var(--c-raised)); color: rgb(var(--c-fg)); }
+
+  :where(textarea):not([class*='cke_']) { @apply min-h-[6rem] leading-6; }
+
+  :where(input[type='checkbox'], input[type='radio']) {
+    @apply h-4 w-4 cursor-pointer align-middle;
+    accent-color: rgb(var(--c-primary));
+    margin: 0 0.375rem 0 0;
+  }
+  .dark :where(input[type='checkbox'], input[type='radio']) { accent-color: rgb(var(--c-primary-text)); }
+
+  :where(input[type='file']):not([class*='cke_']) {
+    @apply max-w-full cursor-pointer rounded-md border border-dashed border-field-line/70 bg-surface-2 p-1.5 text-sm text-fg-muted;
+  }
+  :where(input[type='file'])::file-selector-button {
+    @apply mr-3 cursor-pointer rounded border border-solid border-line-strong bg-surface px-3 py-1 text-sm font-medium text-fg transition-colors;
+    font-family: inherit;
+  }
+  :where(input[type='file'])::file-selector-button:hover { @apply bg-surface-3; }
+
+  /* Bare submit/reset/button inputs (legacy markup without .btn) */
+  :where(input[type='submit'], input[type='button'], input[type='reset'], button:not([class])):not([class*='cke_']) {
+    @apply inline-flex min-h-[2.25rem] cursor-pointer items-center justify-center gap-2 rounded-md border border-solid border-line-strong bg-surface px-3.5 py-1.5 text-sm font-medium text-fg shadow-xs transition-colors;
+    font-family: inherit;
+  }
+  :where(input[type='submit'], input[type='button'], input[type='reset'], button:not([class])):not([class*='cke_']):hover { @apply bg-surface-3; }
+
+  [hidden] { display: none !important; }
+}
+
+/* -------------------------------------------------------------------------
+ * 3. Components
+ * ---------------------------------------------------------------------- */
+@layer components {
+  /* Icons from images/icons.svg sprite */
+  .icon {
+    @apply inline-block h-4 w-4 shrink-0 align-[-0.15em];
+    stroke-width: 2;
+  }
+  .icon-sm { @apply h-3.5 w-3.5; }
+  .icon-lg { @apply h-5 w-5; }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex min-h-[2.25rem] cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-md border border-solid border-line-strong bg-surface px-3.5 py-1.5 text-sm font-medium leading-5 text-fg no-underline shadow-xs transition-colors;
+    font-family: inherit;
+  }
+  .btn:hover { @apply bg-surface-3 text-fg; }
+  .btn:disabled, .btn[aria-disabled='true'] { @apply pointer-events-none opacity-50; }
+  .btn-primary { @apply border-transparent bg-primary text-primary-fg; }
+  .btn-primary:hover { @apply bg-primary-hover text-primary-fg; }
+  .btn-success { @apply border-transparent bg-primary text-primary-fg; }
+  .btn-success:hover { @apply bg-primary-hover text-primary-fg; }
+  .btn-danger { @apply border-transparent bg-danger-solid text-white; }
+  .btn-danger:hover { @apply bg-danger-solid-hover text-white; }
+  .btn-secondary, .btn-default { @apply border-line-strong bg-surface text-fg; }
+  .btn-ghost { @apply border-transparent bg-transparent shadow-none; }
+  .btn-ghost:hover { @apply bg-surface-3; }
+  .btn-sm, .btn-xs { @apply min-h-[2rem] px-2.5 py-1 text-[0.8125rem]; }
+  .btn-md { @apply min-h-[2.25rem]; }
+  .btn-lg { @apply min-h-[2.5rem] px-4; }
+  .btn-icon { @apply min-h-0 h-9 w-9 px-0; }
+  .btn-icon.btn-sm { @apply h-8 w-8; }
+
+  /* Icon-only action links in tables and toolbars */
+  .action-link {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-md text-fg-muted no-underline transition-colors;
+  }
+  .action-link:hover { @apply bg-surface-3 text-fg; }
+  .action-link.is-danger:hover { @apply bg-danger-soft text-danger; }
+
+  /* Cards */
+  .card {
+    @apply rounded-lg border border-line bg-surface shadow-card;
+  }
+  .card-header {
+    @apply flex items-center justify-between gap-3 border-b border-line px-4 py-3 sm:px-5;
+  }
+  .card-title { @apply m-0 text-sm font-semibold text-fg; }
+  .card-body { @apply px-4 py-4 sm:px-5; }
+
+  /* Page header */
+  .page-header { @apply mb-6 flex flex-wrap items-end justify-between gap-4; }
+  .page-title { @apply m-0 text-xl font-semibold tracking-tight text-fg sm:text-2xl; }
+  .page-description { @apply mb-0 mt-1 text-sm text-fg-muted; }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-xs font-medium leading-4;
+  }
+  .badge-neutral { @apply border-line bg-surface-2 text-fg-muted; }
+  .badge-primary { @apply border-transparent bg-primary-soft text-primary-text; }
+  .badge-success { @apply border-success-line bg-success-soft text-success; }
+  .badge-warning { @apply border-warning-line bg-warning-soft text-warning; }
+  .badge-danger { @apply border-danger-line bg-danger-soft text-danger; }
+  .badge-info { @apply border-info-line bg-info-soft text-info; }
+
+  /* Alerts */
+  .alert {
+    @apply my-4 flex gap-3 rounded-lg border px-4 py-3 text-sm;
+  }
+  .alert > .icon { @apply mt-0.5; }
+  .alert p:first-child, .alert ul:first-child { @apply mt-0; }
+  .alert p:last-child, .alert ul:last-child { @apply mb-0; }
+  .alert-success { @apply border-success-line bg-success-soft text-success; }
+  .alert-warning { @apply border-warning-line bg-warning-soft text-warning; }
+  .alert-danger, .alert-error { @apply border-danger-line bg-danger-soft text-danger; }
+  .alert-info { @apply border-info-line bg-info-soft text-info; }
+  .alert a { @apply text-current; }
+
+  /* Form layout helpers */
+  .field { @apply mb-4; }
+  .field-label { @apply mb-1.5 block text-sm font-medium text-fg; }
+  .field-hint { @apply mt-1 text-xs text-fg-subtle; }
+  .form-actions { @apply mt-6 flex flex-wrap items-center gap-2; }
+
+  /* Data table */
+  .data-table { @apply w-full border-collapse text-left text-sm; }
+
+  /* Empty state */
+  .empty-state { @apply flex flex-col items-center justify-center gap-2 px-6 py-12 text-center text-fg-muted; }
+  .empty-state .icon { @apply h-8 w-8 text-fg-subtle; }
+
+  /* Visually hidden but available to assistive technology */
+  .sr-only-focusable:not(:focus):not(:focus-within) { @apply sr-only; }
+}
+
+/* -------------------------------------------------------------------------
+ * Application shell
+ * ---------------------------------------------------------------------- */
+@layer components {
+  .skip-link {
+    @apply fixed left-3 top-3 z-[100] -translate-y-20 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-fg no-underline shadow-pop transition-transform;
+  }
+  .skip-link:focus { @apply translate-y-0; }
+
+  .app-sidebar {
+    @apply fixed inset-y-0 left-0 z-40 flex flex-col border-r border-line bg-sidebar transition-[width,transform] duration-200;
+    width: var(--shell-sidebar-w);
+  }
+  .app-main {
+    @apply flex min-h-screen min-w-0 flex-col transition-[padding] duration-200;
+  }
+  @media (min-width: 1024px) {
+    .app-main { padding-left: var(--shell-sidebar-w); }
+  }
+  @media (max-width: 1023.98px) {
+    .app-sidebar { @apply -translate-x-full shadow-pop; }
+    .nav-open .app-sidebar { @apply translate-x-0; }
+    .nav-open .app-backdrop { @apply block; }
+  }
+  .app-backdrop { @apply fixed inset-0 z-30 hidden bg-slate-950/40 backdrop-blur-[1px]; }
+
+  @media (min-width: 1024px) {
+    .sidebar-collapsed { --shell-sidebar-w: 4rem; }
+    .sidebar-collapsed .nav-label,
+    .sidebar-collapsed .nav-group-chevron,
+    .sidebar-collapsed .nav-section-title,
+    .sidebar-collapsed .sidebar-brand-text,
+    .sidebar-collapsed .nav-filter,
+    .sidebar-collapsed .sidebar-footer-text { @apply sr-only; }
+    .sidebar-collapsed .nav-sub { @apply hidden; }
+    .sidebar-collapsed .nav-item,
+    .sidebar-collapsed .nav-group > summary { @apply justify-center px-0; }
+    .sidebar-collapsed .sidebar-brand { @apply justify-center px-0; }
+    .sidebar-collapsed .sidebar-collapse-btn .icon-collapse { @apply hidden; }
+    .sidebar-collapsed .sidebar-collapse-btn .icon-expand { @apply inline-block; }
+  }
+  .sidebar-collapse-btn .icon-expand { @apply hidden; }
+
+  .nav-section-title {
+    @apply mb-1 mt-5 px-3 text-2xs font-semibold uppercase tracking-wider text-fg-subtle;
+  }
+  .nav-item, .nav-group > summary {
+    @apply flex min-h-[2.25rem] w-full cursor-pointer items-center gap-3 rounded-md px-3 py-1.5 text-sm font-medium text-fg-muted no-underline transition-colors;
+  }
+  .nav-item:hover, .nav-group > summary:hover { @apply bg-surface-3 text-fg; }
+  .nav-item .icon, .nav-group > summary > .icon:first-child { @apply h-[1.125rem] w-[1.125rem] text-fg-subtle; }
+  .nav-item:hover .icon, .nav-group > summary:hover > .icon:first-child { @apply text-fg; }
+  .nav-item[aria-current='page'] {
+    @apply bg-primary-soft text-primary-text;
+  }
+  .nav-item[aria-current='page'] .icon { @apply text-primary-text; }
+  .nav-group > summary { list-style: none; }
+  .nav-group > summary::-webkit-details-marker { display: none; }
+  .nav-group[open] > summary .nav-group-chevron { @apply rotate-90; }
+  .nav-group-chevron { @apply ml-auto h-3.5 w-3.5 transition-transform; }
+  .nav-sub { @apply my-0.5 ml-[1.375rem] list-none border-l border-line pl-2; }
+  .nav-sub .nav-item { @apply min-h-[2rem] py-1 text-[0.8125rem] font-normal; }
+  .nav-sub .nav-item[aria-current='page'] { @apply font-medium; }
+  .nav-item.is-filtered-out, .nav-group.is-filtered-out { @apply hidden; }
+
+  .topbar {
+    @apply sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-line bg-canvas/85 px-4 backdrop-blur supports-[backdrop-filter]:bg-canvas/75 sm:px-6;
+  }
+
+  .breadcrumbs { @apply m-0 flex min-w-0 list-none items-center gap-1.5 p-0 text-sm; }
+  .breadcrumbs li { @apply m-0 flex min-w-0 items-center gap-1.5; }
+  .breadcrumbs a { @apply text-fg-muted no-underline hover:text-fg; }
+  .breadcrumbs [aria-current] { @apply truncate font-medium text-fg; }
+
+  .menu-panel {
+    @apply absolute right-0 top-full z-50 mt-2 w-64 origin-top-right rounded-lg border border-line bg-raised p-1.5 shadow-pop;
+  }
+  .menu-item {
+    @apply flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-sm text-fg no-underline transition-colors;
+  }
+  .menu-item:hover { @apply bg-surface-3; }
+  .menu-item .icon { @apply text-fg-subtle; }
+}
+
+/* -------------------------------------------------------------------------
+ * 4. Legacy markup layer
+ * The PHP pages emit Bootstrap 3 style markup (table.table, .btn, td.label,
+ * #formarea, body.popup, ...). These rules give that markup the new design.
+ * ---------------------------------------------------------------------- */
+@layer components {
+  /* --- Content container ------------------------------------------------ */
+  .app-content > h3:first-child,
+  .app-content > h3,
+  #formarea > h3 {
+    @apply mb-4 mt-0 text-lg font-semibold;
+  }
+  .clear { clear: both; }
+  .hide { display: none; }
+
+  /* --- Data tables -------------------------------------------------------- */
+  table:is(.table,.cmslist) {
+    @apply mb-0 w-full border-separate border-spacing-0 bg-surface text-left text-sm;
+  }
+  table:is(.table,.cmslist) > tbody > tr > td,
+  table:is(.table,.cmslist) > tbody > tr > th,
+  table:is(.table,.cmslist) > thead > tr > th,
+  table:is(.table,.cmslist) > tr > td,
+  table:is(.table,.cmslist) > tr > th {
+    @apply border-0 border-b border-solid border-line px-4 py-2.5 align-middle;
+  }
+  /* First row of th cells or a thead acts as the header */
+  table:is(.table,.cmslist) > thead > tr > th,
+  table:is(.table,.cmslist) > tbody > tr:first-child:has(> th) > *,
+  table:is(.table,.cmslist) tr.cmslisthead > * {
+    @apply whitespace-nowrap bg-surface-2 py-2 text-xs font-medium text-fg-muted;
+  }
+  table:is(.table,.cmslist) > tbody > tr:not(:first-child):hover > td,
+  table:is(.table,.cmslist) > tbody > tr:first-child:not(:has(> th)):hover > td { @apply bg-surface-2; }
+  table:is(.table,.cmslist) > tbody > tr:last-child > td { @apply border-b-0; }
+  table:is(.table,.cmslist) td { @apply text-fg; overflow-wrap: anywhere; }
+  table:is(.table,.cmslist) td a { @apply font-medium no-underline hover:underline; }
+  table:is(.table,.cmslist) td:last-child, table:is(.table,.cmslist) th:last-child { @apply whitespace-nowrap; }
+  /* Legacy rows set inline hover colours from JavaScript; keep the theme's colours instead */
+  table.cmslist > tbody > tr, table.cmslist > tr { background-color: transparent !important; }
+
+  /* Column sort controls (print_column_heading) */
+  .sort-heading { @apply inline-flex items-center gap-1; }
+  .sort-controls { @apply inline-flex items-center; }
+  .sort-link {
+    @apply inline-flex h-6 w-6 items-center justify-center rounded text-fg-subtle no-underline transition-colors;
+  }
+  .sort-link:hover { @apply bg-surface-3 text-fg; }
+  .sort-link.is-active { @apply bg-primary-soft text-primary-text; }
+
+  /* Header "add" links and row action icons (legacy <a><svg.icon></a>) */
+  table:is(.table,.cmslist) th a:has(> svg.icon),
+  table:is(.table,.cmslist) td a:has(> svg.icon),
+  #formarea legend a:has(> svg.icon),
+  .icon-action {
+    @apply ml-1 inline-flex h-8 min-w-[2rem] items-center justify-center rounded-md align-middle text-fg-muted no-underline transition-colors;
+  }
+  table:is(.table,.cmslist) td a:has(> svg.icon):hover,
+  .icon-action:hover { @apply bg-surface-3 text-fg; }
+  table:is(.table,.cmslist) th a:has(> svg.icon-add),
+  #formarea legend a:has(> svg.icon-add) {
+    @apply h-7 min-w-[1.75rem] bg-primary text-primary-fg shadow-xs;
+  }
+  table:is(.table,.cmslist) th a:has(> svg.icon-add):hover,
+  #formarea legend a:has(> svg.icon-add):hover { @apply bg-primary-hover text-primary-fg; }
+  table:is(.table,.cmslist) td a:has(> svg.icon-delete):hover { @apply bg-danger-soft text-danger; }
+  table:is(.table,.cmslist) td:last-child > a:first-child:has(> svg.icon) { @apply ml-0; }
+
+  /* Responsive wrapper added by js/cms.js around data tables */
+  .table-wrap {
+    @apply relative overflow-x-auto rounded-lg border border-line bg-surface shadow-card;
+  }
+  .table-wrap > table:is(.table,.cmslist) { @apply rounded-lg; }
+  .table-wrap + .table-wrap, .table-wrap + table, table:is(.table,.cmslist) + .table-wrap { @apply mt-4; }
+  /* Unwrapped tables (before JS / no JS) still get a frame */
+  :not(.table-wrap) > table:is(.table,.cmslist):not(.form-table) {
+    @apply rounded-lg border border-solid border-line;
+  }
+
+  /* --- List toolbar (print_nav) ----------------------------------------- */
+  .list-toolbar {
+    @apply mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between;
+  }
+  .list-toolbar-filters { @apply flex flex-1 flex-wrap items-center gap-2; }
+  .list-toolbar-search { @apply relative w-full sm:w-72; }
+  .list-toolbar-search .icon { @apply pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-fg-subtle; }
+  .list-toolbar-search input { @apply w-full pl-8; }
+  .pager { @apply flex flex-wrap items-center gap-2 text-sm text-fg-muted; }
+  .pager-status { @apply mr-1 whitespace-nowrap; }
+  .pager-goto { @apply flex items-center gap-1.5 whitespace-nowrap; }
+  .pager-goto input { @apply w-14 text-center; }
+
+  /* --- Popup windows ----------------------------------------------------- */
+  body.popup {
+    @apply min-h-0 bg-canvas px-4 pb-8 pt-0 sm:px-6;
+  }
+  body.popup > h3:first-of-type,
+  body.popup > h2:first-of-type,
+  body.popup:not(:has(> h3, > h2)) > #formarea > h3:first-of-type,
+  body.popup:not(:has(> h3, > h2)) > form > h3:first-of-type,
+  body.popup .popup-title {
+    @apply sticky top-0 z-10 -mx-4 mb-5 mt-0 flex items-center gap-2 border-b border-line bg-surface px-4 py-3.5 text-base font-semibold sm:-mx-6 sm:px-6;
+  }
+  body.popup > h3:first-of-type::before,
+  body.popup > h2:first-of-type::before,
+  body.popup:not(:has(> h3, > h2)) > #formarea > h3:first-of-type::before,
+  body.popup:not(:has(> h3, > h2)) > form > h3:first-of-type::before,
+  body.popup .popup-title::before {
+    content: '';
+    @apply inline-block h-5 w-1 rounded-full bg-primary;
+  }
+  body.popup > h3:not(:first-of-type), body.popup #formarea h3 { @apply mb-3 mt-6 text-base font-semibold; }
+  body.popup > p:first-of-type { @apply text-fg-muted; }
+
+  /* --- Forms (#formarea and label/value tables) ------------------------- */
+  #formarea { @apply max-w-full; }
+  #formarea > form, #formarea > table, .app-content #formarea { @apply max-w-5xl; }
+
+  #formarea table,
+  body.popup table:not(.calendar table):not(.ui-datepicker-calendar):not([class*='cke_']),
+  table.form-table,
+  table.table:has(td.label) {
+    @apply mb-4 w-full rounded-lg border border-solid border-line bg-surface shadow-card;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  #formarea table > tbody > tr > td,
+  #formarea table > tbody > tr > th,
+  body.popup table.table > tbody > tr > td,
+  body.popup table.table > tbody > tr > th,
+  table.table:has(td.label) > tbody > tr > td {
+    @apply border-0 border-b border-solid border-line px-4 py-3 align-top;
+  }
+  #formarea table > tbody > tr:last-child > td,
+  table.table:has(td.label) > tbody > tr:last-child > td { @apply border-b-0; }
+  #formarea table > tbody > tr:hover > td { background: transparent; }
+  #formarea table > tbody > tr:first-child:has(> th) > *,
+  table.table:has(td.label) > tbody > tr:first-child:has(> th) > * {
+    @apply bg-surface-2 text-xs font-medium text-fg-muted;
+  }
+  #formarea table td:last-child, body.popup table.table td:last-child, table.table:has(td.label) td:last-child { white-space: normal; }
+  /* Nested tables inside forms: flatten */
+  #formarea table table { @apply mb-0 rounded-md shadow-none; }
+
+  td.label, #formarea td.label {
+    @apply w-48 min-w-[9rem] pt-[1.1rem] text-sm font-medium text-fg;
+    white-space: normal;
+    overflow-wrap: normal !important;
+  }
+  @media (min-width: 1024px) { .app-content td.label { @apply w-56; } }
+  #formarea td.label + td { @apply text-fg; }
+  :is(#formarea, body.popup) :is(input[type='text'], input[type='password'], input[type='email'], input:not([type]), select:not([multiple]):not([size]), textarea) {
+    width: 100% !important;
+    max-width: 36rem;
+  }
+  /* Inputs deliberately hidden with an inline zero width (e.g. spam traps) stay hidden */
+  :is(#formarea, body.popup, .app-content) input[style*='width: 0'][name]:not(.x):not(.x):not(.x):not(.x),
+  :is(#formarea, body.popup, .app-content) input[style*='width:0'][name]:not(.x):not(.x):not(.x):not(.x) {
+    width: 0 !important; min-width: 0 !important; min-height: 0 !important;
+    padding: 0 !important; border: 0 !important; box-shadow: none !important; opacity: 0;
+  }
+  /* Leave room for inline add/edit links and buttons placed beside a full-width field */
+  :is(#formarea, body.popup) td:has(> :is(select, input[type='text']) ~ :is(a, button, input[type='button'], img)) > :is(select:not([multiple]):not([size]), input[type='text']):not([maxlength='10']):not([size]):not([id^='datepicker']) {
+    width: calc(100% - 4.5rem) !important;
+  }
+  :is(#formarea, body.popup) td:has(> input.formcb) > input[type='text'] { @apply mb-2 block; }
+  /* Cells holding several controls in a row (e.g. hour : minute) size them to content */
+  :is(#formarea, body.popup) td:has(> select ~ select) > select:not([multiple]):not([size]),
+  :is(#formarea, body.popup) td:has(> input[type='text'] ~ input[type='text']) > input[type='text'] {
+    width: auto !important; max-width: 14rem;
+  }
+  :is(#formarea, body.popup) :is(input[maxlength='1'], input[maxlength='2'], input[maxlength='3']):not([style*='width: 0']):not(.x):not(.x) { width: 4.5rem !important; }
+  :is(#formarea, body.popup) :is(input[maxlength='4'], input[maxlength='5']):not(.x):not(.x):not(.x) { width: 6.5rem !important; }
+  :is(#formarea, body.popup) .list-toolbar input, :is(#formarea, body.popup) .list-toolbar select { width: auto !important; }
+  :is(#formarea, body.popup) :is(input[maxlength='10'], input[size], input[id^='datepicker'], input.date):not(.x):not(.x) {
+    width: 11rem !important;
+  }
+  #formarea select[multiple], #formarea select[size] { @apply w-full max-w-xl; }
+  :is(#formarea, body.popup) textarea { max-width: none !important; }
+  #formarea td.formbtns, #formarea p.formbtns, td.formbtns, p.formbtns {
+    @apply bg-surface-2 text-left;
+  }
+  td.formbtns > *, p.formbtns > * { @apply mb-1 mr-1.5 align-middle; }
+  p.formbtns { @apply flex flex-wrap items-center gap-2 rounded-lg border border-line px-4 py-3; }
+  p.formbtns > * { @apply m-0; }
+  input.formcb { @apply h-4 w-4; }
+  p.form-error-intro { @apply mb-0 mt-4 font-semibold text-danger; }
+  p.form-error-intro + ul.error { @apply mt-2; }
+  .icon.is-off { @apply opacity-30; }
+  button.icon-action { @apply cursor-pointer border-0 bg-transparent p-0 shadow-none; }
+  li > button.icon-action, td > button.icon-action { @apply h-7 min-w-[1.75rem]; }
+
+  /* Stack label/field rows on small screens and narrow popups */
+  @media (max-width: 639.98px) {
+    #formarea table, body.popup table.table, table.table:has(td.label) { table-layout: fixed; }
+    #formarea table > tbody > tr,
+    body.popup table.table > tbody > tr:has(> td.label),
+    table.table:has(td.label) > tbody > tr { display: flex; flex-direction: column; }
+    #formarea table > tbody > tr > td, body.popup table.table > tbody > tr > td { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+    #formarea td.label, table.table:has(td.label) td.label {
+      @apply w-auto border-b-0 pb-1 pt-3;
+    }
+  }
+
+  #formarea table, .card, #formarea fieldset { position: relative; }
+  #formarea fieldset, .app-content fieldset {
+    @apply mb-4 rounded-lg border border-solid border-line bg-surface px-4 pb-4 pt-1 shadow-card;
+  }
+  #formarea legend, .app-content legend {
+    @apply float-left mb-2 flex w-full items-center gap-1 border-b border-line py-3 text-sm font-semibold text-fg;
+  }
+  #formarea legend + *, .app-content legend + * { clear: both; }
+  #formarea fieldset p { @apply mx-0 my-2; }
+
+  .required { @apply font-semibold text-danger; }
+  span.label { @apply text-xs font-semibold text-fg-muted; }
+  td.detail { @apply text-xs text-fg-muted; }
+  tr.subrow > td, .subrow { @apply bg-surface-2 text-fg-muted; }
+
+  /* Validation / feedback lists */
+  ul.nperrors, ul.error, .alert-legacy {
+    @apply my-4 list-none rounded-lg border border-danger-line bg-danger-soft px-4 py-3 pl-11 text-sm font-medium text-danger;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b42318' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 0.95rem 0.85rem;
+    background-size: 1.125rem;
+  }
+  .dark ul.nperrors, .dark ul.error {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5a19b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
+  }
+  ul.nperrors li, ul.error li { @apply my-0.5; }
+  span.error, p.error, div.error { @apply font-medium text-danger; }
+
+  /* Status indicators (content review dates etc.). An icon plus hidden text
+     added by js/cms.js means status is never conveyed by colour alone. */
+  .overdue, .imminent, .indate, .past, .future {
+    @apply font-medium;
+  }
+  td.overdue, td.imminent, td.indate, td.past, td.future,
+  span.overdue, span.imminent, span.indate {
+    @apply whitespace-nowrap;
+  }
+  .overdue { @apply text-danger; }
+  .imminent, .future { @apply text-warning; }
+  .indate { @apply text-success; }
+  .past { @apply text-fg-subtle; }
+  .status-icon { @apply mr-1.5 inline-block h-3.5 w-3.5 align-[-0.15em]; }
+
+  /* --- Content wizard (newcontent.php) ---------------------------------- */
+  #sections { @apply mb-6 lg:float-left lg:mb-0 lg:w-60; }
+  #sections ul { @apply m-0 list-none rounded-lg border border-line bg-surface p-1.5 shadow-card; }
+  #sections li { @apply m-0; }
+  #sections ul a {
+    @apply flex items-center gap-2.5 rounded-md px-3 py-2 text-sm font-medium text-fg-muted no-underline transition-colors;
+  }
+  #sections ul a:hover { @apply bg-surface-3 text-fg; }
+  #sections ul a#current { @apply bg-primary-soft text-primary-text; }
+  #sections ul a::before {
+    content: '';
+    @apply h-4 w-4 shrink-0 bg-current;
+    -webkit-mask: var(--step-icon) center / contain no-repeat;
+    mask: var(--step-icon) center / contain no-repeat;
+  }
+  #sections ul a.complete { --step-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E"); }
+  #sections ul a.complete::before { @apply text-success; }
+  #sections ul a.incomplete { --step-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E"); }
+  #sections ul a.incomplete::before { @apply text-danger; }
+  #sections ul a.optional { --step-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.1 2.182a10 10 0 0 1 3.8 0'/%3E%3Cpath d='M13.9 21.818a10 10 0 0 1-3.8 0'/%3E%3Cpath d='M17.609 3.721a10 10 0 0 1 2.69 2.7'/%3E%3Cpath d='M2.182 13.9a10 10 0 0 1 0-3.8'/%3E%3Cpath d='M20.279 17.609a10 10 0 0 1-2.7 2.69'/%3E%3Cpath d='M21.818 10.1a10 10 0 0 1 0 3.8'/%3E%3Cpath d='M3.721 6.391a10 10 0 0 1 2.7-2.69'/%3E%3Cpath d='M6.391 20.279a10 10 0 0 1-2.69-2.7'/%3E%3C/svg%3E"); }
+  #sections ul a.optional::before { @apply text-fg-subtle; }
+  #sections ul a .step-state { @apply ml-auto text-2xs font-normal uppercase tracking-wide text-fg-subtle; }
+  #sections form { @apply mt-3 flex flex-col gap-2; }
+  #sections form .btn { @apply w-full; }
+  #sections > p { @apply mt-3 text-sm; }
+  div.main { @apply min-w-0 lg:ml-[17rem]; }
+
+  /* Communications Unit questionnaire (comms.php, sent to staff by email) */
+  body.comms-page { @apply mx-auto max-w-3xl px-4 py-8 sm:py-12; }
+  body.comms-page > h1 { @apply mb-6 mt-0 text-2xl font-semibold tracking-tight; }
+  body.comms-page > h2 { @apply mb-3 mt-8 text-lg; }
+  body.comms-page .waffle { @apply rounded-lg border border-line bg-surface px-5 py-1 text-fg-muted shadow-card; }
+  body.comms-page fieldset { @apply mb-5 rounded-lg border border-solid border-line bg-surface px-5 pb-5 pt-1 shadow-card; }
+  body.comms-page legend { @apply float-left mb-2 w-full border-b border-line py-3 text-base font-semibold; }
+  body.comms-page legend + * { clear: both; }
+  body.comms-page .cb, body.comms-page .rating, body.comms-page fieldset > div:not([class]) {
+    @apply flex flex-col gap-1.5 border-b border-line py-2.5 last:border-b-0 sm:flex-row sm:items-center sm:gap-4;
+  }
+  body.comms-page .cb label, body.comms-page .rating label, body.comms-page fieldset > div:not([class]) label { @apply text-sm text-fg sm:flex-1; }
+  body.comms-page .cb:has(input[type='checkbox']) { @apply flex-row-reverse items-center justify-end gap-2 sm:flex-row-reverse; }
+  body.comms-page .cb:has(input[type='checkbox']) label { @apply flex-none; }
+  body.comms-page .cb input[type='text'] { @apply w-full sm:w-72; }
+  body.comms-page .rating select { @apply w-28 shrink-0; }
+  body.comms-page .ta { @apply py-3; }
+  body.comms-page .ta label { @apply mb-1.5 block text-sm font-medium; }
+  body.comms-page textarea { @apply w-full; }
+  body.comms-page #btn { @apply mt-6 flex justify-end; }
+
+  /* Section menu editor (sectionmenuedit.php). The page markup uses the public
+     website's ds_* class names; they are mapped onto the CMS design system here. */
+  body.menu-editor-page .ds_wrapper { @apply mx-auto w-full max-w-5xl px-4 sm:px-6; }
+  body.menu-editor-page .ds_wrapper .ds_wrapper { @apply max-w-none px-0; }
+  body.menu-editor-page .menu-editor { @apply pb-16 pt-8; }
+  body.menu-editor-page .menu-editor__heading { @apply mb-2 mt-0 text-2xl font-semibold tracking-tight; }
+  body.menu-editor-page .menu-editor__intro { @apply mb-8 mt-0 max-w-2xl text-fg-muted; }
+  body.menu-editor-page .visually-hidden { @apply sr-only; }
+  body.menu-editor-page .ds_no-bullets { @apply list-none pl-0; }
+  body.menu-editor-page .ds_field-group { @apply mb-6; }
+  body.menu-editor-page .ds_label { @apply mb-1.5 block text-sm font-medium; }
+  body.menu-editor-page .ds_select { @apply w-full max-w-md; }
+  body.menu-editor-page .ds_input { @apply w-full; }
+  body.menu-editor-page .ds_button { @apply btn btn-primary; }
+  body.menu-editor-page .ds_button--secondary { @apply btn-secondary; }
+  body.menu-editor-page .ds_notification { @apply alert; }
+  body.menu-editor-page .ds_notification--error { @apply alert-danger; }
+  body.menu-editor-page .ds_notification--success { @apply alert-success; }
+  body.menu-editor-page .menu-panel { @apply mb-8 overflow-hidden rounded-lg border border-line bg-surface shadow-card; }
+  body.menu-editor-page .menu-panel__heading { @apply m-0 border-b border-line bg-surface-2 px-5 py-3.5 text-base font-semibold; }
+  body.menu-editor-page .menu-panel__body { @apply p-5; }
+  body.menu-editor-page .menu-table { @apply mb-5 w-full border-collapse text-sm; }
+  body.menu-editor-page .menu-table th { @apply border-b border-line px-2.5 py-2 text-left text-xs font-medium text-fg-muted; }
+  body.menu-editor-page .menu-table td { @apply border-b border-line px-2 py-2 align-middle; }
+  body.menu-editor-page .menu-table input { @apply w-full; }
+  body.menu-editor-page .drag-handle { @apply w-11 cursor-grab select-none text-center text-xl text-fg-subtle; }
+  body.menu-editor-page .drag-handle:active { @apply cursor-grabbing; }
+  body.menu-editor-page .sortable-ghost td { @apply bg-primary-soft; }
+  body.menu-editor-page .menu-actions { @apply flex flex-wrap gap-2.5; }
+  body.menu-editor-page .save-bar { @apply sticky bottom-0 z-30 mt-8 border-t border-line bg-canvas/95 py-4 backdrop-blur; }
+  body.menu-editor-page .save-bar__inner { @apply flex flex-wrap items-center justify-between gap-4; }
+  body.menu-editor-page .save-bar__status { @apply m-0 text-sm text-fg-muted; }
+  body.menu-editor-page .empty-message { @apply rounded-lg border border-info-line bg-info-soft p-5 text-info; }
+  @media (max-width: 767.98px) {
+    body.menu-editor-page .menu-table { @apply block overflow-x-auto; }
+    body.menu-editor-page .menu-table th, body.menu-editor-page .menu-table td { min-width: 180px; }
+    body.menu-editor-page .menu-table th:first-child, body.menu-editor-page .menu-table td:first-child { min-width: 45px; }
+  }
+
+  /* Front page areas */
+  .fpareas { @apply mb-5 rounded-lg border border-line bg-surface p-4 shadow-card; }
+  .fpareas h4 { @apply mb-2 mt-0; }
+  .fpareas ul { @apply list-none pl-0; }
+
+  /* Legacy Bootstrap helpers still used in some markup */
+  .list-group { @apply m-0 list-none overflow-hidden rounded-lg border border-line bg-surface p-0 shadow-card; }
+  .list-group-item { @apply block border-b border-line px-4 py-2.5 text-sm text-fg no-underline last:border-b-0; }
+  a.list-group-item:hover { @apply bg-surface-2; }
+  .text-center { text-align: center; }
+  .text-right { text-align: right; }
+  .pull-right { float: right; }
+  .pull-left { float: left; }
+  .img-responsive { @apply h-auto max-w-full; }
+  .well { @apply my-4 rounded-lg border border-line bg-surface-2 p-4; }
+  .form-control { @apply w-full; }
+  .form-group { @apply mb-4; }
+  .row { @apply flex flex-wrap gap-y-4; }
+  .help-block { @apply mt-1 text-xs text-fg-subtle; }
+  .label-default, .label-primary, .label-success, .label-warning, .label-danger, .label-info { @apply badge; }
+  .label-default { @apply badge-neutral; }
+  .label-primary { @apply badge-primary; }
+  .label-success { @apply badge-success; }
+  .label-warning { @apply badge-warning; }
+  .label-danger { @apply badge-danger; }
+  .label-info { @apply badge-info; }
+  .alert-dismissible .close { @apply ml-auto; }
+}
+
+/* -------------------------------------------------------------------------
+ * 5. Third-party widgets
+ * ---------------------------------------------------------------------- */
+@layer components {
+  /* jQuery UI datepicker (replaces the "smoothness" theme look) */
+  .ui-datepicker.ui-widget {
+    @apply z-[60] w-72 rounded-lg border border-solid border-line bg-raised p-3 text-sm text-fg shadow-pop;
+    font-family: inherit !important;
+  }
+  .ui-datepicker .ui-widget-header {
+    @apply mb-2 rounded-md border-0 bg-transparent font-semibold text-fg;
+  }
+  .ui-datepicker .ui-datepicker-title { @apply text-sm leading-8; }
+  .ui-datepicker .ui-datepicker-prev,
+  .ui-datepicker .ui-datepicker-next {
+    @apply top-1 flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0;
+  }
+  .ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover {
+    @apply border-0 bg-surface-3;
+    top: 0.25rem !important;
+  }
+  .ui-datepicker .ui-datepicker-prev-hover { left: 2px !important; }
+  .ui-datepicker .ui-datepicker-next-hover { right: 2px !important; }
+  .ui-datepicker .ui-datepicker-prev .ui-icon,
+  .ui-datepicker .ui-datepicker-next .ui-icon {
+    @apply bg-fg;
+    background-image: none !important;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m15 18-6-6 6-6'/%3E%3C/svg%3E") center / 1rem no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m15 18-6-6 6-6'/%3E%3C/svg%3E") center / 1rem no-repeat;
+  }
+  .ui-datepicker .ui-datepicker-next .ui-icon { transform: rotate(180deg); }
+  .ui-datepicker table { @apply m-0 w-full border-collapse text-xs; }
+  .ui-datepicker th { @apply p-1 text-center text-2xs font-medium uppercase text-fg-subtle; }
+  .ui-datepicker td { @apply p-0.5; }
+  .ui-datepicker td .ui-state-default {
+    @apply rounded-md border-0 bg-transparent p-1.5 text-center text-xs font-normal text-fg;
+  }
+  .ui-datepicker td .ui-state-default.ui-state-hover { @apply bg-surface-3; }
+  .ui-datepicker td .ui-state-highlight { @apply bg-primary-soft font-semibold text-primary-text; }
+  .ui-datepicker td .ui-state-active { @apply bg-primary text-primary-fg; }
+  .ui-datepicker .ui-datepicker-unselectable .ui-state-default { @apply opacity-40; }
+
+  /* DHTML calendar (js/calendar.js) */
+  div.calendar {
+    @apply z-[60] rounded-lg border border-solid border-line bg-raised p-2 text-xs text-fg shadow-pop;
+    font-family: inherit;
+  }
+  div.calendar table { @apply border-collapse bg-transparent; }
+  div.calendar .button, div.calendar thead .title, div.calendar thead .name,
+  div.calendar thead .daynames td, div.calendar tbody td, div.calendar tfoot .ttip {
+    @apply border-0 bg-transparent p-1 text-center text-fg;
+  }
+  div.calendar thead .title { @apply font-semibold; }
+  div.calendar thead .daynames td, div.calendar thead .name { @apply text-2xs uppercase text-fg-subtle; }
+  div.calendar .button, div.calendar tbody td.day { @apply cursor-pointer rounded-md; }
+  div.calendar thead .hilite, div.calendar tbody td.hilite, div.calendar tbody td.rowhilite { @apply bg-surface-3; }
+  div.calendar tbody td.selected { @apply bg-primary font-semibold text-primary-fg; }
+  div.calendar tbody td.today { @apply font-bold text-primary-text; }
+  div.calendar tbody td.weekend { @apply text-danger; }
+  div.calendar tbody td.emptycell { visibility: hidden; }
+  div.calendar tfoot .ttip { @apply text-fg-subtle; }
+  div.calendar .combo { @apply rounded-md border border-solid border-line bg-raised shadow-pop; }
+  div.calendar .combo .label { @apply px-2 py-1; }
+  div.calendar .combo .hilite { @apply bg-surface-3; }
+
+  /* CKEditor 4: keep the editor's own skin, frame it to match */
+  .cke_chrome { @apply overflow-hidden rounded-lg !border-solid !border-line shadow-card; }
+  .dark .cke_chrome { @apply !border-line-strong; }
+}
+
+/* -------------------------------------------------------------------------
+ * Reduced motion & print
+ * ---------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .app-sidebar, .topbar, .app-backdrop, .skip-link, .list-toolbar, .no-print { display: none !important; }
+  .app-main { padding-left: 0 !important; }
+  html, body { background: #fff !important; color: #000 !important; }
+  .table-wrap, .card { box-shadow: none !important; }
+}

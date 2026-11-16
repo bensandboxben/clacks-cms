@@ -18,7 +18,7 @@ function show_tenderfile_form($values=array(), $errors=array()) {
 	if ($values["tenderfileid"]) echo '<input type="hidden" name="tenderfileid" value="' . $values["tenderfileid"] . '">';
 	echo '</td></tr>';
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save File">&nbsp;<input type="submit" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save File">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '</form>';
 }
 function confirm_tenderfile_deletion($tenderfileid, $tenderid) {
@@ -33,13 +33,14 @@ function confirm_tenderfile_deletion($tenderfileid, $tenderid) {
 	echo '</form>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <div id="formarea">
 <h3>Tender Files</h3>
 <?php
@@ -54,7 +55,7 @@ switch ($_REQUEST["action"]) {
 		echo "<p>Delete File from Tender: <strong>$tender</strong></p>";
 		break;
 	default:
-		echo '<p>Manage for files for Tender: <strong>' . $tender . '</strong> <a href="tenderfiles.php?action=add&tenderid=' . $tenderid . '"><img src="images/add.gif" alt="Add new file" border="0" /></a></p>';
+		echo '<p>Manage for files for Tender: <strong>' . $tender . '</strong> <a href="tenderfiles.php?action=add&tenderid=' . $tenderid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new file</span></a></p>';
 		break;
 }
 if ($_POST["confdel"]) {
@@ -172,14 +173,14 @@ if (($tenderfiles = $db->get_results("SELECT * FROM tenderfiles WHERE tenderid='
 		echo '</td>';
 		echo '<td class="detail">' . $tenderfile->description . '</td>';
 		echo '<td width="100" align="right">';
-		echo '<a href="tenderfiles.php?action=edit&tenderfileid=' . $tenderfile->tenderfileid . '&tenderid=' . $tenderid . '"><img src="images/edit.gif" alt="Edit File" border="0"></a> ';
-		echo '<a href="tenderfiles.php?action=delete&tenderfileid=' . $tenderfile->tenderfileid . '&tenderid=' . $tenderid . '"><img src="images/delete.gif" alt="Delete File" border="0"></a>';
+		echo '<a href="tenderfiles.php?action=edit&tenderfileid=' . $tenderfile->tenderfileid . '&tenderid=' . $tenderid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit File</span></a> ';
+		echo '<a href="tenderfiles.php?action=delete&tenderfileid=' . $tenderfile->tenderfileid . '&tenderid=' . $tenderid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete File</span></a>';
 		echo '</td>';
 		echo '</tr>';
 	}
 	echo '</table>';
 }
-if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" value="Close" onclick="self.close();"></p>';
+if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="self.close();"></p>';
 ?>
 </div>
 </body>

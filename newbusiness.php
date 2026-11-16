@@ -15,13 +15,14 @@ if ($_GET["action"] == "edit") {
 	extract($bus_array);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <?php if ($edit == 1) { ?>
 <h3>Edit business</h3>
 <?php } else { ?>
@@ -57,7 +58,7 @@ self.close();
 </script>
 <?php
 	} else {
-		echo '<p>The business was not saved. Please correct these errors and resubmit the form:</p><ul>';
+		echo '<p class="form-error-intro" role="alert">The business was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 		foreach ($errors as $error) {
 			echo '<li>' . $error . '</li>';
 		}
@@ -88,7 +89,7 @@ document.forms['business'].postcode.value = postcode;
 <td><input type="text" name="surname" value="<?php echo $surname; ?>" maxlength="250" style="width: 300px;" /></td></tr>
 <tr><td class="label">Contact position:</td>
 <td><input type="text" name="position" value="<?php echo $position; ?>" maxlength="250" style="width: 300px;" /></td></tr>
-<tr><td class="label">Address: <!-- <a href="#" onClick="window.open('newbuslocation.php', 'loc_new', 'width=700,height=250,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new location" border="0" /></a> --></td>
+<tr><td class="label">Address: <!-- <a href="#" onClick="window.open('newbuslocation.php', 'loc_new', 'width=700,height=250,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new location</span></a> --></td>
 <td><textarea name="address" rows="5" cols="30"><?php echo $address; ?></textarea></td></tr>
 <tr><td class="label">Postcode:</td>
 <td><input type="text" name="postcode" value="<?php echo $postcode; ?>" maxlength="20" style="width: 100px;" /></td></tr>
@@ -139,7 +140,7 @@ build_select_box($subsections, "subsectionid", $subsectionid, '--');
 
 
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Cancel" onclick="javascript: window.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" /> <input type="submit" class="btn btn-md btn-secondary" value="Cancel" onclick="javascript: window.close();" />
 <?php if ($_REQUEST["noreturn"] == 1) echo '<input type="hidden" name="noreturn" value="1" />'; ?>
 <?php if ($busid) echo '<input type="hidden" name="busid" value="' . $busid . '" />'; ?>
 </td></tr>

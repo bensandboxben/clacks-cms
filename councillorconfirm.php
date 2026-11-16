@@ -22,8 +22,8 @@ foreach ($documents as $document){
 
 echo '<tr><td>&nbsp;</td></tr>';
 echo '<tr><td colspan="2" class="formbtns">';
-//	<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Back" onclick="window.open(\'newcouncillordoc.php?noreturn=1&action=edit&id=' . $_GET[docid]  . '\', \'mywindow\', \'width=500,height=550,top=50,left=50,resizable=yes,scrollbars=yes \');" />&nbsp;
-echo '	<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="javascript: window.close();" />';
+//	<input type="submit" class="btn btn-md btn-secondary" value="Back" onclick="window.open(\'newcouncillordoc.php?noreturn=1&action=edit&id=' . $_GET[docid]  . '\', \'mywindow\', \'width=500,height=550,top=50,left=50,resizable=yes,scrollbars=yes \');" />&nbsp;
+echo '	<input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="javascript: window.close();" />';
 echo '</td></tr>';
 echo '</table>';
 

@@ -51,7 +51,7 @@ print_column_heading("Images", "", "15%");
 print_column_heading("Live?", "live", "10%");
 print_column_heading("Created", "created", "15%");
 ?>
-<td width="15%">Actions <a href="#" onClick="window.open('newgallery.php?noreturn=1', 'gallery_new', 'width=500,height=300,top=50,left=50,resizable=yes,scrollbars=yes')"><img src="images/add.gif" alt="Add gallery" border="0"></a></td>
+<td width="15%">Actions <a href="#" onClick="window.open('newgallery.php?noreturn=1', 'gallery_new', 'width=500,height=300,top=50,left=50,resizable=yes,scrollbars=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add gallery</span></a></td>
 </tr>
 <?php
 if (count($records) > 0) {
@@ -63,10 +63,10 @@ if (count($records) > 0) {
 		echo '<td width="10%">' . (($record->live) ? "Yes" : "No") . '</td>';
 		echo '<td width="15%">' . date("j M Y", $record->created) . '</td>';
 		echo '<td width="15%">';
-		echo '<a href="#" onClick="window.open(\'newgallery.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'gallery_edit\', \'width=500,height=300,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/edit.gif" alt="edit gallery" border="0"></a> ';
-		echo '<a href="#" onClick="window.open(\'galleryimages.php?galleryid=' . $record->$dbkey . '\', \'gallery_images\', \'width=700,height=600,top=50,left=50,resizable=yes,scrollbars=yes\')"><img src="images/images.gif" alt="edit gallery images" border="0"></a> ';
+		echo '<a href="#" onClick="window.open(\'newgallery.php?noreturn=1&action=edit&id=' . $record->$dbkey . '\', \'gallery_edit\', \'width=500,height=300,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">edit gallery</span></a> ';
+		echo '<a href="#" onClick="window.open(\'galleryimages.php?galleryid=' . $record->$dbkey . '\', \'gallery_images\', \'width=700,height=600,top=50,left=50,resizable=yes,scrollbars=yes\')"><svg class="icon icon-images" aria-hidden="true" focusable="false"><use href="images/icons.svg#images"></use></svg><span class="sr-only">edit gallery images</span></a> ';
 		echo "<a href=\"#\" onClick=\"window.open('delete.php?table=galleries.galleries&id=" . $record->$dbkey . "', 'delete', 'width=400,height=250,resizable=yes,scrollbars=yes,top=50,left=50')\">";
-		echo '<img src="images/delete.gif" alt="delete gallery" border="0"></a> ';
+		echo '<svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">delete gallery</span></a> ';
 		echo '</td></tr>';
 	}
 }

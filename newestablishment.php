@@ -2,13 +2,14 @@
 include_once "includes/prepend.inc.php";
 header("Cache-Control: private");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3>Add new estblishment</h3>
 <?php
 if ($_POST["save"]) {
@@ -26,7 +27,7 @@ self.close();
 </script>
 <?php
 	} else {
-		echo '<p>The establishment was not saved. Please correct these errors and resubmit the form:</p><ul>';
+		echo '<p class="form-error-intro" role="alert">The establishment was not saved. Please correct these errors and resubmit the form:</p><ul class="error">';
 		foreach ($errors as $error) {
 			echo '<li>' . $error . '</li>';
 		}
@@ -54,14 +55,14 @@ $settlements = $db->get_results("SELECT settlementid, settlement FROM settlement
 build_select_box($settlements, "settlementid", $_POST["settlementid"]);
 ?>
 </td></tr>
-<tr><td class="label">Address: <a href="#" onClick="window.open('newlocation.php', 'loc_new', 'width=500,height=300,resizable=yes,scrollbars=yes,top=50,left=50')"><img src="images/add.gif" alt="Add new location" border="0" /></a></td>
+<tr><td class="label">Address: <a href="#" onClick="window.open('newlocation.php', 'loc_new', 'width=500,height=300,resizable=yes,scrollbars=yes,top=50,left=50')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new location</span></a></td>
 <td><textarea name="address" style="width: 250px; height: 80px;"><?php echo $_POST["address"]; ?></textarea></td></tr>
 <tr><td class="label">Postcode:</td>
 <td><input type="text" name="postcode" value="<?php echo $_POST["postcode"]; ?>" maxlength="10" style="width: 80px;" /></td></tr>
 <tr><td class="label">UPRN (read only):</td>
 <td><input type="text" name="uprn" value="<?php echo $_POST["uprn"]; ?>" readonly="readonly" style="width: 80px;" /></td></tr>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Save" />  <input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onclick="self.close();" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Save" />  <input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onclick="self.close();" />
 </td></tr>
 </table>
 </form>

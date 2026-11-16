@@ -5,7 +5,7 @@ if (!get_np_var('basic')) {
 } else {
 	set_np_var("related", 1);
 ?>
-<fieldset><legend>Related documents <a href="#" onClick="window.open('addreldoc.php', 'reldoc_add', 'width=600,height=500,top=50,left=50,resizable=yes')"><img src="images/add.gif" alt="Add external link" border="0" /></a></legend>
+<fieldset><legend>Related documents <a href="#" onClick="window.open('addreldoc.php', 'reldoc_add', 'width=600,height=500,top=50,left=50,resizable=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add external link</span></a></legend>
 <?php
 if (!is_array(get_np_var('reldocs'))||(count(get_np_var('reldocs')) == 0)) {
 	echo '<p>No related documets currently defined.</p>';
@@ -19,7 +19,7 @@ if (!is_array(get_np_var('reldocs'))||(count(get_np_var('reldocs')) == 0)) {
 }
 ?>
 </fieldset>
-<fieldset><legend>Related forms <a href="#" onClick="window.open('addrelform.php', 'relform_add', 'width=600,height=500,top=50,left=50,resizable=yes')"><img src="images/add.gif" alt="Add external link" border="0" /></a></legend>
+<fieldset><legend>Related forms <a href="#" onClick="window.open('addrelform.php', 'relform_add', 'width=600,height=500,top=50,left=50,resizable=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add external link</span></a></legend>
 <?php
 if (!is_array(get_np_var('relforms'))||(count(get_np_var('relforms')) == 0)) {
 	echo '<p>No related forms currently defined.</p>';
@@ -34,7 +34,7 @@ if (!is_array(get_np_var('relforms'))||(count(get_np_var('relforms')) == 0)) {
 ?>
 </fieldset>
 <!--
-<fieldset><legend>Related FAQ Subjects <a href="#" onClick="window.open('addrelfaq.php', 'relform_add', 'width=600,height=500,top=50,left=50,resizable=yes')"><img src="images/add.gif" alt="Add external link" border="0" /></a></legend>
+<fieldset><legend>Related FAQ Subjects <a href="#" onClick="window.open('addrelfaq.php', 'relform_add', 'width=600,height=500,top=50,left=50,resizable=yes')"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add external link</span></a></legend>
 <?php
 if (!is_array(get_np_var('relfaqs'))||(count(get_np_var('relfaqs')) == 0)) {
 	echo '<p>No related subjects currently defined.</p>';

@@ -30,17 +30,22 @@ if ($_POST["save"]) {
 }
 $user = $db->get_row("SELECT * FROM cms.users WHERE userid='$_SESSION[userid]'");
 ?>
-<h3>Edit user profile</h3>
+<div class="page-header">
+	<div class="min-w-0">
+		<h1 class="page-title">Edit user profile</h1>
+		<p class="page-description">Update your contact details and password.</p>
+	</div>
+</div>
 <div id="formarea">
 <?php
 if (count($errors) > 0) {
-	echo '<ul class="error">';
+	echo '<ul class="error" role="alert">';
 	foreach ($errors as $error) {
 		echo '<li>' . $error . '</li>';
 	}
 	echo '</ul>';
 } else if ($usermsg) {
-	echo '<ul class="error"><li>' . $usermsg . '</li></ul>';
+	echo cms_alert('success', '<p>' . $usermsg . '</p>');
 }
 ?>
 <form action="profile.php" method="post" id="profilefrm">
@@ -52,15 +57,15 @@ if (count($errors) > 0) {
 <tr><td class="label">Service:</td>
 <td><?php echo $db->get_var("SELECT service FROM cms.services WHERE serviceid='$_SESSION[userserviceid]'"); ?></td></tr>
 <tr><td class="label">Change password:</td>
-<td><input type="password" name="newpass" /></td></tr>
+<td><input type="password" name="newpass" autocomplete="new-password" /></td></tr>
 <tr><td class="label">Confirm password:</td>
-<td><input type="password" name="confpass" /></td></tr>
+<td><input type="password" name="confpass" autocomplete="new-password" /></td></tr>
 <tr><td class="label">Email address:</td>
 <td><input type="text" name="email" style="width: 18em;" value="<?php if ($_POST["email"]) { echo $_POST["email"]; } else { echo $user->email; } ?>" /></td></tr>
 <tr><td class="label">Telephone:</td>
 <td><input type="text" name="telephone" style="width: 12em;" value="<?php if ($_POST["telephone"]) { echo $_POST["telephone"]; } else { echo $user->telephone; } ?>" /></td></tr>
 <tr><td colspan="2" class="formbtns">
-<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="save" value="Update profile" />
+<input type="submit" class="btn btn-md btn-primary" name="save" value="Update profile" />
 </td></tr>
 </table>
 </form>

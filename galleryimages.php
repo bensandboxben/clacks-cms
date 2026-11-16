@@ -50,7 +50,7 @@ HTML;
 	if ($values["imageid"]) echo '<input type="hidden" name="imageid" value="' . $values["imageid"] . '">';
 	echo '</td></tr>';
 	echo '</table>';
-	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="submit" value="Save image">&nbsp;<input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
+	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" name="submit" value="Save image">&nbsp;<input type="submit" class="btn btn-md btn-secondary" name="cancel" value="Cancel" onClick="history.go(-1);"></p>';
 	echo '</form>';
 }
 function confirm_image_deletion($imageid, $galleryid) {
@@ -65,13 +65,14 @@ function confirm_image_deletion($imageid, $galleryid) {
 	echo '</form>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <div id="formarea">
 <h3>Gallery images</h3>
 <?php
@@ -86,7 +87,7 @@ switch ($_REQUEST["action"]) {
 		echo "<p>Delete image from gallery: <strong>$gallery->name</strong></p>";
 		break;
 	default:
-		echo '<p>Manage images for gallery: <strong>' . $gallery->name  . '</strong> <a href="galleryimages.php?action=add&galleryid=' . $gallery->galleryid . '"><img src="images/add.gif" alt="Add new image" border="0" /></a></p>';
+		echo '<p>Manage images for gallery: <strong>' . $gallery->name  . '</strong> <a href="galleryimages.php?action=add&galleryid=' . $gallery->galleryid . '"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add new image</span></a></p>';
 		break;
 }
 if ($_POST["confdel"]) {
@@ -253,29 +254,29 @@ if ($_POST["confdel"]) {
 if (($images = $db->get_results("SELECT * FROM galleries.images WHERE galleryid='$galleryid'"))&&($print_table == 1)) {
 	echo '<table width="100%">';
 	for ($x=0; $x < count($images); $x++) {
-		echo '<tr><td width="24"><img src="images/image.gif" alt="image" /></td>';
+		echo '<tr><td width="24"><svg class="icon icon-image" aria-hidden="true" focusable="false"><use href="images/icons.svg#image"></use></svg><span class="sr-only">image</span></td>';
 		echo '<td class="detail">';
 		echo '<a target="_blank" href="http://clacksweb/images/gallery/' . $images[$x]->imageid . '.jpg">' . $images[$x]->title . '</a>';
 		echo '</td><td>' . $images[$x]->description . '</td>';
 		echo '<td width="120" align="right">';
-		echo '<a href="galleryimages.php?action=edit&imageid=' . $images[$x]->imageid . '&galleryid=' . $images[$x]->galleryid . '"><img src="images/edit.gif" alt="Edit image" border="0"></a> ';
-		echo '<a href="galleryimages.php?action=delete&imageid=' . $images[$x]->imageid . '&galleryid=' . $images[$x]->galleryid . '"><img src="images/delete.gif" alt="Delete image" border="0"></a>';
+		echo '<a href="galleryimages.php?action=edit&imageid=' . $images[$x]->imageid . '&galleryid=' . $images[$x]->galleryid . '"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit image</span></a> ';
+		echo '<a href="galleryimages.php?action=delete&imageid=' . $images[$x]->imageid . '&galleryid=' . $images[$x]->galleryid . '"><svg class="icon icon-delete" aria-hidden="true" focusable="false"><use href="images/icons.svg#trash-2"></use></svg><span class="sr-only">Delete image</span></a>';
 		if ($x > 0) {
-			echo ' <a href="galleryimages.php?galleryid=' . $galleryid . '&fromid=' . $images[$x]->imageid . '&fromso=' . $images[$x]->sortorder . '&toid=' . $images[$x-1]->imageid . '&toso=' . $images[$x-1]->sortorder . '"><img src="images/up.gif" alt="Move image up" border="0"></a>';
+			echo ' <a href="galleryimages.php?galleryid=' . $galleryid . '&fromid=' . $images[$x]->imageid . '&fromso=' . $images[$x]->sortorder . '&toid=' . $images[$x-1]->imageid . '&toso=' . $images[$x-1]->sortorder . '"><svg class="icon icon-up" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-up"></use></svg><span class="sr-only">Move image up</span></a>';
 		} else {
-			echo ' <img src="images/upoff.gif" alt="Top file" border="0"> ';
+			echo ' <svg class="icon icon-up is-off" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-up"></use></svg><span class="sr-only">Top file</span> ';
 		}
 		if ($x < (count($images)-1)) {
-			echo ' <a href="galleryimages.php?galleryid=' . $galleryid . '&fromid=' . $images[$x]->imageid . '&fromso=' . $images[$x]->sortorder . '&toid=' . $images[$x+1]->imageid . '&toso=' . $images[$x+1]->sortorder . '"><img src="images/down.gif" alt="Move image down" border="0"></a>';
+			echo ' <a href="galleryimages.php?galleryid=' . $galleryid . '&fromid=' . $images[$x]->imageid . '&fromso=' . $images[$x]->sortorder . '&toid=' . $images[$x+1]->imageid . '&toso=' . $images[$x+1]->sortorder . '"><svg class="icon icon-down" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-down"></use></svg><span class="sr-only">Move image down</span></a>';
 		} else {
-			echo ' <img src="images/downoff.gif" alt="Bottom file" border="0"> ';
+			echo ' <svg class="icon icon-down is-off" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-down"></use></svg><span class="sr-only">Bottom file</span> ';
 		}
 		echo '</td>';
 		echo '</tr>';
 	}
 	echo '</table>';
 }
-if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="self.close();"></p>';
+if ($print_table == 1) 	echo '<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="self.close();"></p>';
 ?>
 </div>
 </body>

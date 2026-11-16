@@ -66,8 +66,8 @@ if ($handle = opendir('/home/site/wwwroot/cms/menus')) {
 	echo '</select>';
 }
 ?>
-<a href="#" onClick="editMenu()"><img src="images/edit.gif" alt="Edit menu" border="0" /></a>
-<a href="#" onClick="addMenu()"><img src="images/add.gif" alt="Add menu" border="0" /></a>
+<a href="#" onClick="editMenu()"><svg class="icon icon-edit" aria-hidden="true" focusable="false"><use href="images/icons.svg#pencil"></use></svg><span class="sr-only">Edit menu</span></a>
+<a href="#" onClick="addMenu()"><svg class="icon icon-add" aria-hidden="true" focusable="false"><use href="images/icons.svg#plus"></use></svg><span class="sr-only">Add menu</span></a>
 </td></tr>
 <tr><td class="label">Script:</td>
 <td>

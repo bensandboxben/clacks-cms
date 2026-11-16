@@ -4,13 +4,14 @@ header("Cache-Control: private");
 $extlinkid = $_REQUEST["extlinkid"];
 $extlink=$db->get_var("SELECT title FROM extlinks WHERE extlinkid='$extlinkid'");
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
 <title>ClacksWeb CMS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="css/screen.css" type="text/css">
+<?php include "includes/head.inc.php"; ?>
 </head>
-<body bgcolor="#FFFFFF" class="popup">
+<body class="popup">
 <h3><?php echo $extlink; ?></h3>
 <div id="formarea">
 <h4>ClacksWeb links</h4>
@@ -37,7 +38,7 @@ if ($entries = $db->get_results("SELECT extlinkcat, extlinkcaturl FROM extlinkXe
 }
 ?>
 </ul>
-<p class="formbtns"><input type="submit" class="btn btn-md btn-primary" class="btn btn-md btn-primary" value="Close" onclick="self.close();"></p>
+<p class="formbtns"><input type="submit" class="btn btn-md btn-secondary" value="Close" onclick="self.close();"></p>
 </div>
 </body>
 </html>
