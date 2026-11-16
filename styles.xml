@@ -1,0 +1,36 @@
+<styles>
+	<group>
+		<name>Headings</name>
+		<style>
+			<name>Sub-heading</name>
+			<elt>h4</elt>
+		</style>
+		<style>
+			<name>Sub-sub-heading</name>
+			<elt>h5</elt>
+		</style>
+	</group>
+	<group>
+		<name>Highlighting</name>
+		<style>
+			<name>Highlight block</name>
+			<elt>div</elt>
+			<attr>
+				<name>class</name>
+				<value>highlight</value>
+			</attr>
+		</style>
+		<style>
+			<name>Error message</name>
+			<elt>span</elt>
+			<attr>
+				<name>class</name>
+				<value>error</value>
+			</attr>
+		</style>
+		<style>
+			<name>Quote</name>
+			<elt>q</elt>
+		</style>
+	</group>
+</styles>

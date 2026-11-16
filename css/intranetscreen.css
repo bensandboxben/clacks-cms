@@ -1,0 +1,331 @@
+	body {
+	background-color: #fff;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", verdana, lucida, helvetica, sans-serif;
+	font-size: 90%;
+	margin: 0px;
+}
+p, td, li, ul, ol, h1, h2, h3, h4, h5, h6, input, select	{
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", verdana, lucida, helvetica, sans-serif;
+}
+p {
+	font-size: 100%;
+}
+#header {
+	background-color: #369;
+	background-repeat: no-repeat;
+	height: 90px;
+	padding: 10px 0 0 0px;
+	width: 100%;
+	color:#fff;
+}
+#title {
+	height: 20px;
+	padding: 10px 10px 15px 10px;
+	color:#000;
+	font-size:1.2em;
+}
+
+h3 {
+	background-color: #369;
+	border: 1px solid #369;
+	color: #fff;
+	margin-top: 4px;
+	margin-bottom: 6px;
+	padding: 8px; 
+}
+h4 {
+	color: #000;
+	margin-top: 4px;
+	margin-bottom: 6px;
+	font-size: 22px;
+}
+img#logo {
+	border:0;
+	position:absolute;
+}
+.hide {
+	display: none;
+}
+.clear {
+	clear: both;
+}
+#loginfrm {
+	text-align: center;
+}
+#loginfrm fieldset {
+	display: block;
+	width: 100%;
+	margin: 1em 0 1em 0;
+	padding: 0 1em 1em 1em;
+}
+#loginfrm legend {
+	font-weight: bold;
+	font-size:1.2em;
+}
+#loginfrm label {
+	display: block;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	font-weight: bold;
+	font-size:1.2em; 	
+}
+#breadcrumbs {
+	padding-bottom: 10px;
+}
+form {
+	margin: 0;
+}
+
+#topbar {
+	background-color: #369;
+	height: 76px;
+	margin: 0 4px 0 0;
+	padding-right: 5px;
+	position: absolute;
+	top: 2px;
+	right: 5px;
+	text-align: right;
+	width: 300px;
+/*	background-image: url("../images/topbar.gif");
+	background-repeat: no-repeat;
+	font-size: 85%;
+	text-align: right; */
+	color:#fff
+}
+#topbar select {
+	background-color: #fff;
+	color: #000;	
+}
+#topbar a{
+
+	color:#fff;
+} 
+table#dbnav {
+	background-color: #eee;
+	border: 1px solid #dbdbdb;
+	height: 30px;
+	margin-bottom: 10px;
+	margin-top: 10px;	
+	padding: 0;
+	width: 100%;
+}
+table#dbnav td {
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 0 10px 0 10px;
+	vertical-align: middle;
+}
+table.cmslist {
+	background-color: #fff;
+	border: 1px solid #dbdbdb;
+	margin: 0;
+	padding: 0;
+}
+table.cmslist td {
+	border-top: 1px solid #dbdbdb;
+	font-family: Arial, Helvetica, sans-serif; 
+	margin: 0;
+	padding: 4px;
+}
+tr.cmslisthead {
+	background-color: #336699;
+	color: white;
+	font-weight: bold;
+}
+#sections {
+	float: left;
+	margin-top: 20px;
+	width: 170px;
+}
+#sections ul {
+	margin: 0; /*removes indent IE and Opera*/
+	padding: 0; /*removes indent Mozilla and NN7*/
+	list-style-type: none; /*turns off display of bullet*/
+}
+#sections li {
+	margin: 0 0 3px 0;
+}
+#sections a {
+	/*/*/display: block;
+	padding: 2px 2px 2px 24px;
+	border: 1px solid #333;
+	width: 160px;
+	background-color: #eee;
+	background-image:  url(../images/bulletoff.gif);
+	background-repeat: no-repeat;
+}
+#sections a#current {
+	background-image:  url(../images/bulleton.gif);
+}
+#sections a:link, #sections a:visited {
+	color: #000;
+	/*/*/color: #070707;
+	text-decoration: none; /* */
+}
+#sections a:hover {
+	background-image:  url(../images/bulleton.gif);
+	background-repeat: no-repeat;
+	border: 1px solid #333;
+	color: #333333;
+}
+#sections a.incomplete {
+	background-color: #cc0000;
+	color:#fff;
+}
+#sections a.optional {
+	background-color: #f0ad4e;
+	color:#fff;	
+}
+#sections a.complete {
+	background-color: #5cb85c;
+	color:#fff;	
+}
+div.main {
+	margin-left: 200px;
+	
+}
+#formarea table {
+	border: 1px solid #999;
+	margin-bottom: 10px;
+	padding: 5px 0px 5px 5px; 
+
+}
+#formarea tr {
+	vertical-align: top;
+}
+#formarea input, #formarea select, #formarea textarea {
+	border: 1px solid #333;
+	font-family: "Trebuchet MS";
+	margin: 2px 8px;
+	padding:5px;
+}
+#formarea input.formcb {
+	border: 0;
+}
+#formarea td.label {
+
+	font-size: 100%;
+	font-weight: bold;
+	margin: 5px;
+	padding: 4px;
+	text-align: left;
+	vertical-align: top;
+}
+input, button {
+    border: #ccc 1px solid !important;
+    padding: 8px !important;
+    margin:5px;
+}
+
+
+span.label {
+
+	font-size: 80%;
+	font-weight: bold;
+}
+#formarea td.formbtns, #formarea p.formbtns {
+	text-align: center;
+}
+#formarea fieldset {
+	margin-bottom: 10px;
+}
+#formarea fieldset p {
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+#formarea legend {
+
+	font-size: 100%;
+	font-weight: bold;
+}
+tr.subrow {
+	background-color: #eee;
+	color: #fff;
+}
+tr.subrow td {
+	background-color: #eee;
+	color: #fff;
+}
+.subrow {
+	background-color: #eee;
+	color: #fff;
+}
+.popup {
+	background-color: #fff;
+	padding-bottom: 10px;
+}
+td.detail {
+	font-size: 80%;
+}
+.nperrors, .error, .overdue, .imminent, .indate, .past, .future {
+	font-weight: bold;
+}
+.nperrors, .error, .overdue, .required {
+	color: #f00;
+}
+.past {
+	color: #999;
+}
+.imminent, .future {
+	color: #FF9933;
+}
+.indate {
+	color: #006633;
+}
+.fpareas {
+	border: 1px solid #dbdbdb;
+	float: left;
+	margin-right: 10px;
+	padding-left: 8px;
+	margin-left: 20px;	
+	width: 30%;
+	margin-bottom:20px;
+}
+.fpareas h4 {
+	background-color: #fff;
+	border: 0;
+	display: inline;
+	left: 8px;
+	padding: 4px;
+	position: relative;
+	top: -10px;
+}
+.fpareas ul {
+	list-style-type: none;
+}
+#footer
+{
+    	padding: 15px 0px 15px 0px;
+    	font-size: 18px;
+    	width: 100%;
+	color:#fff;
+	clear:both;
+	background-color:#369;
+	margin-top: 10px;
+	height:100px;
+}
+#footer p 
+{
+    	padding: 0px;
+    	margin: 0px;
+ 	text-align: center;
+}
+#footer a
+{
+    	color: #fff;
+    	text-decoration: none;
+}
+#footer a:hover
+{
+    	color: #fff;
+    	text-decoration: underline;
+}
+#footer a:visited
+{
+    	color: #fff;
+}
+p#footer {
+	border-top:3px solid #aea88e
+}
+#pagewidth {
+	margin:20px;
+}

@@ -1,0 +1,58 @@
+body {
+	font-family: "Trebuchet MS",Arial,"Lucida Sans Unicode",verdana,lucida,helvetica,sans-serif;
+	font-size: 62.5%;
+	margin: 12px 5%;
+}
+h1 {
+	font-size: 2.4em;
+}
+h2 {
+	font-size: 2em;
+	margin-bottom: 8px;
+	padding-bottom: 0;
+}
+form {
+	margin-top: 0;
+	padding-top: 0;
+}
+.waffle, form {
+	font-size: 1.4em;
+}
+legend {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+fieldset {
+	padding: 4px 12px 12px;
+}
+.cb, .rating, .ta {
+	padding: 2px;
+	position: relative;
+}
+.cb label {
+	float: left;
+	text-align: right;
+	width: 10em;
+}
+.cb input, .rating select {
+	margin-left: 6px;
+}
+.rating label {
+	clear: left;
+	float: left;
+	text-align: right;
+	width: 24em;
+}
+.ta {
+	margin-top: 8px;
+}
+.ta label {
+	display: block;
+}
+textarea {
+	height: 8em;
+	width: 30em;;
+}
+#btn {
+	text-align: center;
+}

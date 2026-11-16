@@ -1,0 +1,105 @@
+body {
+	background: #F0F0E1;
+	font-size: 80%;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", verdana, lucida, helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+p, td, li, ul, ol, h1, h2, h3, h4, h5, h6, input	{
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", verdana, lucida, helvetica, sans-serif;
+	font-size: 1em;
+}
+.right {
+	float: right;
+	margin: 8px 12px 12px 18px;
+}
+.left {
+	float: left;
+	margin: 8px 12px 12px 0;
+}
+h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.4em;
+}
+p {
+	margin-right: 10px;
+/*	text-align: justify; */
+}
+h4 + p, h4 + ul {
+	margin-top: 2px;
+}
+p.note {
+	font-size: 0.85em;
+	margin-top: 0;
+	padding-top: 0;
+}
+.contactdetails {
+	font-weight: bold;
+	padding-left: 30px;
+}
+ul.squarelist {
+	list-style: url(/images/standard/bullet_square.gif);
+}
+ul.squarelist li {
+	margin-bottom: 8px;
+}
+div.highlight {
+	background-color: #EEE;
+	border: 1px solid #666;
+	margin: 4px 8px;
+	padding: 1em;
+}
+a.external {
+	background-image: url(../images/external.gif);
+	background-position: center right;
+	background-repeat: no-repeat;
+	padding-right: 12px;
+}
+/* Standard presentation for tables */
+table.outlined {
+	background-color: #eee;
+	border: 1px solid #666;
+	border-collapse: collapse;
+	margin: 1em;
+}
+table.outlined th {
+	background-color: #cc9;
+	border: 1px solid #666;
+	font-size: 1.1em;
+	padding: 1px;
+}
+table.outlined td {
+	border: 1px solid #666;
+	padding: 3px 8px 3px 13px;
+}
+/* End standard presentation for tables */
+div.figure {
+	background-color: #fff;
+	padding: 10px; 
+	margin: 0 1em; /* Needed to support centering of almost-full-width figures. */
+	border: 1px solid silver;
+	text-align: center;
+}
+h4 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.2em;
+	margin: 18px 12px 12px 0;
+	padding-bottom: 2px;
+}
+.clear {
+	clear: both;
+}
+div#fpbuttons, div#sectionfpbanner {
+	float: right;
+	padding: 8px 0;
+	text-align: center;
+	width: 140px;
+}
+p.paralink {
+	background: url(../images/paralink.gif) no-repeat;
+	background-position: 8px 50%;
+	padding-left: 30px;
+}
+.error, ul.errorlist {
+	color: #f00;
+}
